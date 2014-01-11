@@ -1,0 +1,77 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+<title>Creating a gpc-dll</title>
+</head>
+<body>
+<h1>Creating a gpc-dll</h1>
+
+Following is described how to compile gpc into a dll. This dll will be used by the GpcWrapper.
+
+<h2>Changes necessary in gpc.c and gpc.h.</h2>
+<p>
+There are only a few changes needed. Some functions have to be exported.
+Therefore the attribute "__declspec(dllexport)" has to be add to some of the function definitions and
+their prototypes. The functions are:
+</p>
+<p>
+<ul>
+<li>gpc_polygon_clip</li>
+<li>gpc_tristrip_clip</li>
+<li>gpc_polygon_to_tristrip</li>
+<li>gpc_free_polygon</li>
+<li>gpc_free_tristrip</li>
+<li>gpc_read_polygon</li>
+<li>gpc_write_polygon</li>
+</ul> 
+</p>
+<p>
+For example for the function gpc_free_polygon you have to change
+<blockquote>
+void gpc_free_polygon(gpc_polygon *p)
+{
+....
+}
+</blockquote> 
+to
+<blockquote>
+__declspec(dllexport) void gpc_free_polygon(gpc_polygon *p)
+{
+...
+}
+</blockquote> 
+in gpc.c and in gpc.h you have to change the line
+<blockquote>
+void gpc_free_polygon        (gpc_polygon     *polygon);
+</blockquote> 
+to
+<blockquote>
+__declspec(dllexport) void gpc_free_polygon        (gpc_polygon     *polygon);
+</blockquote> 
+</p>
+<p>
+For Gpc Version 2.31 this has been already done in the files gpc.c and gpc.h contained in the GpcWrapper.zip file.
+</p>
+
+<h2>Compiling gpc.c and gpc.h to a dll.</h2>
+
+For compiling you can use the compiler from the .Net Framework (cl.exe).
+Some instructions to install the .Net Framework you can find here:
+<a href="installdotnet.html">Installation of the .Net-Framework</a>.
+Before you can call 'cl' some environment variables have to be set. This can be done by
+calling vcvars32.bat. This file is located e.g. in
+<blockquote>
+c:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\bin
+</blockquote> 
+Afterwards you can generate the dll simply by calling
+<blockquote>
+cl /LD /MD gpc.c
+</blockquote> 
+
+In the File compile.cmd this has been already done. Maybe the Path to vcvars32.bat has to be changed.
+
+</body>
+</html> 
+

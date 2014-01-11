@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02566164-FCE5-431C-85E9-F108368590F1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RGeos</RootNamespace>
+    <AssemblyName>RGeos</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Basic\MathEx.cs" />
+    <Compile Include="Basic\RMath.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geometry\RArc.cs" />
+    <Compile Include="Geometry\REnvelope.cs" />
+    <Compile Include="Geometry\RPlane.cs" />
+    <Compile Include="Geometry\RPointCollection.cs" />
+    <Compile Include="Geometry\RRing.cs" />
+    <Compile Include="Geometry\RSphere.cs" />
+    <Compile Include="Geometry\RCircle.cs" />
+    <Compile Include="Geometry\RGeometry.cs" />
+    <Compile Include="Geometry\RLine.cs" />
+    <Compile Include="Geometry\RPoint.cs" />
+    <Compile Include="Geometry\RPolygon.cs" />
+    <Compile Include="Geometry\RPolyline.cs" />
+    <Compile Include="Geometry\RRay.cs" />
+    <Compile Include="Geometry\RSegment.cs" />
+    <Compile Include="Geometry\RTriangle.cs" />
+    <Compile Include="Geometry\Vector3d.cs" />
+    <Compile Include="Measure\RDistanceMeasure.cs" />
+    <Compile Include="PluginEngine\Class1.cs" />
+    <Compile Include="PluginEngine\HookHelper.cs" />
+    <Compile Include="PluginEngine\ICommand.cs" />
+    <Compile Include="PluginEngine\IDisplayFeedback.cs" />
+    <Compile Include="PluginEngine\ILayer.cs" />
+    <Compile Include="PluginEngine\IScreenDisplay.cs" />
+    <Compile Include="PluginEngine\ITool.cs" />
+    <Compile Include="PluginEngine\Layer.cs" />
+    <Compile Include="PluginEngine\Map.cs" />
+    <Compile Include="PluginEngine\RBaseCommand.cs" />
+    <Compile Include="PluginEngine\Transform.cs" />
+    <Compile Include="PluginEngine\UcMapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PluginEngine\UcMapControl.Designer.cs">
+      <DependentUpon>UcMapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\DrawPolylineTool.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Measure\RAreaMeasure.cs" />
+    <Compile Include="SpatialAnalysis\RSpatialAnalysis.cs" />
+    <Compile Include="Topology\TopologicOperate.cs" />
+    <Compile Include="Topology\TopologicRelationship.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PluginEngine\UcMapControl.resx">
+      <DependentUpon>UcMapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GpcWrapper\TestProjectVS2010\GPCWapper.csproj">
+      <Project>{BE646C57-295F-4309-8866-F265423F92F6}</Project>
+      <Name>GPCWapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

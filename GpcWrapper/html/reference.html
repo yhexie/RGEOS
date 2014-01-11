@@ -1,0 +1,191 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+<title>GpcWrapper Reference</title>
+</head>
+<body>
+<h1>GpcWrapper reference</h1>
+
+
+<h2>Vertex-Class</h2>
+<p>
+The Vertex class represents one 2d-Vertex and corresponds to the gpc_vertex-structure of the gpc library.
+</p>
+<table border="1px">
+<tr>
+	<th>Member</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>public double X</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>public double Y</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>public Vector( double x, double y)</td>
+	<td>Constructor</td>
+</tr>
+<tr>
+	<td>public string ToString()</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+</p>
+
+
+
+<h2>VertexList-Class</h2>
+<p>
+Represents a list of Vertices and correspond to the gpc_vertex_list-structure of the gpc library.
+</p>
+<table border="1px">
+<tr>
+	<th>Member</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>public int NofVertices</td>
+	<td>Number of Vertices.</td>
+</tr>
+<tr>
+	<td>public Vertex[] Vertex</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>public VectoxList()</td>
+	<td>Constructor. No Initialization. NofVertices and Vertices have to be set manually.</td>
+</tr>
+<tr>
+	<td>public VectorList( PointF[] points )</td>
+	<td>Constructor.</td>
+</tr>
+<tr>
+	<td>public PointF[] ToPoints()</td>
+	<td>Returns the Points.</td>
+</tr>
+<tr>
+	<td>public GraphicsPath TristripToGraphicsPath()</td>
+	<td>Assumes that the VetexList is a Tristrip and creates a GraphicPath-object that consists of all Triangles.</td>
+</tr>
+<tr>
+	<td>public string ToString()</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+</p>
+
+
+
+<h2>Polygon-Class</h2>
+<p>
+Represents a Polygon that can consist of some Contours. A contour can be a hole that will be cut from the other contours.
+The Polygon-Class corresponds to the gpc_polygon-structure of the gpc library.
+</p>
+<p>
+<table border="1px">
+<tr>
+	<th>Member</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>public int NofContours</td>
+	<td>Number of Contours.</td>
+</tr>
+<tr>
+	<td>public bool[] ContourIsHole</td>
+	<td>Specifies for every Contour whether it represents a hole.</td>
+</tr>
+<tr>
+	<td>public VectexList[] Contour</td>
+	<td>The Contours</td>
+</tr>
+<tr>
+	<td>public Polygon()</td>
+	<td>Constructor. No Initialization. NofContours, ContourIsHole and Contour have to be set manually.</td>
+</tr>
+<tr>
+	<td>public Polygon( GraphicsPath path )</td>
+	<td>Constructor. The Polygon is converted from a GraphicsPath object. Notice that this converting is only possible if the GraphicsPath-object don't contains any curves. This can be ensure e.g. by using the Flatten-Method from the GraphicsPath-Class.</td>
+</tr>
+<tr>
+	<td>public void AddContour( VertexList contour, bool contourIsHole )</td>
+	<td>Adds another Contour to the polygon.</td>
+</tr>
+<tr>
+	<td>public void Save( string filename, bool writeHoleFlags )</td>
+	<td>Save the Polygon to a File. If writeHoleFlags is true for every Contour it is stored whether it is a hole.</td>
+</tr>
+<tr>
+	<td>public static Polygon FromFile( string filename, bool readHoleFlags )</td>
+	<td>Reads a Polygon from a File.</td>
+</tr>
+<tr>
+	<td>public GraphicsPath ToGraphicsPath()</td>
+	<td>Converts the Polygon to a GraphicsPath.</td>
+</tr>
+<tr>
+	<td>public string ToString()</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>public Tristrip ClipToTristrip( GpcOperation operation, Polygon polygon )</td>
+	<td>Performs the chosen operation to the two polygons and returns the result as a tristrip.
+	Corresponds to the gpc_tristrip_clip-function of the gpc-library.</td>
+</tr>
+<tr>
+	<td>public Polygon Clip( GpcOperation operation, Polygon polygon )</td>
+	<td>Performs the chosen operation to the two polygons and returns the result as a new Polygon.
+	Corresponds to the gpc_polygon_clip-function of the gpc-library.</td>
+</tr>
+<tr>
+	<td>public Tristrip ToTristrip()</td>
+	<td>Converts the Polygon to a Tristrip.
+	Corresponds to the gpc_polygon_to_tristrip-function of the gpc-library.</td>
+</tr>
+</table>
+</p>
+
+
+
+<h2>Tristrip-Class</h2>
+<p>
+A list of tristrips. Each Tristrip is a list of Triangles. Every triple of Vertices represents a Triangle.
+This means that a Vertex of a VertexList is in up to 3 Triangles.
+The Tristrip-Class corresponds to the gpc_tristrip-structure of the gpc library.
+</p>
+<table border="1px">
+<tr>
+	<th>Member</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>public int NofStrips</td>
+	<td>Number of tristrips.</td>
+</tr>
+<tr>
+	<td>public VertexList[] Strip</td>
+	<td>The tristrips.</td>
+</tr>
+</table>
+</p>
+
+
+<h2>GpcOperation-Enum</h2>
+<p>
+<table border="1px">
+<tr><td>Difference</td></tr>
+<tr><td>Intersection</td></tr>
+<tr><td>XOr</td></tr>
+<tr><td>Union</td></tr>
+</p>
+
+
+
+</body>
+</html> 
+
