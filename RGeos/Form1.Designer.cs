@@ -28,25 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDrawPolyline = new System.Windows.Forms.Button();
+            this.btnDrawLine = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnDrawPolyline
             // 
-            this.button1.Location = new System.Drawing.Point(451, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDrawPolyline.Location = new System.Drawing.Point(451, 81);
+            this.btnDrawPolyline.Name = "btnDrawPolyline";
+            this.btnDrawPolyline.Size = new System.Drawing.Size(75, 23);
+            this.btnDrawPolyline.TabIndex = 0;
+            this.btnDrawPolyline.Text = "绘制折线";
+            this.btnDrawPolyline.UseVisualStyleBackColor = true;
+            this.btnDrawPolyline.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDrawLine
+            // 
+            this.btnDrawLine.Location = new System.Drawing.Point(451, 52);
+            this.btnDrawLine.Name = "btnDrawLine";
+            this.btnDrawLine.Size = new System.Drawing.Size(75, 23);
+            this.btnDrawLine.TabIndex = 0;
+            this.btnDrawLine.Text = "绘制线段";
+            this.btnDrawLine.UseVisualStyleBackColor = true;
+            this.btnDrawLine.Click += new System.EventHandler(this.btnDrawLine_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 373);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDrawLine);
+            this.Controls.Add(this.btnDrawPolyline);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +67,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDrawPolyline;
+        private System.Windows.Forms.Button btnDrawLine;
 
     }
 }

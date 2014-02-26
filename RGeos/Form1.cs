@@ -36,5 +36,13 @@ namespace RGeos
             mHook.MapControl.CurrentTool = pCmd as ITool;
         }
 
+        private void btnDrawLine_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new DrawLineTool();
+            pCmd.OnCreate(mHook);
+            mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
+
     }
 }

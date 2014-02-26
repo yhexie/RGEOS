@@ -89,6 +89,7 @@
     <Compile Include="PluginEngine\UcMapControl.Designer.cs">
       <DependentUpon>UcMapControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plugins\DrawLineTool.cs" />
     <Compile Include="Plugins\DrawPolylineTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
