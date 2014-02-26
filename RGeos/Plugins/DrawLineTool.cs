@@ -17,7 +17,7 @@ namespace RGeos.Plugins
         public override string Name { get; set; }
         public override void OnCreate(HookHelper hook)
         {
-            Name = "绘制多义线";
+            Name = "绘制线段";
             mMapCtrl = hook.MapControl;
             mScreenDisplay = mMapCtrl.mScreenDisplay;
         }

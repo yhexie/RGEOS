@@ -12,7 +12,7 @@ namespace RGeos.PluginEngine
     {
         void DrawCache();
         void DrawMultipoint();
-        void DrawPoint();
+        void DrawPoint(Pen vPen, RPoint pt0);
         void DrawPolygon();
         void DrawPolyline(Pen vPen, PointF pt1, PointF pt2);
         void DrawRectangle();
@@ -22,7 +22,7 @@ namespace RGeos.PluginEngine
         void StartDrawing(UcMapControl mapCtrl);
         void FinishDrawing(Graphics dc);
         void StopRecording();
-        
+
         IntPtr Handle { get; set; }
         bool IsCacheDirty { get; set; }
     }
@@ -42,9 +42,14 @@ namespace RGeos.PluginEngine
             throw new NotImplementedException();
         }
 
-        public void DrawPoint()
+        public void DrawPoint(Pen vPen, RPoint pt0)
         {
-            throw new NotImplementedException();
+            gc = Graphics.FromHwnd(Handle);
+            PointF pt = new PointF((float)pt0.X, (float)pt0.Y);
+            SizeF size = new SizeF(4f, 4f);
+            RectangleF rect = new RectangleF(pt, size);
+            gc.DrawEllipse(vPen, rect);
+            gc.Dispose();
         }
 
         public void DrawPolygon()
@@ -53,7 +58,7 @@ namespace RGeos.PluginEngine
         }
         public void UpdateWindow()
         {
-            m_staticImage=null;
+            m_staticImage = null;
             m_staticDirty = true;
         }
         public void DrawPolyline(Pen vPen, PointF pt1, PointF pt2)
@@ -67,7 +72,7 @@ namespace RGeos.PluginEngine
         Rectangle cliprectangle;
         public void StartRecording()
         {
-          
+
         }
         Graphics BitMapGc = null;
         public void StartDrawing(UcMapControl mapCtrl)
@@ -105,22 +110,22 @@ namespace RGeos.PluginEngine
             }
             BitMapGc.Dispose();
         }
-       
+
         public void FinishDrawing(Graphics dc)
-        {        
+        {
             //Graphics dc = Graphics.FromHwnd(Handle);
             dc.DrawImage(m_staticImage, cliprectangle, cliprectangle, GraphicsUnit.Pixel);
-           // dc.Dispose();
+            // dc.Dispose();
 
         }
         public void StopRecording()
         {
-           
+
         }
 
         public void DrawCache()
         {
-           
+
         }
         /// <summary>
         /// 局部刷新，绘制图片Bitmap无效区域

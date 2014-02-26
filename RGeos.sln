@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos", "RGeos\RGeos.csproj", "{02566164-FCE5-431C-85E9-F108368590F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Core", "RGeos\RGeos.Core.csproj", "{02566164-FCE5-431C-85E9-F108368590F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPCWapper", "GpcWrapper\TestProjectVS2010\GPCWapper.csproj", "{BE646C57-295F-4309-8866-F265423F92F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.GPCWapper", "GpcWrapper\TestProjectVS2010\RGeos.GPCWapper.csproj", "{BE646C57-295F-4309-8866-F265423F92F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

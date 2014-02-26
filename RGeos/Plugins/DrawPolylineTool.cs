@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using RGeos.PluginEngine;
 using System.Drawing;
+using RGeos.Geometry;
 namespace RGeos.Plugins
 {
     public class DrawPolylineTool : RBaseCommand
@@ -14,11 +15,12 @@ namespace RGeos.Plugins
         public override string Name { get; set; }
         public override void OnCreate(HookHelper hook)
         {
-            Name = "绘制多义线";
+            Name = "绘制折线";
             mMapCtrl = hook.MapControl;
             mScreenDisplay = mMapCtrl.mScreenDisplay;
         }
         IScreenDisplay mScreenDisplay = null;
+        RLine line = new RLine();
         public override void OnClick()
         {
 
@@ -35,41 +37,40 @@ namespace RGeos.Plugins
             }
             else
             {
-                double xmin = Math.Min(p1.X, Point0.X);
-                double ymin = Math.Min(p1.Y, Point0.Y);
-                double w = Math.Abs(p1.X - Point0.X);
-                double h = Math.Abs(p1.Y - Point0.Y);
+                double xmin = line.Envelop.Left;
+                double ymin = line.Envelop.Lower;
+                double w = line.Envelop.Width;
+                double h = line.Envelop.Height;
                 Rectangle invalidaterect = new Rectangle((int)xmin, (int)ymin, (int)w, (int)h);
                 invalidaterect.Inflate(2, 2);
 
                 (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
+                PointF p1 = new PointF((float)line.P0.X, (float)line.P0.Y);
                 PointF p2 = new PointF(x, y);
 
                 mScreenDisplay.DrawPolyline(Pens.Blue, p1, p2);
-                Point0 = p2;
+                line.P1 = new RPoint(x, y, 0);
             }
         }
-        ///// <summary>
-        ///// 在无效区域绘制对象
-        ///// </summary>
-        ///// <param name="obj"></param>
-        //void RepaintObject(IDrawObject obj)
-        //{
-        //    if (obj == null)
-        //        return;
-        //    CanvasWrapper dc = new CanvasWrapper(this, Graphics.FromHwnd(Handle), ClientRectangle);
-        //    RectangleF invalidaterect = ScreenUtils.ConvertRect(ScreenUtils.ToScreenNormalized(dc, obj.GetBoundingRect(dc)));
-        //    obj.Draw(dc, invalidaterect);
-        //    dc.Graphics.Dispose();
-        //    dc.Dispose();
-        //}
+
         public override void OnMouseDown(int x, int y)
         {
             n++;
             if (n <= 1)
             {
-                p1 = new PointF(x, y);
-                Point0 = new PointF(x, y);
+                line = new RLine();
+                line.P0 = new RPoint(x, y, 0);
+                line.P1 = new RPoint(x, y, 0);
+            }
+            else
+            {
+                line.P1 = new RPoint(x, y, 0);
+                PointF p1 = new PointF((float)line.P0.X, (float)line.P0.Y);
+                PointF p2 = new PointF((float)line.P1.X, (float)line.P1.Y);
+                mScreenDisplay.DrawPolyline(Pens.Blue, p1, p2);
+                line = new RLine();
+                line.P0 = new RPoint(x, y, 0);
+                line.P1 = new RPoint(x, y, 0);
             }
 
         }

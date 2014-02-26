@@ -12,10 +12,10 @@ using RGeos.Plugins;
 
 namespace RGeos
 {
-    public partial class Form1 : Form
+    public partial class FrmPartialRefresh : Form
     {
         UcMapControl mMapControl = null;
-        public Form1()
+        public FrmPartialRefresh()
         {
             InitializeComponent();
             mMapControl = new UcMapControl();
@@ -40,6 +40,14 @@ namespace RGeos
         {
             HookHelper mHook = HookHelper.Instance();
             ICommand pCmd = new DrawLineTool();
+            pCmd.OnCreate(mHook);
+            mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
+
+        private void btnDrawPoint_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new DrawPointTool();
             pCmd.OnCreate(mHook);
             mHook.MapControl.CurrentTool = pCmd as ITool;
         }
