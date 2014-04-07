@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProjNet.CoordinateSystems.AngularUnit" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAAAABAAoAAAAAAACAAEAAAAAACAAAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\AngularUnit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.AxisInfo" Collapsed="true">
+    <Position X="38.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAICQAAAAAAAAAAAAAAQAgAAA=</HashCode>
+      <FileName>CoordinateSystems\AxisInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.CoordinateSystem" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAAAAAQAAABAAAAAAAAAAQAABAAAABAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\CoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.CoordinateSystemFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACAQACBAAAAAAAACAggQAAAJAQKEAAAAAAAAAE=</HashCode>
+      <FileName>CoordinateSystems\CoordinateSystemFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Datum" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Datum.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Ellipsoid" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAKAAAAAQAAAAQQACAAgAoACAEACCIAAQAEEQA=</HashCode>
+      <FileName>CoordinateSystems\Ellipsoid.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.GeocentricCoordinateSystem" Collapsed="true">
+    <Position X="13.75" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>MABAAAAAAAAAAQEAABAAACAAAAAQAAAAAABAARAAAAA=</HashCode>
+      <FileName>CoordinateSystems\GeocentricCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.GeographicCoordinateSystem" Collapsed="true">
+    <Position X="9.25" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEBBARAABAAAAQAAABAAACAAAAAQAAAAAAAAAQACAAQ=</HashCode>
+      <FileName>CoordinateSystems\GeographicCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.GeographicTransform" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAAAAAAAAIBADAAAAAAACAAIAAAAQAAAAI=</HashCode>
+      <FileName>CoordinateSystems\GeographicTransform.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.HorizontalCoordinateSystem" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>CoordinateSystems\HorizontalCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.HorizontalDatum" Collapsed="true">
+    <Position X="18.25" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAgAAAAAQAAAAgAACIAAAAESAAAAABAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\HorizontalDatum.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Info" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADAAARAAMIAACAEAAAAICQABBAAABgAAAAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Info.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.LinearUnit" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAAAAAAAAAAAAMAACAAAAAAAAgAAAAEAQACAAA=</HashCode>
+      <FileName>CoordinateSystems\LinearUnit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Parameter" Collapsed="true">
+    <Position X="44.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAIAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Parameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.PrimeMeridian" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhBARAAAEAQIAIgEAAAACAAgAAkEAAAUAAAAQABAAA=</HashCode>
+      <FileName>CoordinateSystems\PrimeMeridian.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.ProjectedCoordinateSystem" Collapsed="true">
+    <Position X="12.75" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EABEAAAAAAAAAAEAABAAACAAgAAAAAAAAAEAAQBQAAA=</HashCode>
+      <FileName>CoordinateSystems\ProjectedCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projection" Collapsed="true">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQQAAQAADAAAAAAAAAACAAAAAAAAAAAIAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Projection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.ProjectionParameter" Collapsed="true">
+    <Position X="40.75" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAICQAAAAAAAAAAAAgAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ProjectionParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Unit" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Wgs84ConversionInfo" BaseTypeListCollapsed="true">
+    <Position X="47" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAABgEgAABACAAAgBAAIAAgAAAGQAAAEA=</HashCode>
+      <FileName>CoordinateSystems\WGS84ConversionInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.AlbersProjection" Collapsed="true">
+    <Position X="5.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAgAAAAAAAIAAAACAAQAIhQCEAAQgAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Projections\AlbersProjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.KrovakProjection" Collapsed="true">
+    <Position X="7.5" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACBUCABAAgBAAIAAAAgAAQAABSABSAgIAGAIAA=</HashCode>
+      <FileName>CoordinateSystems\Projections\KrovakProjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.LambertConformalConic2SP" Collapsed="true">
+    <Position X="9.75" Y="15.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAIAAAAQAQRAABQDgAAEAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Projections\LambertConformalConic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.MapProjection" Collapsed="true">
+    <Position X="10.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCDZYERAANLAAOAEAECQICQAaDQASh2oBCACESHAEAE=</HashCode>
+      <FileName>CoordinateSystems\Projections\MapProjection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.Mercator" Collapsed="true">
+    <Position X="12.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAgAAAAAAAIAAAAAgAQAIBQCAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Projections\Mercator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Projections.TransverseMercator" Collapsed="true">
+    <Position X="14.75" Y="15.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAIAAAIiAAQAIhACAAAEEABIAAA=</HashCode>
+      <FileName>CoordinateSystems\Projections\TransverseMercator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.ConcatenatedTransform" Collapsed="true">
+    <Position X="19.25" Y="13.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAIAACQAAAAAAAAgAAAAAWAAIBA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\ConcatenatedTransform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.CoordinateTransformation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ACKQAAQAAYAAACAAIAACIAQAABAAgAAIgBAAAAIAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\CoordinateTransformation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.CoordinateTransformationFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAgAAAQAAAAIAAAAAAAAAICAAAAAAgIAwAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\CoordinateTransformationFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.DatumTransform" Collapsed="true">
+    <Position X="0.5" Y="13.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAABAAAAAAAAJAACQAACAAAAAgABAAASAAAEA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\DatumTransform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.GeocentricTransform" Collapsed="true">
+    <Position X="3.5" Y="13.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQSEAAAACiAAAAAAYAACQAACQAABAgAAAEASAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\GeocentricTransform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.GeographicTransform" Collapsed="true">
+    <Position X="15.5" Y="13.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAAAAAAAAAAAIAADQAAAAAACAgIAAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\GeographicTransform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.CoordinateSystems.Transformations.MathTransform" Collapsed="true">
+    <Position X="10.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAEAABAAIAAAJAACQQAAAIAEAgAEAABQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\MathTransform.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjNet.Converters.WellKnownText.CoordinateSystemWktReader" Collapsed="true">
+    <Position X="44.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACgAgAAAAAAAFAAgAAAAACAAAABBAAAQAAAAAJAAQA=</HashCode>
+      <FileName>IO\CoordinateSystems\CoordinateSystemWktReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.Converters.WellKnownText.WktStreamTokenizer" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IO\CoordinateSystems\WKTStreamTokenizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjNet.Converters.WellKnownText.IO.StreamTokenizer" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAMAAAAAAAAgAACAAABIIAAAAgAAAAEAAIEAAIAAAAQ=</HashCode>
+      <FileName>IO\CoordinateSystems\StreamTokenizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ProjNet.CoordinateSystems.IAngularUnit" Collapsed="true">
+    <Position X="38.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IAngularUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ICompoundCoordinateSystem" Collapsed="true">
+    <Position X="20.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ICompoundCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ICoordinateSystem" Collapsed="true">
+    <Position X="15.5" Y="7.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAABAAAAAAAAAAQAAAAAAABAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ICoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ICoordinateSystemFactory" Collapsed="true">
+    <Position X="42.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACAQACBAAAAAAAACAAgQAAAJAQKEAAAAAAAAAE=</HashCode>
+      <FileName>CoordinateSystems\ICoordinateSystemFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IDatum" Collapsed="true">
+    <Position X="31.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IDatum.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IEllipsoid" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAgAAAEAAAAAAAAEAAA=</HashCode>
+      <FileName>CoordinateSystems\IEllipsoid.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IFittedCoordinateSystem" Collapsed="true">
+    <Position X="10.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAA=</HashCode>
+      <FileName>CoordinateSystems\IFittedCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IGeocentricCoordinateSystem" Collapsed="true">
+    <Position X="15.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IGeocentricCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IGeodeticSpatialReference" Collapsed="true">
+    <Position X="17.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IGeodeticSpatialReference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IGeographicCoordinateSystem" Collapsed="true">
+    <Position X="22.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IGeographicCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IGeographicTransform" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIBAAAAAAAAACAAIAAAAAAAAAI=</HashCode>
+      <FileName>CoordinateSystems\IGeographicTransform.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IHorizontalCoordinateSystem" Collapsed="true">
+    <Position X="23.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IHorizontalCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IHorizontalDatum" Collapsed="true">
+    <Position X="33.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAABAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IHorizontalDatum.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IInfo" Collapsed="true">
+    <Position X="20.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADAAABAAIIAAAAAAAAAACQAABAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ILinearUnit" Collapsed="true">
+    <Position X="36" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ILinearUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ILocalCoordinateSystem" Collapsed="true">
+    <Position X="13" Y="9.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ILocalCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ILocalDatum" Collapsed="true">
+    <Position X="31.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\ILocalDatum.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IParameterInfo" Collapsed="true">
+    <Position X="42.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABBCAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IParameterInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IPrimeMeridian" Collapsed="true">
+    <Position X="6.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IPrimeMeridian.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IProjectedCoordinateSystem" Collapsed="true">
+    <Position X="24.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAA=</HashCode>
+      <FileName>CoordinateSystems\IProjectedCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IProjection" Collapsed="true">
+    <Position X="27" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IProjection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IUnit" Collapsed="true">
+    <Position X="37" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IVerticalCoordinateSystem" Collapsed="true">
+    <Position X="8.25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IVerticalCoordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.IVerticalDatum" Collapsed="true">
+    <Position X="29.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\IVerticalDatum.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.ICoordinateSystemAuthorityFactory" Collapsed="true">
+    <Position X="40.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAACAQACBAAAAAAAAAAAAABAAAAQKEAAAAAAAAAE=</HashCode>
+      <FileName>CoordinateSystems\Transformations\ICoordinateSystemAuthorityFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.Transformations.ICoordinateTransformation" Collapsed="true">
+    <Position X="44.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKQAAAAAIAAAAAAAAACAAQAABAAAAAAgAAAAAIAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\ICoordinateTransformation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.Transformations.ICoordinateTransformationAuthorityFactory" Collapsed="true">
+    <Position X="40.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\ICoordinateTransformationAuthorityFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.Transformations.ICoordinateTransformationFactory" Collapsed="true">
+    <Position X="42.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\ICoordinateTransformationFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.Transformations.IMathTransform" Collapsed="true">
+    <Position X="44.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAEAABAAAAAAIAACQAAAAIAAAgAEAABQAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\IMathTransform.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjNet.CoordinateSystems.Transformations.IMathTransformFactory" Collapsed="true">
+    <Position X="40.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAQAAAABAAAAAAAACAAAAAEABACAAAABAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\IMathTransformFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ProjNet.CoordinateSystems.AxisOrientationEnum" Collapsed="true">
+    <Position X="40.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAY=</HashCode>
+      <FileName>CoordinateSystems\AxisOrientationEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjNet.CoordinateSystems.DatumType" Collapsed="true">
+    <Position X="42.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAACECEGAAAQCAAAAAABAAABIAAAAAFAAAAAg=</HashCode>
+      <FileName>CoordinateSystems\DatumType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjNet.CoordinateSystems.Transformations.DomainFlags" Collapsed="true">
+    <Position X="44.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>CoordinateSystems\Transformations\DomainFlags.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjNet.CoordinateSystems.Transformations.TransformType" Collapsed="true">
+    <Position X="42.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAQ=</HashCode>
+      <FileName>CoordinateSystems\Transformations\TransformType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjNet.Converters.WellKnownText.TokenType" Collapsed="true">
+    <Position X="40.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAEAAAAAABAAAAAAAAQAAAAAACAA=</HashCode>
+      <FileName>IO\CoordinateSystems\TokenType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

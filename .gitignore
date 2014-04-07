@@ -4,3 +4,24 @@
 /GpcWrapper/TestProjectVS2010/obj
 
 /GpcWrapper/TestProjectVS2010/bin
+
+/ProjNet/DemoWebApp/Bin
+/ProjNet/DemoWebApp/ClientBin
+
+/ProjNet/DemoApp_Silverlight/obj
+/ProjNet/DemoApp_Silverlight/Bin
+
+/ProjNet/ProjNet.Silverlight/obj
+/ProjNet/ProjNet.Silverlight/Bin
+
+/ProjNet/SharpMap.CoordinateSystems.Tests/obj
+/ProjNet/SharpMap.CoordinateSystems.Tests/bin
+
+/ProjNet/ProjNetWinFormTest/obj
+/ProjNet/ProjNetWinFormTest/bin
+
+/ProjNet/SharpMap.CoordinateSystems.Tests/obj
+/ProjNet/SharpMap.CoordinateSystems.Tests/bin
+
+/ProjNet/SharpMap.CoordinateSystems/obj
+/ProjNet/SharpMap.CoordinateSystems/bin

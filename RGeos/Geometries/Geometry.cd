@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SharpMap.Geometries.BoundingBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAJBBAAABgEkAAQAFAAIAAogIBACASAEAAQgPA=</HashCode>
+      <FileName>Geometries\BoundingBox.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpMap.Geometries.Surface" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAIAAAABAAAAAAAAAQAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Geometries\Surface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.Curve" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAgAAAAAQAAAAAAAAABAAAAAQEAAAAAgAAAAAAg=</HashCode>
+      <FileName>Geometries\Curve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.Geometry" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EQRAAhAEAIBABACEgAAAAABgYABAQYDAEAAAAQARTJA=</HashCode>
+      <FileName>Geometries\Geometry.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpMap.Geometries.GeometryCollection" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAEQIAIRBAAiAAAAABgQAAAQIBEAAAAAQAAxBA=</HashCode>
+      <FileName>Geometries\GeometryCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.545" />
+  </Class>
+  <Class Name="SharpMap.Geometries.LinearRing" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAgABA=</HashCode>
+      <FileName>Geometries\LinearRing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.LineString" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQBAAAgMAIAAxAAAgAAAAABgQAAAAIBAEBAgAQAARBg=</HashCode>
+      <FileName>Geometries\LineString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.MultiCurve" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAIAAAAAAAAAABAAAAAQEAAAAAAAAAAgAA=</HashCode>
+      <FileName>Geometries\MultiCurve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.MultiLineString" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAEAIAIBBAACAAAAABgQAAAAGBAAAAEAQAAxBA=</HashCode>
+      <FileName>Geometries\MultiLineString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.MultiPoint" Collapsed="true">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAEAIAIhBAACAAAAABgQAAAQABAgAAAAQAAxBA=</HashCode>
+      <FileName>Geometries\MultiPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.MultiPolygon" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAEAIAIBJAACABAAABgQAAAAABBAAAAAQAAxBA=</HashCode>
+      <FileName>Geometries\MultiPolygon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.MultiSurface" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAIAAAABAAAAAAAAAQAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Geometries\MultiSurface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.Point" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQBAIAAEIIAABAQA+AEAAABgYAQAQIBEAAAAAQAQZJA=</HashCode>
+      <FileName>Geometries\Point.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpMap.Geometries.Point3D" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAQA6AkAAAAAAAQAAIBAAAAAAAAAABE=</HashCode>
+      <FileName>Geometries\Point3D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.Polygon" Collapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQBAAAAEIIAABIAAggBAAARgQAEEAIBAAAAAAQCARBA=</HashCode>
+      <FileName>Geometries\Polygon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpMap.Geometries.SpatialRelations" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAgAAAAAAAIABAAAAAAAAAAAARCIA=</HashCode>
+      <FileName>Geometries\SpatialRelations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SharpMap.Geometries.IGeometry" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAhAEAIBABACEgAAAAABgYABAQADAEAAAAQARTIA=</HashCode>
+      <FileName>Geometries\IGeometry.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SharpMap.Geometries.IGeometryCollection" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Geometries\IGeometryCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SharpMap.Geometries.ISpatialReference" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometries\ISpatialReference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SharpMap.Geometries.GeometryType2" Collapsed="true">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAgAAAgAQAAAAEACAAAAAAgAABAAACgSA=</HashCode>
+      <FileName>Geometries\GeometryType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

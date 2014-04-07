@@ -49,12 +49,43 @@
   <ItemGroup>
     <Compile Include="Basic\MathEx.cs" />
     <Compile Include="Basic\RMath.cs" />
+    <Compile Include="Converters\WellKnownBinary\GeometryFromWKB.cs" />
+    <Compile Include="Converters\WellKnownBinary\GeometryToWKB.cs" />
+    <Compile Include="Converters\WellKnownBinary\WKBByteOrder.cs" />
+    <Compile Include="Converters\WellKnownBinary\WKBGeometryType.cs" />
+    <Compile Include="Converters\WellKnownText\GeometryFromWKT.cs" />
+    <Compile Include="Converters\WellKnownText\GeometryToWKT.cs" />
+    <Compile Include="Converters\WellKnownText\SpatialReference.cs" />
+    <Compile Include="Converters\WellKnownText\StreamTokenizer.cs" />
+    <Compile Include="Converters\WellKnownText\TokenType.cs" />
+    <Compile Include="Converters\WellKnownText\WKTStreamTokenizer.cs" />
+    <Compile Include="CoordinateSystems\Transformations\GeometryTransform.cs" />
     <Compile Include="FrmPartialRefresh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPartialRefresh.Designer.cs">
       <DependentUpon>FrmPartialRefresh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Geometries\BoundingBox.cs" />
+    <Compile Include="Geometries\Curve.cs" />
+    <Compile Include="Geometries\Geometry.cs" />
+    <Compile Include="Geometries\GeometryCollection.cs" />
+    <Compile Include="Geometries\GeometryType.cs" />
+    <Compile Include="Geometries\IGeometry.cs" />
+    <Compile Include="Geometries\IGeometryCollection.cs" />
+    <Compile Include="Geometries\ISpatialReference.cs" />
+    <Compile Include="Geometries\LinearRing.cs" />
+    <Compile Include="Geometries\LineString.cs" />
+    <Compile Include="Geometries\MultiCurve.cs" />
+    <Compile Include="Geometries\MultiLineString.cs" />
+    <Compile Include="Geometries\MultiPoint.cs" />
+    <Compile Include="Geometries\MultiPolygon.cs" />
+    <Compile Include="Geometries\MultiSurface.cs" />
+    <Compile Include="Geometries\Point.cs" />
+    <Compile Include="Geometries\Point3D.cs" />
+    <Compile Include="Geometries\Polygon.cs" />
+    <Compile Include="Geometries\SpatialRelations.cs" />
+    <Compile Include="Geometries\Surface.cs" />
     <Compile Include="Geometry\RArc.cs" />
     <Compile Include="Geometry\REnvelope.cs" />
     <Compile Include="Geometry\RPlane.cs" />
@@ -72,6 +103,12 @@
     <Compile Include="Geometry\RTriangle.cs" />
     <Compile Include="Geometry\Vector3d.cs" />
     <Compile Include="Measure\RDistanceMeasure.cs" />
+    <Compile Include="PluginEngine\IDisplayTransformation.cs" />
+    <Compile Include="PluginEngine\IMap.cs" />
+    <Compile Include="PluginEngine\ISelection.cs" />
+    <Compile Include="PluginEngine\ISymbol.cs" />
+    <Compile Include="Plugins\DrawMultiPolygonTool.cs" />
+    <Compile Include="Utilities\Transform.cs" />
     <Compile Include="PluginEngine\Class1.cs" />
     <Compile Include="PluginEngine\HookHelper.cs" />
     <Compile Include="PluginEngine\ICommand.cs" />
@@ -115,6 +152,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Geometries\Geometry.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,6 +167,10 @@
     <ProjectReference Include="..\GpcWrapper\TestProjectVS2010\RGeos.GPCWapper.csproj">
       <Project>{BE646C57-295F-4309-8866-F265423F92F6}</Project>
       <Name>RGeos.GPCWapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjNet\SharpMap.CoordinateSystems\ProjNET.csproj">
+      <Project>{E028BDD2-55E1-4E5F-BE31-35FAEC8D6428}</Project>
+      <Name>ProjNET</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

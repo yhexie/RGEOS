@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ProjNet.Silverlight.TestApplication.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid x:Name="LayoutRoot" Background="White">
+		<Image Stretch="Uniform" x:Name="map" MouseMove="map_MouseMove" Source="/epsg4326.jpg"   />
+		
+		<StackPanel Background="#99000000" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+			<TextBlock Text="UTM" Margin="2" FontWeight="Bold" Foreground="White" />
+			<TextBlock x:Name="locationX" Margin="2" Foreground="White" />
+			<TextBlock x:Name="locationY" Margin="2" Foreground="White" />
+			<TextBlock x:Name="locationZone" Margin="2" Foreground="White" />
+		</StackPanel>
+
+		<StackPanel Background="#99000000" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+			<TextBlock Text="Geographic" Margin="2" FontWeight="Bold" Foreground="White" />
+			<TextBlock x:Name="locationLong" Margin="2" Foreground="White" />
+			<TextBlock x:Name="locationLat" Margin="2" Foreground="White" />
+		</StackPanel>
+	</Grid>
+</UserControl>

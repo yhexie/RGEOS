@@ -27,6 +27,7 @@ namespace RGeos.PluginEngine
             this.MouseDown += new MouseEventHandler(mPanel_MouseDown);
             this.MouseMove += new MouseEventHandler(mPanel_MouseMove);
             this.MouseUp += new MouseEventHandler(mPanel_MouseUp);
+            this.Resize += new System.EventHandler(this.UcMapControl_Resize);
         }
 
         //bool m_staticDirty = true;
@@ -35,7 +36,7 @@ namespace RGeos.PluginEngine
         System.Drawing.Drawing2D.SmoothingMode m_smoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
         protected override void OnPaint(PaintEventArgs e)
         {
-            
+
             #region old
             //e.Graphics.SmoothingMode = m_smoothingMode;
             //Rectangle cliprectangle = e.ClipRectangle;
@@ -78,37 +79,105 @@ namespace RGeos.PluginEngine
             if (mScreenDisplay.IsCacheDirty)
             {
                 mScreenDisplay.StartRecording();
-               
+
                 mScreenDisplay.StopRecording();
             }
             else
             {
                 mScreenDisplay.DrawCache();
             }
-           
+
 
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
+        //protected override void OnResize(EventArgs e)
+        //{
+        //    base.OnResize(e);
 
+
+        //}
+
+        void mPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            //  base.OnMouseUp(e);
+            if (CurrentTool != null)
+            {
+                CurrentTool.OnMouseUp(e.X, e.Y);
+            }
+        }
+
+        void mPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            // base.OnMouseMove(e);
+            if (CurrentTool != null)
+            {
+                CurrentTool.OnMouseMove(e.X, e.Y);
+            }
+            RPoint pt = Transform.ToUnit(new PointF(e.X, e.Y), this);
+            label1.Text = string.Format("X:{0}mm Y:{1}mm", pt.X * 25.4, pt.Y * 25.4);
+        }
+
+        void mPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            //  base.OnMouseDown(e);
+            if (CurrentTool != null)
+            {
+                CurrentTool.OnMouseDown(e.X, e.Y);
+            }
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            Point point = this.PointToClient(Control.MousePosition);//放大中心点屏幕坐标
+            RPoint p = Transform.ToUnit(point, this);//对应的当前Zoom下的世界坐标
+            float wheeldeltatick = 120;
+            float zoomdelta = (1.25f * (Math.Abs(e.Delta) / wheeldeltatick));
+            if (e.Delta < 0)
+                this.Zoom = this.Zoom / zoomdelta;
+            else
+                this.Zoom = this.Zoom * zoomdelta;
+            SetCenterScreen(Transform.ToScreen(p, this), true);//放大后，得到同一个世界坐标对应的屏幕坐标
+            Invalidate(true);
+            base.OnMouseWheel(e);
+        }
+      
+        //屏幕的高度对应的当前Zoom等级下的地图距离
+        internal float ScreenHeight()
+        {
+            return (float)(Transform.ToUnit(this.ClientRectangle.Height, this));
+        }
+        private float mZoom = 1.0f;
+        public float Zoom
+        {
+            get
+            {
+                return mZoom;
+            }
+            set
+            {
+                mZoom = value;
+            }
+        }
+        RPoint m_lastCenterPoint;
+        private void UcMapControl_Resize(object sender, EventArgs e)
+        {
             if (m_lastCenterPoint != null && Width != 0)
                 SetCenterScreen(Transform.ToScreen(m_lastCenterPoint, this), false);
             m_lastCenterPoint = CenterPointUnit();
             (mScreenDisplay as ScreenDisplay).UpdateWindow();
-           // m_staticImage = null;
+            // m_staticImage = null;
             Invalidate();
         }
-        RPoint m_lastCenterPoint;
         /// <summary>
         /// 设置画布到屏幕的中心
         /// </summary>
         /// <param name="rPoint">直角坐标系坐标</param>
         public void SetCenter(RPoint unitPoint)
         {
+            //将unitPoint点对应到屏幕上point
             PointF point = Transform.ToScreen(unitPoint, this);
             m_lastCenterPoint = unitPoint;
+            //将unitPoint偏移到屏幕中心
             SetCenterScreen(point, false);
         }
         public PointF m_panOffset = new PointF(25, -25);
@@ -133,49 +202,6 @@ namespace RGeos.PluginEngine
             center.X = (p1.X + p2.X) / 2;
             center.Y = (p1.Y + p2.Y) / 2;
             return center;
-        }
-        void mPanel_MouseUp(object sender, MouseEventArgs e)
-        {
-          //  base.OnMouseUp(e);
-            if (CurrentTool != null)
-            {
-                CurrentTool.OnMouseUp(e.X, e.Y);
-            }
-        }
-
-        void mPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-           // base.OnMouseMove(e);
-            if (CurrentTool != null)
-            {
-                CurrentTool.OnMouseMove(e.X, e.Y);
-            }
-        }
-
-        void mPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-          //  base.OnMouseDown(e);
-            if (CurrentTool != null)
-            {
-                CurrentTool.OnMouseDown(e.X, e.Y);
-            }
-        }
-
-        internal float ScreenHeight()
-        {
-            return (float)(Transform.ToUnit(this.ClientRectangle.Height, this));
-        }
-        private float mZoom = 1.0f;
-        public float Zoom
-        {
-            get
-            {
-                return mZoom;
-            }
-            set
-            {
-                mZoom = value;
-            }
         }
     }
 }
