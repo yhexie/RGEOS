@@ -89,7 +89,10 @@ namespace RGeos.PluginEngine
 
 
         }
-
+        public void Refresh()
+        {
+            this.Invalidate();
+        }
         //protected override void OnResize(EventArgs e)
         //{
         //    base.OnResize(e);

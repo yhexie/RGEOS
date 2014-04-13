@@ -473,7 +473,8 @@ namespace RGeos.PluginEngine
                 if (NewObject is Polygon)
                 {
                     SolidBrush brush = new SolidBrush(Color.Blue);
-                    Pen pen = new Pen(brush);
+                    SolidBrush brush2 = new SolidBrush(Color.Pink);
+                    Pen pen = new Pen(brush2);
                     DrawPolygon2(BitMapGc,NewObject as Polygon, brush, pen, false);
                 }
             }
