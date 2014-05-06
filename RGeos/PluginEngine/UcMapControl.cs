@@ -125,7 +125,7 @@ namespace RGeos.PluginEngine
             //  base.OnMouseDown(e);
             if (CurrentTool != null)
             {
-                CurrentTool.OnMouseDown(e.X, e.Y);
+                CurrentTool.OnMouseDown(e.X, e.Y, e);
             }
         }
 
@@ -143,7 +143,7 @@ namespace RGeos.PluginEngine
             Invalidate(true);
             base.OnMouseWheel(e);
         }
-      
+
         //屏幕的高度对应的当前Zoom等级下的地图距离
         internal float ScreenHeight()
         {

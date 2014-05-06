@@ -52,7 +52,7 @@ namespace RGeos.Plugins
             }
         }
         int n = 0;
-        public override void OnMouseDown(int x, int y)
+        public override void OnMouseDown(int x, int y, MouseEventArgs e)
         {
             n++;
             if (n <= 1)
@@ -80,5 +80,7 @@ namespace RGeos.Plugins
 
 
         }
+
+       
     }
 }

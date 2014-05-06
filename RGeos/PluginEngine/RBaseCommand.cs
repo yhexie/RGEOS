@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace RGeos.PluginEngine
 {
@@ -11,7 +12,8 @@ namespace RGeos.PluginEngine
         public abstract void OnCreate(HookHelper hook);
         public abstract void OnClick();
         public abstract void OnMouseMove(int x, int y);
-        public abstract void OnMouseDown(int x, int y);
+       // public abstract void OnMouseDown(int x, int y);
+        public abstract void OnMouseDown(int x, int y, MouseEventArgs e);
         public abstract void OnMouseUp(int x, int y);
     }
 }

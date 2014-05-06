@@ -5,6 +5,7 @@ using System.Text;
 using RGeos.PluginEngine;
 using System.Drawing;
 using RGeos.Geometry;
+using System.Windows.Forms;
 namespace RGeos.Plugins
 {
     class DrawPointTool : RBaseCommand
@@ -32,7 +33,7 @@ namespace RGeos.Plugins
 
         }
         int n = 0;
-        public override void OnMouseDown(int x, int y)
+        public override void OnMouseDown(int x, int y, MouseEventArgs e)
         {
 
             RPoint P1 = new RPoint(x, y, 0);

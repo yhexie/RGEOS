@@ -45,11 +45,11 @@ namespace RGeos.Plugins
                 SharpMap.Geometries.Point P2 = new SharpMap.Geometries.Point(x, y);
                 tmpVertices.Add(P0);
                 tmpVertices.Add(P1);
-                tmpVertices.Add( P2);
+                tmpVertices.Add(P2);
                 LinearRing tmpLine = new LinearRing(tmpVertices);
                 tempPolygon.ExteriorRing = tmpLine;
 
-                if (j==1)
+                if (j == 1)
                 {
                     BoundingBox box = tempPolygon.GetBoundingBox();
                     double xmin = box.Left;
@@ -103,50 +103,61 @@ namespace RGeos.Plugins
         int n = 0;
         LinearRing line = null;
         IList<SharpMap.Geometries.Point> vertices = new List<SharpMap.Geometries.Point>();
-        public override void OnMouseDown(int x, int y)
+        public override void OnMouseDown(int x, int y, MouseEventArgs e)
         {
-            n++;
-            if (n == 1)
+            if (e.Button == MouseButtons.Left)
             {
-                SharpMap.Geometries.Point P0 = new SharpMap.Geometries.Point(x, y);
-                SharpMap.Geometries.Point P1 = new SharpMap.Geometries.Point(x, y);
-                SharpMap.Geometries.Point P2 = new SharpMap.Geometries.Point(x, y);
-                vertices.Add(P0);
-                vertices.Add(P1);
-                vertices.Add(P2);
-                line = new LinearRing(vertices);
-            }
-            else if (n == 2)
-            {
-                vertices[1] = new SharpMap.Geometries.Point(x, y);
-                PointF p1 = new PointF((float)vertices[0].X, (float)vertices[0].Y);
-                PointF p2 = new PointF(x, y);
-                mScreenDisplay.DrawPolyline(Pens.Blue, p1, p2);
-                //n = 0;
-            }
-            else if (n == 3)
-            {
-                vertices[2] = new SharpMap.Geometries.Point(x, y);
-                polygon.ExteriorRing = line;
-                if (line != null)
+                n++;
+                if (n == 1)
                 {
+                    SharpMap.Geometries.Point P0 = new SharpMap.Geometries.Point(x, y);
+                    SharpMap.Geometries.Point P1 = new SharpMap.Geometries.Point(x, y);
+                    SharpMap.Geometries.Point P2 = new SharpMap.Geometries.Point(x, y);
+                    vertices.Add(P0);
+                    vertices.Add(P1);
+                    vertices.Add(P2);
+                    line = new LinearRing(vertices);
+                }
+                else if (n == 2)
+                {
+                    vertices[1] = new SharpMap.Geometries.Point(x, y);
+                    PointF p1 = new PointF((float)vertices[0].X, (float)vertices[0].Y);
+                    PointF p2 = new PointF(x, y);
+                    mScreenDisplay.DrawPolyline(Pens.Blue, p1, p2);
+                    //n = 0;
+                }
+                else if (n == 3)
+                {
+                    vertices[2] = new SharpMap.Geometries.Point(x, y);
+                    polygon.ExteriorRing = line;
+                    if (line != null)
+                    {
+                        SolidBrush brush = new SolidBrush(Color.Blue);
+                        Pen pen = new Pen(brush);
+                        //  mScreenDisplay.DrawPolygon(polygon, brush, pen, false);
+                        mScreenDisplay.NewObject = polygon;
+                    }
+                }
+                else
+                {
+                    SharpMap.Geometries.Point P4 = new SharpMap.Geometries.Point(x, y);
+                    vertices.Add(P4);
                     SolidBrush brush = new SolidBrush(Color.Blue);
                     Pen pen = new Pen(brush);
-                  //  mScreenDisplay.DrawPolygon(polygon, brush, pen, false);
+                    //    mScreenDisplay.DrawPolygon(polygon, brush, pen, false);
                     mScreenDisplay.NewObject = polygon;
+
                 }
+                mMapCtrl.Refresh();
             }
-            else
+            else if (e.Button == MouseButtons.Right)
             {
-                SharpMap.Geometries.Point P4 = new SharpMap.Geometries.Point(x, y);
-                vertices.Add(P4);
-                SolidBrush brush = new SolidBrush(Color.Blue);
-                Pen pen = new Pen(brush);
-            //    mScreenDisplay.DrawPolygon(polygon, brush, pen, false);
-                mScreenDisplay.NewObject = polygon;
-               
+                mMapCtrl.Refresh();
+                vertices = new List<SharpMap.Geometries.Point>();
+                polygon = new Polygon();
+                tempPolygon = new Polygon();
+                n = 0;
             }
-            mMapCtrl.Refresh();
         }
         public override void OnMouseUp(int x, int y)
         {
