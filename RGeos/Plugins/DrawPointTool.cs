@@ -12,13 +12,13 @@ namespace RGeos.Plugins
     {
         UcMapControl mMapCtrl = null;
         public IDisplayFeedback DrawPhase = null;
-        IScreenDisplay mScreenDisplay = null;
+        IScreenDisplayOld mScreenDisplay = null;
         public override string Name { get; set; }
 
         public override void OnCreate(HookHelper hook)
         {
             Name = "绘制点";
-            mMapCtrl = hook.MapControl;
+            mMapCtrl = hook.MapControl as UcMapControl;
             mScreenDisplay = mMapCtrl.mScreenDisplay;
         }
 

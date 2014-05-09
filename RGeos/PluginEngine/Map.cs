@@ -25,8 +25,8 @@ namespace RGeos.PluginEngine
         public double PixelAspectRatio { get; set; }
         public double PixelWidth;
         public double PixelHeight;
-        IScreenDisplay mScreenDisplay = null;
-        public IScreenDisplay ScreenDisplay
+        IScreenDisplayOld mScreenDisplay = null;
+        public IScreenDisplayOld ScreenDisplay
         {
             get
             {

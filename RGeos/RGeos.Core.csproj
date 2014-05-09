@@ -103,13 +103,16 @@
     <Compile Include="Geometry\RTriangle.cs" />
     <Compile Include="Geometry\Vector3d.cs" />
     <Compile Include="Measure\RDistanceMeasure.cs" />
-    <Compile Include="PluginEngine\IDisplayTransformation.cs" />
+    <Compile Include="PluginEngine\IDisplayTransformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PluginEngine\IMap.cs" />
+    <Compile Include="PluginEngine\IMapControl.cs" />
     <Compile Include="PluginEngine\ISelection.cs" />
     <Compile Include="PluginEngine\ISymbol.cs" />
+    <Compile Include="PluginEngine\RgeosUnits.cs" />
     <Compile Include="Plugins\DrawMultiPolygonTool.cs" />
     <Compile Include="Utilities\Transform.cs" />
-    <Compile Include="PluginEngine\Class1.cs" />
     <Compile Include="PluginEngine\HookHelper.cs" />
     <Compile Include="PluginEngine\ICommand.cs" />
     <Compile Include="PluginEngine\IDisplayFeedback.cs" />

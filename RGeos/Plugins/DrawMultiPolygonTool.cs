@@ -13,14 +13,14 @@ namespace RGeos.Plugins
     {
         UcMapControl mMapCtrl = null;
         public IDisplayFeedback DrawPhase = null;
-        IScreenDisplay mScreenDisplay = null;
+        IScreenDisplayOld mScreenDisplay = null;
         Polygon polygon = new Polygon();
         Polygon tempPolygon = new Polygon();
         public override string Name { get; set; }
         public override void OnCreate(HookHelper hook)
         {
             Name = "绘制多边形";
-            mMapCtrl = hook.MapControl;
+            mMapCtrl = hook.MapControl as UcMapControl;
             mScreenDisplay = mMapCtrl.mScreenDisplay;
         }
 
@@ -58,7 +58,7 @@ namespace RGeos.Plugins
                     double h = box.Height;
                     Rectangle invalidaterect = new Rectangle((int)xmin, (int)ymin, (int)w, (int)h);
                     invalidaterect.Inflate(2, 2);
-                    (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
+                    (mScreenDisplay as ScreenDisplayOld).RepaintStatic(invalidaterect);
                     j = 0;
                 }
 
@@ -78,7 +78,7 @@ namespace RGeos.Plugins
                 Rectangle invalidaterect = new Rectangle((int)xmin, (int)ymin, (int)w, (int)h);
                 invalidaterect.Inflate(2, 2);
 
-                (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
+                (mScreenDisplay as ScreenDisplayOld).RepaintStatic(invalidaterect);
 
                 tmpVertices = new List<SharpMap.Geometries.Point>();
                 SharpMap.Geometries.Point P0 = vertices[0];

@@ -16,10 +16,10 @@ namespace RGeos.Plugins
         public override void OnCreate(HookHelper hook)
         {
             Name = "绘制折线";
-            mMapCtrl = hook.MapControl;
+            mMapCtrl = hook.MapControl as UcMapControl;
             mScreenDisplay = mMapCtrl.mScreenDisplay;
         }
-        IScreenDisplay mScreenDisplay = null;
+        IScreenDisplayOld mScreenDisplay = null;
         RLine line = new RLine();
         public override void OnClick()
         {
@@ -44,7 +44,7 @@ namespace RGeos.Plugins
                 Rectangle invalidaterect = new Rectangle((int)xmin, (int)ymin, (int)w, (int)h);
                 invalidaterect.Inflate(2, 2);
 
-                (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
+                (mScreenDisplay as ScreenDisplayOld).RepaintStatic(invalidaterect);
                 PointF p1 = new PointF((float)line.P0.X, (float)line.P0.Y);
                 PointF p2 = new PointF(x, y);
 

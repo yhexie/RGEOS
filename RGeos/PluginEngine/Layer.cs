@@ -13,7 +13,7 @@ namespace RGeos.PluginEngine
         public string Name { get; set; }
         public string AliasName { get; set; }
         public bool Visible { get; set; }
-        public virtual void Draw(IScreenDisplay display)
+        public virtual void Draw(IScreenDisplayOld display)
         {
         }
 
@@ -24,7 +24,7 @@ namespace RGeos.PluginEngine
         public int ShapeType;
         public ISymbol Symbol;
         List<Geometry.RGeometry> mGeometries = new List<Geometry.RGeometry>();
-        public override void Draw(IScreenDisplay display)
+        public override void Draw(IScreenDisplayOld display)
         {
             if (ShapeType == 0)
             {

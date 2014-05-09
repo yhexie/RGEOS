@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RGeos.Core.PluginEngine;
 
 namespace RGeos.PluginEngine
 {
@@ -19,6 +20,6 @@ namespace RGeos.PluginEngine
         private HookHelper()
         {
         }
-        public UcMapControl MapControl;
+        public IMapControl MapControl;
     }
 }

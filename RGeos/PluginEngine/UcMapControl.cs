@@ -7,18 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using RGeos.Geometry;
+using RGeos.Core.PluginEngine;
 
 namespace RGeos.PluginEngine
 {
-    public partial class UcMapControl : UserControl
+    public partial class UcMapControl : UserControl, IMapControl
     {
-        public ITool CurrentTool = null;
-        public IScreenDisplay mScreenDisplay;
+        public ITool CurrentTool { get; set; }
+        private IScreenDisplayOld mScreenDisplay2;
+
+        public IScreenDisplayOld ScreenDisplay
+        {
+            get { return mScreenDisplay2; }
+        }
+
+        public IScreenDisplayOld mScreenDisplay;
         REnvelope mExtent;
         public Map mMap { get; set; }
         public UcMapControl()
         {
-            mScreenDisplay = new ScreenDisplay();
+            mScreenDisplay = new ScreenDisplayOld();
             mScreenDisplay.Handle = Handle;
             InitializeComponent();
             mMap = new Map();
@@ -89,10 +97,7 @@ namespace RGeos.PluginEngine
 
 
         }
-        public void Refresh()
-        {
-            this.Invalidate();
-        }
+
         //protected override void OnResize(EventArgs e)
         //{
         //    base.OnResize(e);
@@ -167,7 +172,7 @@ namespace RGeos.PluginEngine
             if (m_lastCenterPoint != null && Width != 0)
                 SetCenterScreen(Transform.ToScreen(m_lastCenterPoint, this), false);
             m_lastCenterPoint = CenterPointUnit();
-            (mScreenDisplay as ScreenDisplay).UpdateWindow();
+            (mScreenDisplay as ScreenDisplayOld).UpdateWindow();
             // m_staticImage = null;
             Invalidate();
         }

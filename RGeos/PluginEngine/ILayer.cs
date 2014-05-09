@@ -10,7 +10,7 @@ namespace RGeos.PluginEngine
         string Name { get; set; }
         string AliasName { get; set; }
         bool Visible { get; set; }
-        void Draw(IScreenDisplay display);
+        void Draw(IScreenDisplayOld display);
        
     }
 }

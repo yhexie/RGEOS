@@ -25,3 +25,13 @@
 
 /ProjNet/SharpMap.CoordinateSystems/obj
 /ProjNet/SharpMap.CoordinateSystems/bin
+
+/RGeos.Controls/bin
+/RGeos.Controls/obj
+
+/RGeos.Desktop/bin
+/RGeos.Desktop/obj
+
+/RGeos.Display/obj
+
+/RGeos.Geometries/obj

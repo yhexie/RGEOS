@@ -8,7 +8,7 @@ using RGeos.Core.PluginEngine;
 
 namespace RGeos.PluginEngine
 {
-    public class Transform : IDisplayTransformation
+    public class Transform 
     {
         public static float m_screenResolution = 96;
         public static PointF ToScreen(RPoint pt, UcMapControl mapCtrl)

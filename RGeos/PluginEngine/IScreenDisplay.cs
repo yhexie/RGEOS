@@ -12,10 +12,11 @@ using SharpMap.Utilities;
 
 namespace RGeos.PluginEngine
 {
-    public interface IScreenDisplay
+   
+    public interface IScreenDisplayOld
     {
         object NewObject { get; set; }
-        IDisplayTransformation DisplayTransformation { get; set; }
+        IDisplayTransformationOld DisplayTransformation { get; set; }
         void DrawPoint(Pen vPen, RPoint pt0);
         void DrawPolygon(Pen vPen, RPolygon polyline);
         void DrawPolyline(Pen vPen, RPolyline polyline);
@@ -40,7 +41,7 @@ namespace RGeos.PluginEngine
         IntPtr Handle { get; set; }
         bool IsCacheDirty { get; set; }
     }
-    public class ScreenDisplay : IScreenDisplay
+    public class ScreenDisplayOld : IScreenDisplayOld
     {
         public IntPtr Handle { get; set; }
         private Graphics gc = null;
@@ -528,7 +529,7 @@ namespace RGeos.PluginEngine
             throw new NotImplementedException();
         }
 
-        public IDisplayTransformation DisplayTransformation
+        public IDisplayTransformationOld DisplayTransformation
         {
             get
             {
