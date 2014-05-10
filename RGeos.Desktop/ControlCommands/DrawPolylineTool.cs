@@ -41,6 +41,7 @@ namespace RGeos.Desktop
             }
             else
             {
+                lastPoint1 = mScreenDisplay.DisplayTransformation.ToScreen(lastPoint1Unit);
                 double xmin = Math.Min(lastPoint1.X, lastPoint2.X);
                 double ymin = Math.Min(lastPoint1.Y, lastPoint2.Y);
                 double w = Math.Abs(lastPoint1.X - lastPoint2.X);
@@ -50,7 +51,7 @@ namespace RGeos.Desktop
                 //擦除上次的范围
                 (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
                 lastPoint2 = new PointF(x, y);
-                RgPoint p1 = mScreenDisplay.DisplayTransformation.ToUnit(new PointF((float)lastPoint1.X, (float)lastPoint1.Y));
+                RgPoint p1 = lastPoint1Unit;
                 RgPoint p2 = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
                 mScreenDisplay.StartDrawing(mMapCtrl.CreateGraphics(), 1);
                 mScreenDisplayDraw.DrawLine(p1, p2, Pens.Blue);
@@ -58,6 +59,7 @@ namespace RGeos.Desktop
             }
         }
         PointF lastPoint1 = PointF.Empty;
+        RgPoint lastPoint1Unit = null;
         PointF lastPoint2 = PointF.Empty;
         public override void OnMouseDown(int x, int y, MouseEventArgs e)
         {
@@ -70,17 +72,15 @@ namespace RGeos.Desktop
                     line = new LineString();
                     RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
                     line.Vertices.Add(pt);
-                    lastPoint1 = new PointF(x, y);
+                    lastPoint1Unit = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
                     lastPoint2 = new PointF(x, y);
                 }
                 else
                 {
                     RgPoint ptNext = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
                     line.Vertices.Add(ptNext);
-                    //mScreenDisplay.StartDrawing(mMapCtrl.CreateGraphics(),1);
-                    //mScreenDisplayDraw.DrawLineString(line, Pens.Blue);
-                    //mScreenDisplay.FinishDrawing();
-                    lastPoint1 = new PointF(x, y);
+                    lastPoint1Unit = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
+
                     lastPoint2 = new PointF(x, y);
                     mScreenDisplay.NewObject = line;
                     mMapCtrl.Refresh();

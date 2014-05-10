@@ -68,7 +68,7 @@ namespace RGeos.Controls
                     else if (newObj is Polygon)
                     {
                         Brush brush = new SolidBrush(Color.Blue);
-                        drawNew.DrawPolygon(newObj as Polygon,brush, Pens.AliceBlue, true);
+                        drawNew.DrawPolygon(newObj as Polygon,brush, Pens.AliceBlue, false);
                     }
                 }
 

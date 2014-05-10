@@ -120,7 +120,7 @@ namespace RGeos.Display
         private Graphics mBitMapGc = null;
         private Graphics mDc = null;
         private int DrawBufferFlag = 0;//是否绘制到缓冲的图片上
-        private bool IsStartDrawing;
+        private bool IsStartDrawing = false;
         public void StartDrawing(Graphics dc, int drawBuffer)
         {
             mDc = dc;
@@ -257,10 +257,10 @@ namespace RGeos.Display
                     for (int i = 0; i < line.Vertices.Count; i++)
                         v[i] = mDisplayTransformation.ToScreen(line.Vertices[i]);
                     gp.AddLines(LimitValues(v, extremeValueLimit));
-                    if (mDc!=null)
+                    if (mDc != null)
                     {
                         mDc.DrawPath(pen, gp);
-                    }                    
+                    }
                 }
             }
         }

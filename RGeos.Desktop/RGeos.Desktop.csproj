@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlCommands\DrawPolygonTool.cs" />
     <Compile Include="ControlCommands\DrawPolylineTool.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>

@@ -31,7 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspDrawPolygon = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspDrawLine = new System.Windows.Forms.ToolStripMenuItem();
+            this.绘制多边形ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspPan = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -40,7 +42,6 @@
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tspDrawLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.编辑ToolStripMenuItem,
+            this.tspDrawPolygon,
             this.工具ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -63,13 +64,30 @@
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
-            // 编辑ToolStripMenuItem
+            // tspDrawPolygon
             // 
-            this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspDrawLine});
-            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.编辑ToolStripMenuItem.Text = "编辑";
+            this.tspDrawPolygon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tspDrawLine,
+            this.绘制多边形ToolStripMenuItem});
+            this.tspDrawPolygon.Name = "tspDrawPolygon";
+            this.tspDrawPolygon.Size = new System.Drawing.Size(41, 20);
+            this.tspDrawPolygon.Text = "编辑";
+            this.tspDrawPolygon.Click += new System.EventHandler(this.tspDrawPolygon_Click);
+            // 
+            // tspDrawLine
+            // 
+            this.tspDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("tspDrawLine.Image")));
+            this.tspDrawLine.Name = "tspDrawLine";
+            this.tspDrawLine.Size = new System.Drawing.Size(152, 22);
+            this.tspDrawLine.Text = "绘制线";
+            this.tspDrawLine.Click += new System.EventHandler(this.tspDrawLine_Click);
+            // 
+            // 绘制多边形ToolStripMenuItem
+            // 
+            this.绘制多边形ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("绘制多边形ToolStripMenuItem.Image")));
+            this.绘制多边形ToolStripMenuItem.Name = "绘制多边形ToolStripMenuItem";
+            this.绘制多边形ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.绘制多边形ToolStripMenuItem.Text = "绘制多边形";
             // 
             // 工具ToolStripMenuItem
             // 
@@ -83,7 +101,7 @@
             // 
             this.tspPan.Image = ((System.Drawing.Image)(resources.GetObject("tspPan.Image")));
             this.tspPan.Name = "tspPan";
-            this.tspPan.Size = new System.Drawing.Size(94, 22);
+            this.tspPan.Size = new System.Drawing.Size(152, 22);
             this.tspPan.Text = "漫游";
             this.tspPan.Click += new System.EventHandler(this.tspPan_Click);
             // 
@@ -136,13 +154,6 @@
             this.panel1.Size = new System.Drawing.Size(690, 399);
             this.panel1.TabIndex = 2;
             // 
-            // tspDrawLine
-            // 
-            this.tspDrawLine.Name = "tspDrawLine";
-            this.tspDrawLine.Size = new System.Drawing.Size(152, 22);
-            this.tspDrawLine.Text = "绘制线";
-            this.tspDrawLine.Click += new System.EventHandler(this.tspDrawLine_Click);
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -151,6 +162,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainFrm";
             this.Text = "RGeosDesktop";
@@ -170,7 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tspPan;
-        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tspDrawPolygon;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel labInfo;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -178,6 +190,7 @@
         private System.Windows.Forms.ToolStripStatusLabel labCoordinate;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem tspDrawLine;
+        private System.Windows.Forms.ToolStripMenuItem 绘制多边形ToolStripMenuItem;
     }
 }
 
