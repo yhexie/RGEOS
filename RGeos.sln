@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Desktop", "RGeos.Desk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Controls", "RGeos.Controls\RGeos.Controls.csproj", "{DDD1D370-594E-4487-A015-FB616A1A6C2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Carto", "RGeos.Carto\RGeos.Carto.csproj", "{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{DDD1D370-594E-4487-A015-FB616A1A6C2C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DDD1D370-594E-4487-A015-FB616A1A6C2C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DDD1D370-594E-4487-A015-FB616A1A6C2C}.Release|x86.ActiveCfg = Release|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

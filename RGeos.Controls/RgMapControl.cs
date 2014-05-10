@@ -22,7 +22,7 @@ namespace RGeos.Controls
             mScreenDisplay = new RGeos.Display.ScreenDisplay(Handle);
             mScreenDisplay.DisplayTransformation.Zoom = 1.0f;
             InitializeComponent();
-            mMap = new Map();
+            mMap = new RGeos.Carto.Map();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.MouseDown += new MouseEventHandler(mPanel_MouseDown);
@@ -39,16 +39,39 @@ namespace RGeos.Controls
             get { return mScreenDisplay; }
         }
         public BoundingBox mExtent { get; set; }
-        public Map mMap { get; set; }
+        public new RGeos.Carto.IMap mMap { get; set; }
 
         System.Drawing.Drawing2D.SmoothingMode m_smoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = m_smoothingMode;
             if (mScreenDisplay.IsCacheDirty)
             {
                 mScreenDisplay.StartRecording();
-                mScreenDisplay.StartDrawing(e.Graphics);
+                mScreenDisplay.StartDrawing(e.Graphics, 0);
+                mMap.Draw(mScreenDisplay);
+                object newObj = mScreenDisplay.NewObject;
+                if (newObj != null)
+                {
+                   IScreenDisplayDraw drawNew= mScreenDisplay as IScreenDisplayDraw;
+                    if (newObj is LineString)
+                    {
+                        Pen mpen = new Pen(Color.Blue);
+                        drawNew.DrawLineString(newObj as LineString, mpen);
+                    }
+                    else if (newObj is MultiLineString)
+                    {
+                        Pen mpen = new Pen(Color.Blue);
+                        drawNew.DrawMultiLineString(newObj as MultiLineString, mpen);
+                    }
+                    else if (newObj is Polygon)
+                    {
+                        Brush brush = new SolidBrush(Color.Blue);
+                        drawNew.DrawPolygon(newObj as Polygon,brush, Pens.AliceBlue, true);
+                    }
+                }
+
                 mScreenDisplay.FinishDrawing();
                 mScreenDisplay.StopRecording();
             }
@@ -77,7 +100,7 @@ namespace RGeos.Controls
         {
             if (CurrentTool != null)
             {
-                CurrentTool.OnMouseDown(e.X, e.Y,e);
+                CurrentTool.OnMouseDown(e.X, e.Y, e);
             }
         }
 

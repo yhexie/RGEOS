@@ -59,5 +59,13 @@ namespace RGeos.Desktop
             pCmd.OnCreate(mHook);
             mHook.MapControl.CurrentTool = pCmd as ITool;
         }
+
+        private void tspDrawLine_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new DrawPolylineTool();
+            pCmd.OnCreate(mHook);
+            mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
     }
 }

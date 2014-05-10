@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DDD1D370-594E-4487-A015-FB616A1A6C2C}</ProjectGuid>
+    <ProjectGuid>{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RGeos.Controls</RootNamespace>
-    <AssemblyName>RGeos.Controls</AssemblyName>
+    <RootNamespace>RGeos.Carto</RootNamespace>
+    <AssemblyName>RGeos.Carto</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,40 +34,19 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMapControl2.cs" />
+    <Compile Include="Layer.cs" />
+    <Compile Include="ISymbol2.cs" />
+    <Compile Include="ISelection.cs" />
+    <Compile Include="IMap.cs" />
+    <Compile Include="ILayer.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RgMapControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RgMapControl.Designer.cs">
-      <DependentUpon>RgMapControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RgTocControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RgTocControl.Designer.cs">
-      <DependentUpon>RgTocControl.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RgMapControl.resx">
-      <DependentUpon>RgMapControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RgTocControl.resx">
-      <DependentUpon>RgTocControl.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RGeos.Carto\RGeos.Carto.csproj">
-      <Project>{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}</Project>
-      <Name>RGeos.Carto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RGeos.Display\RGeos.Display.csproj">
       <Project>{260B91D1-19CC-4E95-A12A-3A98DD1F05A9}</Project>
       <Name>RGeos.Display</Name>

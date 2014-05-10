@@ -31,15 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspPan = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tspDrawLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,14 @@
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
+            // 编辑ToolStripMenuItem
+            // 
+            this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tspDrawLine});
+            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.编辑ToolStripMenuItem.Text = "编辑";
+            // 
             // 工具ToolStripMenuItem
             // 
             this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -74,15 +83,9 @@
             // 
             this.tspPan.Image = ((System.Drawing.Image)(resources.GetObject("tspPan.Image")));
             this.tspPan.Name = "tspPan";
-            this.tspPan.Size = new System.Drawing.Size(152, 22);
+            this.tspPan.Size = new System.Drawing.Size(94, 22);
             this.tspPan.Text = "漫游";
             this.tspPan.Click += new System.EventHandler(this.tspPan_Click);
-            // 
-            // 编辑ToolStripMenuItem
-            // 
-            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.编辑ToolStripMenuItem.Text = "编辑";
             // 
             // statusStrip1
             // 
@@ -133,6 +136,13 @@
             this.panel1.Size = new System.Drawing.Size(690, 399);
             this.panel1.TabIndex = 2;
             // 
+            // tspDrawLine
+            // 
+            this.tspDrawLine.Name = "tspDrawLine";
+            this.tspDrawLine.Size = new System.Drawing.Size(152, 22);
+            this.tspDrawLine.Text = "绘制线";
+            this.tspDrawLine.Click += new System.EventHandler(this.tspDrawLine_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -167,6 +177,7 @@
         private System.Windows.Forms.ToolStripStatusLabel labcoord;
         private System.Windows.Forms.ToolStripStatusLabel labCoordinate;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem tspDrawLine;
     }
 }
 
