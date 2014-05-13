@@ -10,6 +10,8 @@ namespace RGeos.Controls
 {
     public interface IMapControl2 : IMapControl
     {
+        RGeos.Carto.IMap Map { get; }
         IScreenDisplay ScreenDisplay { get; }
+        void Refresh();
     }
 }

@@ -7,5 +7,7 @@ namespace RGeos.Core.PluginEngine
 {
     public interface IMap
     {
+     
+
     }
 }

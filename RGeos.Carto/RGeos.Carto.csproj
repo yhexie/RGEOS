@@ -45,6 +45,7 @@
     <Compile Include="ILayer.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RgEnumShapeType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RGeos.Display\RGeos.Display.csproj">

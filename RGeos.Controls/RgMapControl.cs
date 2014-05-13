@@ -39,7 +39,12 @@ namespace RGeos.Controls
             get { return mScreenDisplay; }
         }
         public BoundingBox mExtent { get; set; }
-        public new RGeos.Carto.IMap mMap { get; set; }
+        private RGeos.Carto.IMap mMap;
+
+        public RGeos.Carto.IMap Map
+        {
+            get { return mMap; }
+        }
 
         System.Drawing.Drawing2D.SmoothingMode m_smoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
 

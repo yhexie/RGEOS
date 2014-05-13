@@ -21,13 +21,13 @@ namespace RGeos.Carto
     }
     public class FetureLayer : Layer
     {
-        public int ShapeType;
+        public RgEnumShapeType ShapeType;
         public ISymbol2 Symbol;
-        List<IGeometry> mGeometries = new List<IGeometry>();
+        public List<IGeometry> mGeometries = new List<IGeometry>();
         public override void Draw(IScreenDisplay display)
         {
             IScreenDisplayDraw displayDraw = display as IScreenDisplayDraw;
-            if (ShapeType == 0)
+            if (ShapeType == RgEnumShapeType.RgPoint)
             {
                 for (int i = 0; i < mGeometries.Count; i++)
                 {
@@ -39,7 +39,19 @@ namespace RGeos.Carto
 
                 }
             }
-            if (ShapeType == 1)
+            if (ShapeType == RgEnumShapeType.RgLineString)
+            {
+                for (int i = 0; i < mGeometries.Count; i++)
+                {
+                    LineString pt = mGeometries[i] as LineString;
+                    if (pt != null)
+                    {
+                        displayDraw.DrawLineString(pt, new Pen(Color.Red));
+                       // display as r
+                    }
+                }
+            }
+            if (ShapeType == RgEnumShapeType.RgMultiLineString)
             {
                 for (int i = 0; i < mGeometries.Count; i++)
                 {
@@ -51,7 +63,7 @@ namespace RGeos.Carto
 
                 }
             }
-            if (ShapeType == 2)
+            if (ShapeType == RgEnumShapeType.RgPolygon)
             {
                 for (int i = 0; i < mGeometries.Count; i++)
                 {

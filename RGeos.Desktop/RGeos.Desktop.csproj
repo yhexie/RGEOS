@@ -86,6 +86,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RGeos.Carto\RGeos.Carto.csproj">
+      <Project>{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}</Project>
+      <Name>RGeos.Carto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RGeos.Controls\RGeos.Controls.csproj">
       <Project>{DDD1D370-594E-4487-A015-FB616A1A6C2C}</Project>
       <Name>RGeos.Controls</Name>

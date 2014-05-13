@@ -11,6 +11,8 @@ using RGeos.PluginEngine;
 using RGeos.Core.PluginEngine;
 using RgPoint = RGeos.Geometries.Point;
 using RGeos.Plugins;
+using RGeos.Geometries;
+using RGeos.Carto;
 
 namespace RGeos.Desktop
 {
@@ -74,6 +76,29 @@ namespace RGeos.Desktop
             ICommand pCmd = new DrawPolygonTool();
             pCmd.OnCreate(mHook);
             mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
+
+        private void tspNewLayer_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            IMapControl2 mapCtrl = mHook.MapControl as IMapControl2;
+            RGeos.Carto.IMap map = mapCtrl.Map;
+            RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
+            (layer as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgLineString;
+            LineString line = new LineString();
+            RgPoint pt = new RgPoint(0, 0);
+            RgPoint pt1 = new RgPoint(10/MillmeteresPerInch, 0);
+            line.Vertices.Add(pt);
+            line.Vertices.Add(pt1);
+            (layer as RGeos.Carto.FetureLayer).mGeometries.Add(line);
+            LineString line1 = new LineString();
+            RgPoint pt11 = new RgPoint(0, 10 / MillmeteresPerInch);
+            RgPoint pt12= new RgPoint(0, 0);
+            line1.Vertices.Add(pt11);
+            line1.Vertices.Add(pt12);
+            (layer as RGeos.Carto.FetureLayer).mGeometries.Add(line1);
+            map.AddLayer(layer);
+            mapCtrl.Refresh();
         }
     }
 }
