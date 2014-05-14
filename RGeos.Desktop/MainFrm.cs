@@ -83,22 +83,49 @@ namespace RGeos.Desktop
             HookHelper mHook = HookHelper.Instance();
             IMapControl2 mapCtrl = mHook.MapControl as IMapControl2;
             RGeos.Carto.IMap map = mapCtrl.Map;
-            RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
-            (layer as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgLineString;
-            LineString line = new LineString();
-            RgPoint pt = new RgPoint(0, 0);
-            RgPoint pt1 = new RgPoint(10/MillmeteresPerInch, 0);
-            line.Vertices.Add(pt);
-            line.Vertices.Add(pt1);
-            (layer as RGeos.Carto.FetureLayer).mGeometries.Add(line);
-            LineString line1 = new LineString();
-            RgPoint pt11 = new RgPoint(0, 10 / MillmeteresPerInch);
-            RgPoint pt12= new RgPoint(0, 0);
-            line1.Vertices.Add(pt11);
-            line1.Vertices.Add(pt12);
-            (layer as RGeos.Carto.FetureLayer).mGeometries.Add(line1);
-            map.AddLayer(layer);
-            mapCtrl.Refresh();
+            frmNewFeatureClass newFeatCls=new frmNewFeatureClass();
+            if (newFeatCls.ShowDialog()==DialogResult.OK)
+            {
+                RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
+                layer.Name = newFeatCls.FeatureName;
+                (layer as RGeos.Carto.FetureLayer).ShapeType = newFeatCls.ShapeType;
+                map.AddLayer(layer);
+                mapCtrl.Refresh();
+            }
+            //RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
+            //(layer as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgLineString;
+            //LineString line = new LineString();
+            //RgPoint pt = new RgPoint(0, 0);
+            //RgPoint pt1 = new RgPoint(10 / MillmeteresPerInch, 0);
+            //line.Vertices.Add(pt);
+            //line.Vertices.Add(pt1);
+            //(layer as RGeos.Carto.FetureLayer).mGeometries.Add(line);
+            //LineString line1 = new LineString();
+            //RgPoint pt11 = new RgPoint(0, 10 / MillmeteresPerInch);
+            //RgPoint pt12 = new RgPoint(0, 0);
+            //line1.Vertices.Add(pt11);
+            //line1.Vertices.Add(pt12);
+            //(layer as RGeos.Carto.FetureLayer).mGeometries.Add(line1);
+            //map.AddLayer(layer);
+
+            //RGeos.Carto.ILayer layerPolygon = new RGeos.Carto.FetureLayer();
+            //(layerPolygon as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgPolygon;
+            //map.AddLayer(layerPolygon);
+
+            //RGeos.Carto.ILayer layerPolygon = new RGeos.Carto.FetureLayer();
+            //(layerPolygon as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgPoint;
+            //map.AddLayer(layerPolygon);
+            //mapCtrl.Refresh();
         }
+
+        private void tspDrawPoint_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new DrawPointTool();
+            pCmd.OnCreate(mHook);
+            mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
+
+      
     }
 }

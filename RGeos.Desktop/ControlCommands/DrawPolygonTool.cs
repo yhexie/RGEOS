@@ -6,6 +6,7 @@ using RGeos.Display;
 using RGeos.Controls;
 using RGeos.Geometries;
 using System;
+using RGeos.Carto;
 namespace RGeos.Plugins
 {
     public class DrawPolygonTool : RBaseCommand
@@ -163,12 +164,18 @@ namespace RGeos.Plugins
             }
             else if (e.Button == MouseButtons.Right)
             {
-                mMapCtrl.Refresh();
+                Carto.FetureLayer featurelyr = mMapCtrl.Map.CurrentLayer as Carto.FetureLayer;
+                if (featurelyr != null && featurelyr.ShapeType == RgEnumShapeType.RgPolygon)
+                {
+                    featurelyr.mGeometries.Add(polygon);
+                }
+               
                 vertices = new List<RGeos.Geometries.Point>();
                 polygon = new Polygon();
                 tempPolygon = new Polygon();
                 mScreenDisplay.NewObject = null;
                 n = 0;
+                mMapCtrl.Refresh();
             }
         }
         public override void OnMouseUp(int x, int y)

@@ -16,8 +16,6 @@ namespace RGeos.Carto
         public virtual void Draw(IScreenDisplay display)
         {
         }
-
-
     }
     public class FetureLayer : Layer
     {
@@ -31,11 +29,11 @@ namespace RGeos.Carto
             {
                 for (int i = 0; i < mGeometries.Count; i++)
                 {
-                    //RgPoint pt = mGeometries[i] as RPoint;
-                    //if (pt != null)
-                    //{
-                    //    display.DrawPoint(new Pen(Color.Red), pt);
-                    //}
+                    RGeos.Geometries.Point pt = mGeometries[i] as RGeos.Geometries.Point;
+                    if (pt != null)
+                    {
+                        displayDraw.DrawPoint( pt,new Pen(Color.Red));
+                    }
 
                 }
             }

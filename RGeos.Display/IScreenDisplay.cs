@@ -31,10 +31,12 @@ namespace RGeos.Display
 
     public interface IScreenDisplayDraw
     {
+        void DrawPoint(RgPoint pt, Pen pen);
         void DrawMultiLineString(MultiLineString lines, Pen pen);
         void DrawPolygon(Polygon pol, Brush brush, Pen pen, bool clip);
         void DrawLineString(LineString line, Pen pen);
         void DrawLine(RGeos.Geometries.Point p1, RGeos.Geometries.Point p2, Pen pen);
+        //void DrawText(RgPoint pt, Pen pen);
     }
 
     public class ScreenDisplay : IScreenDisplay, IScreenDisplayDraw
@@ -217,6 +219,33 @@ namespace RGeos.Display
         #endregion
 
         #region IScreenDisplayDraw
+        public void DrawPoint(RgPoint pt, Pen pen)
+        {
+            if (IsStartDrawing == false)
+            {
+                return;
+            }
+            PointF ptscreen = mDisplayTransformation.ToScreen(pt);
+            if (DrawBufferFlag == 0)
+            {
+                if (mBitMapGc != null)
+                {
+                   // mBitMapGc.DrawEllipse(pen, ptscreen.X, ptscreen.Y, 2, 2);
+                    mBitMapGc.DrawRectangle(pen, ptscreen.X, ptscreen.Y, 3, 3);
+                    //SizeF size = new SizeF(4f, 4f);
+                    //RectangleF rect = new RectangleF(ptscreen, size);
+                    //mBitMapGc.DrawEllipse(pen, rect);
+                }
+            }
+            else
+            {
+                if (mDc != null)
+                {
+                    mDc.DrawEllipse(pen, ptscreen.X, ptscreen.Y, 1, 1);
+                }
+            }
+        }
+
         public void DrawMultiLineString(MultiLineString lines, Pen pen)
         {
             if (IsStartDrawing == false)

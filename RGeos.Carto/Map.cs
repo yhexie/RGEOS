@@ -8,6 +8,7 @@ using RGeos.Display;
 
 namespace RGeos.Carto
 {
+    public delegate void CurrentLayerChangedEventHandler(ILayer layer);
     public class Map : IMap
     {
         public BoundingBox Extent { get; set; }
@@ -26,9 +27,30 @@ namespace RGeos.Carto
         }
         public ISelection Selection { get; set; }
 
+        public CurrentLayerChangedEventHandler CurrentLayerChanged;
+        public ILayer mCurrentLayer;
+
+        public ILayer CurrentLayer
+        {
+            get
+            { return mCurrentLayer; }
+            set
+            {
+                if (mCurrentLayer != value)
+                {
+                    mCurrentLayer = value;
+                    if (CurrentLayerChanged != null)
+                    {
+                        CurrentLayerChanged(mCurrentLayer);
+                    }
+                }
+            }
+        }
+
         public void AddLayer(ILayer layer)
         {
             Layers.Add(layer);
+            CurrentLayer = layer;
         }
         public void RemoveLayer(ILayer layer)
         {

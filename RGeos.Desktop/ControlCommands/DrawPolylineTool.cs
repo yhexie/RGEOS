@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using RGeos.Geometries;
 using RgPoint = RGeos.Geometries.Point;
+using RGeos.Carto;
 namespace RGeos.Desktop
 {
     class DrawPolylineTool : RBaseCommand
@@ -88,20 +89,19 @@ namespace RGeos.Desktop
             }
             else
             {
+                Carto.FetureLayer featurelyr = mMapCtrl.Map.CurrentLayer as Carto.FetureLayer;
+                if (featurelyr != null && featurelyr.ShapeType == RgEnumShapeType.RgLineString)
+                {
+                    featurelyr.mGeometries.Add(line);
+                }
                 n = 0;
                 mScreenDisplay.NewObject = null;
+                mMapCtrl.Refresh();
             }
-
-
         }
         public override void OnMouseUp(int x, int y)
         {
             Color colr = Color.Red;
-
-            //Brush brush = new SolidBrush(colr);
-            //Pen pen = new Pen(brush,1.0f);
-
-
         }
     }
 }

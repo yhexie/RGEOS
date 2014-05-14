@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>tradi.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ProjNet">
       <HintPath>..\ProjNet\SharpMap.CoordinateSystems\bin\Debug\ProjNet.dll</HintPath>
@@ -50,8 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlCommands\DrawPointTool.cs" />
     <Compile Include="ControlCommands\DrawPolygonTool.cs" />
     <Compile Include="ControlCommands\DrawPolylineTool.cs" />
+    <Compile Include="frmNewFeatureClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewFeatureClass.Designer.cs">
+      <DependentUpon>frmNewFeatureClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +71,9 @@
     <Compile Include="ControlCommands\PanTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmNewFeatureClass.resx">
+      <DependentUpon>frmNewFeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +119,9 @@
       <Project>{02566164-FCE5-431C-85E9-F108368590F1}</Project>
       <Name>RGeos.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tradi.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
