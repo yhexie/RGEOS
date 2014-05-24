@@ -7,6 +7,7 @@ using RGeos.Controls;
 using RGeos.Geometries;
 using System;
 using RGeos.Carto;
+using RGeos.Core;
 namespace RGeos.Plugins
 {
     public class DrawPolygonTool : RBaseCommand

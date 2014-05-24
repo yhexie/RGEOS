@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using RGeos.Controls;
 using RGeos.PluginEngine;
-using RGeos.Core.PluginEngine;
+using RGeos.Core;
 using RgPoint = RGeos.Geometries.Point;
 using RGeos.Plugins;
 using RGeos.Geometries;

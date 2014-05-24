@@ -107,6 +107,10 @@
       <Project>{DDD1D370-594E-4487-A015-FB616A1A6C2C}</Project>
       <Name>RGeos.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RGeos.Core\RGeos.Core.csproj">
+      <Project>{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}</Project>
+      <Name>RGeos.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RGeos.Display\RGeos.Display.csproj">
       <Project>{260B91D1-19CC-4E95-A12A-3A98DD1F05A9}</Project>
       <Name>RGeos.Display</Name>
@@ -114,10 +118,6 @@
     <ProjectReference Include="..\RGeos.Geometries\RGeos.Geometries.csproj">
       <Project>{AD360C0A-8569-4574-898D-C0DB3DE9F466}</Project>
       <Name>RGeos.Geometries</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RGeos\RGeos.Core.csproj">
-      <Project>{02566164-FCE5-431C-85E9-F108368590F1}</Project>
-      <Name>RGeos.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

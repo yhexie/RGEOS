@@ -6,12 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using RGeos.PluginEngine;
 using RGeos.Display;
 using RGeos.Geometries;
 using RgPoint = RGeos.Geometries.Point;
 using System.Diagnostics;
-using RGeos.Core.PluginEngine;
+using RGeos.Core;
 
 namespace RGeos.Controls
 {

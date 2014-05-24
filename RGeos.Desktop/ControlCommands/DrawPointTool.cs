@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RGeos.PluginEngine;
-using RGeos.Controls;
+﻿using RGeos.Controls;
 using RGeos.Display;
 using RgPoint = RGeos.Geometries.Point;
 using RGeos.Carto;
-namespace RGeos.Desktop
+using RGeos.Core;
+
+namespace RGeos.Plugins
 {
     class DrawPointTool : RBaseCommand
     {

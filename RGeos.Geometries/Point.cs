@@ -1,6 +1,4 @@
 using System;
-using System.Drawing;
-using RGeos.PluginEngine;
 
 namespace RGeos.Geometries
 {

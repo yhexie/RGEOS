@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using RGeos.Controls;
-using RGeos.PluginEngine;
-using RGeos.Core.PluginEngine;
 using RGeos.Display;
 using System.Drawing;
 using System.Windows.Forms;
 using RGeos.Geometries;
 using RgPoint = RGeos.Geometries.Point;
 using RGeos.Carto;
-namespace RGeos.Desktop
+using RGeos.Core;
+
+namespace RGeos.Plugins
 {
     class DrawPolylineTool : RBaseCommand
     {

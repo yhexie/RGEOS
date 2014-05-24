@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}</ProjectGuid>
+    <ProjectGuid>{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RGeos.Carto</RootNamespace>
-    <AssemblyName>RGeos.Carto</AssemblyName>
+    <RootNamespace>RGeos.Core</RootNamespace>
+    <AssemblyName>RGeos.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,31 +34,20 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Layer.cs" />
-    <Compile Include="ISelection.cs" />
-    <Compile Include="IMap.cs" />
-    <Compile Include="ILayer.cs" />
-    <Compile Include="Map.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="HookHelper.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="IMapControl.cs" />
+    <Compile Include="ISymbol.cs" />
+    <Compile Include="ITool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RgEnumShapeType.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RGeos.Core\RGeos.Core.csproj">
-      <Project>{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}</Project>
-      <Name>RGeos.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RGeos.Display\RGeos.Display.csproj">
-      <Project>{260B91D1-19CC-4E95-A12A-3A98DD1F05A9}</Project>
-      <Name>RGeos.Display</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RGeos.Geometries\RGeos.Geometries.csproj">
-      <Project>{AD360C0A-8569-4574-898D-C0DB3DE9F466}</Project>
-      <Name>RGeos.Geometries</Name>
-    </ProjectReference>
+    <Compile Include="RBaseCommand.cs" />
+    <Compile Include="RgeosUnits.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Core", "RGeos\RGeos.Core.csproj", "{02566164-FCE5-431C-85E9-F108368590F1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.GPCWapper", "GpcWrapper\TestProjectVS2010\RGeos.GPCWapper.csproj", "{BE646C57-295F-4309-8866-F265423F92F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNET", "ProjNet\SharpMap.CoordinateSystems\ProjNET.csproj", "{E028BDD2-55E1-4E5F-BE31-35FAEC8D6428}"
@@ -17,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Controls", "RGeos.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Carto", "RGeos.Carto\RGeos.Carto.csproj", "{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGeos.Core", "RGeos.Core\RGeos.Core.csproj", "{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,16 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{02566164-FCE5-431C-85E9-F108368590F1}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Debug|x86.ActiveCfg = Debug|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Debug|x86.Build.0 = Debug|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Release|Any CPU.ActiveCfg = Release|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Release|Mixed Platforms.Build.0 = Release|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Release|x86.ActiveCfg = Release|x86
-		{02566164-FCE5-431C-85E9-F108368590F1}.Release|x86.Build.0 = Release|x86
 		{BE646C57-295F-4309-8866-F265423F92F6}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{BE646C57-295F-4309-8866-F265423F92F6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{BE646C57-295F-4309-8866-F265423F92F6}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -107,6 +97,16 @@ Global
 		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{73E8D6A5-023C-4AA2-8F4D-D37A9A09F6BF}.Release|x86.ActiveCfg = Release|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

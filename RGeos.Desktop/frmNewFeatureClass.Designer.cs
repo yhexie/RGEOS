@@ -103,6 +103,7 @@
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmNewFeatureClass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "创建要素类";
             this.ResumeLayout(false);
             this.PerformLayout();

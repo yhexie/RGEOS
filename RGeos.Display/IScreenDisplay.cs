@@ -6,6 +6,7 @@ using RgPoint = RGeos.Geometries.Point;
 using RGeos.Geometries;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using RGeos.Core;
 
 namespace RGeos.Display
 {
