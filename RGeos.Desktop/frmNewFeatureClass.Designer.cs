@@ -1,6 +1,6 @@
 ﻿namespace RGeos.Desktop
 {
-    partial class frmNewFeatureClass
+    partial class FrmNewFeatureClass
     {
         /// <summary>
         /// Required designer variable.
@@ -30,9 +30,9 @@
         {
             this.btnOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbShapeType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLayerName = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -55,14 +55,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "要素名称";
             // 
-            // comboBox1
+            // cmbShapeType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 20);
-            this.comboBox1.TabIndex = 2;
+            this.cmbShapeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbShapeType.FormattingEnabled = true;
+            this.cmbShapeType.Location = new System.Drawing.Point(101, 69);
+            this.cmbShapeType.Name = "cmbShapeType";
+            this.cmbShapeType.Size = new System.Drawing.Size(199, 20);
+            this.cmbShapeType.TabIndex = 2;
             // 
             // label2
             // 
@@ -73,12 +73,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "图层类型";
             // 
-            // textBox1
+            // txtLayerName
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 21);
-            this.textBox1.TabIndex = 4;
+            this.txtLayerName.Location = new System.Drawing.Point(101, 28);
+            this.txtLayerName.Name = "txtLayerName";
+            this.txtLayerName.Size = new System.Drawing.Size(199, 21);
+            this.txtLayerName.TabIndex = 4;
             // 
             // btnCancel
             // 
@@ -90,19 +90,19 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // frmNewFeatureClass
+            // FrmNewFeatureClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 166);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtLayerName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbShapeType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "frmNewFeatureClass";
+            this.Name = "FrmNewFeatureClass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "创建要素类";
             this.ResumeLayout(false);
@@ -114,9 +114,9 @@
 
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbShapeType;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLayerName;
         private System.Windows.Forms.Button btnCancel;
     }
 }

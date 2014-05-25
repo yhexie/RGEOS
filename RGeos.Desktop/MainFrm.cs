@@ -83,8 +83,8 @@ namespace RGeos.Desktop
             HookHelper mHook = HookHelper.Instance();
             IMapControl2 mapCtrl = mHook.MapControl as IMapControl2;
             RGeos.Carto.IMap map = mapCtrl.Map;
-            frmNewFeatureClass newFeatCls=new frmNewFeatureClass();
-            if (newFeatCls.ShowDialog()==DialogResult.OK)
+            FrmNewFeatureClass newFeatCls = new FrmNewFeatureClass();
+            if (newFeatCls.ShowDialog() == DialogResult.OK)
             {
                 RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
                 layer.Name = newFeatCls.FeatureName;
@@ -126,6 +126,18 @@ namespace RGeos.Desktop
             mHook.MapControl.CurrentTool = pCmd as ITool;
         }
 
-      
+        private void tspLayerInfo_Click(object sender, EventArgs e)
+        {
+            FrmLayers frmLyrs = new FrmLayers(mMapControl.Map as Map);
+            frmLyrs.ShowDialog();
+        }
+
+        private void tspAbout_Click(object sender, EventArgs e)
+        {
+            FrmAbout about = new FrmAbout();
+            about.ShowDialog();
+        }
+
+
     }
 }

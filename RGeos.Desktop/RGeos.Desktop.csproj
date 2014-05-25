@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>tradi.ico</ApplicationIcon>
+    <ApplicationIcon>Earth.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ProjNet">
@@ -56,11 +56,24 @@
     <Compile Include="ControlCommands\DrawPointTool.cs" />
     <Compile Include="ControlCommands\DrawPolygonTool.cs" />
     <Compile Include="ControlCommands\DrawPolylineTool.cs" />
-    <Compile Include="frmNewFeatureClass.cs">
+    <Compile Include="ControlCommands\SelectTool.cs" />
+    <Compile Include="FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewFeatureClass.Designer.cs">
-      <DependentUpon>frmNewFeatureClass.cs</DependentUpon>
+    <Compile Include="FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayers.Designer.cs">
+      <DependentUpon>FrmLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewFeatureClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewFeatureClass.Designer.cs">
+      <DependentUpon>FrmNewFeatureClass.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
@@ -71,8 +84,14 @@
     <Compile Include="ControlCommands\PanTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmNewFeatureClass.resx">
-      <DependentUpon>frmNewFeatureClass.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayers.resx">
+      <DependentUpon>FrmLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewFeatureClass.resx">
+      <DependentUpon>FrmNewFeatureClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
@@ -121,6 +140,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Earth.ico" />
     <Content Include="tradi.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
