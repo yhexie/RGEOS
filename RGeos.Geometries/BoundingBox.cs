@@ -12,8 +12,8 @@ namespace RGeos.Geometries
     [Serializable]
     public class BoundingBox : IEquatable<BoundingBox>
     {
-        private Point _Max;
-        private Point _Min;
+        private RgPoint _Max;
+        private RgPoint _Min;
 
         /// <summary>
         /// Initializes a bounding box
@@ -27,8 +27,8 @@ namespace RGeos.Geometries
         /// <param name="maxY">top</param>
         public BoundingBox(double minX, double minY, double maxX, double maxY)
         {
-            _Min = new Point(minX, minY);
-            _Max = new Point(maxX, maxY);
+            _Min = new RgPoint(minX, minY);
+            _Max = new RgPoint(maxX, maxY);
             CheckMinMax();
         }
 
@@ -37,7 +37,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="lowerLeft">Lower left corner</param>
         /// <param name="upperRight">Upper right corner</param>
-        public BoundingBox(Point lowerLeft, Point upperRight)
+        public BoundingBox(RgPoint lowerLeft, RgPoint upperRight)
             : this(lowerLeft.X, lowerLeft.Y, upperRight.X, upperRight.Y)
         {
         }
@@ -95,7 +95,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Gets or sets the lower left corner.
         /// </summary>
-        public Point Min
+        public RgPoint Min
         {
             get { return _Min; }
             set { _Min = value; }
@@ -104,7 +104,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Gets or sets the upper right corner.
         /// </summary>
-        public Point Max
+        public RgPoint Max
         {
             get { return _Max; }
             set { _Max = value; }
@@ -142,24 +142,24 @@ namespace RGeos.Geometries
             get { return _Min.Y; }
         }
 
-        public Point TopLeft
+        public RgPoint TopLeft
         {
-            get { return new Point(Left, Top); }
+            get { return new RgPoint(Left, Top); }
         }
 
-        public Point TopRight
+        public RgPoint TopRight
         {
-            get { return new Point(Right, Top); }
+            get { return new RgPoint(Right, Top); }
         }
 
-        public Point BottomLeft
+        public RgPoint BottomLeft
         {
-            get { return new Point(Left, Bottom); }
+            get { return new RgPoint(Left, Bottom); }
         }
 
-        public Point BottomRight
+        public RgPoint BottomRight
         {
-            get { return new Point(Right, Bottom); }
+            get { return new RgPoint(Right, Bottom); }
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace RGeos.Geometries
         {
             get
             {
-                Point boxdim = Max - Min;
+                RgPoint boxdim = Max - Min;
                 uint la = 0; // longest axis
                 double lav = 0; // longest axis length
                 // for each dimension  
@@ -224,7 +224,7 @@ namespace RGeos.Geometries
         /// Moves/translates the <see cref="BoundingBox"/> along the the specified vector
         /// </summary>
         /// <param name="vector">Offset vector</param>
-        public void Offset(Point vector)
+        public void Offset(RgPoint vector)
         {
             _Min += vector;
             _Max += vector;
@@ -300,7 +300,7 @@ namespace RGeos.Geometries
         /// <returns>True if touches</returns>
         public bool Touches(Geometry s)
         {
-            if (s is Point) return Touches(s as Point);
+            if (s is RgPoint) return Touches(s as RgPoint);
             throw new NotImplementedException("Touches: Not implemented on this geometry type");
         }
 
@@ -324,16 +324,16 @@ namespace RGeos.Geometries
         /// <returns>True it contains</returns>
         public bool Contains(Geometry s)
         {
-            if (s is Point) return Contains(s as Point);
+            if (s is RgPoint) return Contains(s as RgPoint);
             throw new NotImplementedException("Contains: Not implemented on these geometries");
         }
 
         /// <summary>
-        /// Returns true if this instance touches the <see cref="Point"/>
+        /// Returns true if this instance touches the <see cref="RgPoint"/>
         /// </summary>
         /// <param name="p">Geometry</param>
         /// <returns>True if touches</returns>
-        public bool Touches(Point p)
+        public bool Touches(RgPoint p)
         {
             for (uint cIndex = 0; cIndex < 2; cIndex++)
             {
@@ -457,7 +457,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="p">Point</param>
         /// <returns>true if point is within</returns>
-        public bool Contains(Point p)
+        public bool Contains(RgPoint p)
         {
             if (Max.X < p.X)
                 return false;
@@ -492,11 +492,11 @@ namespace RGeos.Geometries
         }
 
         /// <summary>
-        /// Computes the minimum distance between this BoundingBox and a <see cref="Point"/>
+        /// Computes the minimum distance between this BoundingBox and a <see cref="RgPoint"/>
         /// </summary>
-        /// <param name="p"><see cref="Point"/> to calculate distance to.</param>
+        /// <param name="p"><see cref="RgPoint"/> to calculate distance to.</param>
         /// <returns>Minimum distance.</returns>
-        public virtual double Distance(Point p)
+        public virtual double Distance(RgPoint p)
         {
             double ret = 0.0;
 
@@ -512,7 +512,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Returns the center of the bounding box
         /// </summary>
-        public Point GetCentroid()
+        public RgPoint GetCentroid()
         {
             return (_Min + _Max)*.5f;
         }

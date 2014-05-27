@@ -69,9 +69,9 @@ namespace RGeos.Converters.WellKnownText
             if (geometry == null)
                 throw new NullReferenceException("Cannot write Well-Known Text: geometry was null");
             ;
-            if (geometry is Point)
+            if (geometry is RgPoint)
             {
-                Point point = geometry as Point;
+                RgPoint point = geometry as RgPoint;
                 AppendPointTaggedText(point, writer);
             }
             else if (geometry is LineString)
@@ -96,7 +96,7 @@ namespace RGeos.Converters.WellKnownText
         /// </summary>
         /// <param name="coordinate">the <code>Coordinate</code> to process</param>
         /// <param name="writer">the output writer to Append to</param>
-        private static void AppendPointTaggedText(Point coordinate, StringWriter writer)
+        private static void AppendPointTaggedText(RgPoint coordinate, StringWriter writer)
         {
             writer.Write("POINT ");
             AppendPointText(coordinate, writer);
@@ -180,7 +180,7 @@ namespace RGeos.Converters.WellKnownText
         /// </summary>
         /// <param name="coordinate">The Coordinate to process.</param>
         /// <param name="writer">The output stream writer to Append to.</param>
-        private static void AppendPointText(Point coordinate, StringWriter writer)
+        private static void AppendPointText(RgPoint coordinate, StringWriter writer)
         {
             if (coordinate == null || coordinate.IsEmpty())
                 writer.Write("EMPTY");
@@ -198,7 +198,7 @@ namespace RGeos.Converters.WellKnownText
         /// </summary>
         /// <param name="coordinate">The Coordinate to process.</param>
         /// <param name="writer">The output writer to Append to.</param>
-        private static void AppendCoordinate(Point coordinate, StringWriter writer)
+        private static void AppendCoordinate(RgPoint coordinate, StringWriter writer)
         {
             for (uint i = 0; i < coordinate.NumOrdinates; i++)
                 writer.Write(WriteNumber(coordinate[i]) + (i < coordinate.NumOrdinates - 1 ? " " : ""));

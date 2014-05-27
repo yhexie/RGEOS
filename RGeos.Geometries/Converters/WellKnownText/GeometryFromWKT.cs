@@ -65,22 +65,22 @@ namespace RGeos.Converters.WellKnownText
         /// "EMPTY".</param>
         /// <returns>The next array of Coordinates in the stream, or an empty array of "EMPTY" is the
         /// next element returned by the stream.</returns>
-        private static Collection<Point> GetCoordinates(WktStreamTokenizer tokenizer)
+        private static Collection<RgPoint> GetCoordinates(WktStreamTokenizer tokenizer)
         {
-            Collection<Point> coordinates = new Collection<Point>();
+            Collection<RgPoint> coordinates = new Collection<RgPoint>();
             string nextToken = GetNextEmptyOrOpener(tokenizer);
             if (nextToken == "EMPTY")
                 return coordinates;
 
-            Point externalCoordinate = new Point();
-            Point internalCoordinate = new Point();
+            RgPoint externalCoordinate = new RgPoint();
+            RgPoint internalCoordinate = new RgPoint();
             externalCoordinate.X = GetNextNumber(tokenizer);
             externalCoordinate.Y = GetNextNumber(tokenizer);
             coordinates.Add(externalCoordinate);
             nextToken = GetNextCloserOrComma(tokenizer);
             while (nextToken == ",")
             {
-                internalCoordinate = new Point();
+                internalCoordinate = new RgPoint();
                 internalCoordinate.X = GetNextNumber(tokenizer);
                 internalCoordinate.Y = GetNextNumber(tokenizer);
                 coordinates.Add(internalCoordinate);
@@ -305,9 +305,9 @@ namespace RGeos.Converters.WellKnownText
         /// <remarks>
         /// ParseException is thrown if an unexpected token is encountered.
         /// </remarks>
-        private static Point ReadPointText(WktStreamTokenizer tokenizer)
+        private static RgPoint ReadPointText(WktStreamTokenizer tokenizer)
         {
-            Point p = new Point();
+            RgPoint p = new RgPoint();
             string nextToken = GetNextEmptyOrOpener(tokenizer);
             if (nextToken == "EMPTY")
                 return p;
@@ -333,11 +333,11 @@ namespace RGeos.Converters.WellKnownText
             string nextToken = GetNextEmptyOrOpener(tokenizer);
             if (nextToken == "EMPTY")
                 return mp;
-            mp.Points.Add(new Point(GetNextNumber(tokenizer), GetNextNumber(tokenizer)));
+            mp.Points.Add(new RgPoint(GetNextNumber(tokenizer), GetNextNumber(tokenizer)));
             nextToken = GetNextCloserOrComma(tokenizer);
             while (nextToken == ",")
             {
-                mp.Points.Add(new Point(GetNextNumber(tokenizer), GetNextNumber(tokenizer)));
+                mp.Points.Add(new RgPoint(GetNextNumber(tokenizer), GetNextNumber(tokenizer)));
                 nextToken = GetNextCloserOrComma(tokenizer);
             }
             return mp;

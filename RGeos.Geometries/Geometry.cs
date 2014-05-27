@@ -67,9 +67,9 @@ namespace RGeos.Geometries
             BoundingBox box = GetBoundingBox();
             Polygon envelope = new Polygon();
             envelope.ExteriorRing.Vertices.Add(box.Min); //minx miny
-            envelope.ExteriorRing.Vertices.Add(new Point(box.Max.X, box.Min.Y)); //maxx minu
+            envelope.ExteriorRing.Vertices.Add(new RgPoint(box.Max.X, box.Min.Y)); //maxx minu
             envelope.ExteriorRing.Vertices.Add(box.Max); //maxx maxy
-            envelope.ExteriorRing.Vertices.Add(new Point(box.Min.X, box.Max.Y)); //minx maxy
+            envelope.ExteriorRing.Vertices.Add(new RgPoint(box.Min.X, box.Max.Y)); //minx maxy
             envelope.ExteriorRing.Vertices.Add(envelope.ExteriorRing.StartPoint); //close ring
             return envelope;
         }

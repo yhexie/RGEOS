@@ -22,12 +22,12 @@ namespace RGeos.Geometries
         /// <summary>
         /// The start point of this Curve.
         /// </summary>
-        public abstract Point StartPoint { get; }
+        public abstract RgPoint StartPoint { get; }
 
         /// <summary>
         /// The end point of this Curve.
         /// </summary>
-        public abstract Point EndPoint { get; }
+        public abstract RgPoint EndPoint { get; }
 
         /// <summary>
         /// Returns true if this Curve is closed (StartPoint = EndPoint).
@@ -48,7 +48,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        public abstract Point Value(double t);
+        public abstract RgPoint Value(double t);
 
         public override GeometryType2 GeometryType
         {

@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using RgPoint = RGeos.Geometries.Point;
+using RGeos.Geometries;
 
 namespace RGeos.Core.PluginEngine
 {

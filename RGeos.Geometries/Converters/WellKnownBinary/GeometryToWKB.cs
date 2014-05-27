@@ -151,7 +151,7 @@ namespace RGeos.Converters.WellKnownBinary
             {
                     //Write the point.
                 case "RGeos.Geometries.Point":
-                    WritePoint((Point) geometry, bWriter, byteorder);
+                    WritePoint((RgPoint) geometry, bWriter, byteorder);
                     break;
                 case "RGeos.Geometries.LineString":
                     LineString ls = (LineString) geometry;
@@ -188,7 +188,7 @@ namespace RGeos.Converters.WellKnownBinary
         /// <param name="point">The point to be written.</param>
         /// <param name="bWriter">Stream to write to.</param>
         /// <param name="byteorder">Byte order</param>
-        private static void WritePoint(Point point, BinaryWriter bWriter, WkbByteOrder byteorder)
+        private static void WritePoint(RgPoint point, BinaryWriter bWriter, WkbByteOrder byteorder)
         {
             //Write the x coordinate.
             WriteDouble(point.X, bWriter, byteorder);
@@ -209,7 +209,7 @@ namespace RGeos.Converters.WellKnownBinary
             WriteUInt32((uint) ls.Vertices.Count, bWriter, byteorder);
 
             //Loop on each vertices.
-            foreach (Point p in ls.Vertices)
+            foreach (RgPoint p in ls.Vertices)
                 WritePoint(p, bWriter, byteorder);
         }
 
@@ -249,7 +249,7 @@ namespace RGeos.Converters.WellKnownBinary
             WriteUInt32((uint) mp.Points.Count, bWriter, byteorder);
 
             //Loop on the number of points.
-            foreach (Point p in mp.Points)
+            foreach (RgPoint p in mp.Points)
             {
                 //Write Points Header
                 bWriter.Write((byte) byteorder);

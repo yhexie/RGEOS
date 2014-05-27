@@ -99,7 +99,7 @@ namespace RGeos.Geometries
         /// The mathematical centroid for this Surface as a Point.
         /// The result is not guaranteed to be on this Surface.
         /// </summary>
-        public override Point Centroid
+        public override RgPoint Centroid
         {
             get { return ExteriorRing.GetBoundingBox().GetCentroid(); }
         }
@@ -107,7 +107,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// A point guaranteed to be on this Surface.
         /// </summary>
-        public override Point PointOnSurface
+        public override RgPoint PointOnSurface
         {
             get { throw new NotImplementedException(); }
         }

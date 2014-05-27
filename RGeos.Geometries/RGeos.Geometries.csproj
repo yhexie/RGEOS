@@ -66,8 +66,20 @@
     <Compile Include="Point3D.cs" />
     <Compile Include="Polygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RgPlane.cs" />
+    <Compile Include="RgSegment.cs" />
+    <Compile Include="RgLine.cs" />
     <Compile Include="SpatialRelations.cs" />
+    <Compile Include="Spatial\HitUtil.cs" />
+    <Compile Include="Basic\MathEx.cs" />
+    <Compile Include="Spatial\RgAreaMeasure.cs" />
+    <Compile Include="Spatial\RgDistanceMeasure.cs" />
+    <Compile Include="Basic\RgMath.cs" />
+    <Compile Include="Spatial\RgSpatialAnalysis.cs" />
+    <Compile Include="Spatial\RgTopologicOperator.cs" />
+    <Compile Include="Spatial\RgTopologicRelationship.cs" />
     <Compile Include="Surface.cs" />
+    <Compile Include="Vector3d.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Geometry.cd" />

@@ -57,7 +57,7 @@ namespace RGeos.Geometries
         /// The mathematical centroid for the surfaces as a Point.
         /// The result is not guaranteed to be on any of the surfaces.
         /// </summary>
-        public override Point Centroid
+        public override RgPoint Centroid
         {
             get { throw new NotImplementedException(); }
         }
@@ -65,7 +65,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// A point guaranteed to be on this Surface.
         /// </summary>
-        public override Point PointOnSurface
+        public override RgPoint PointOnSurface
         {
             get { throw new NotImplementedException(); }
         }

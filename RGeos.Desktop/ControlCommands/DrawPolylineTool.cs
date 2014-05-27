@@ -4,7 +4,7 @@ using RGeos.Display;
 using System.Drawing;
 using System.Windows.Forms;
 using RGeos.Geometries;
-using RgPoint = RGeos.Geometries.Point;
+using RgPoint = RGeos.Geometries.RgPoint;
 using RGeos.Carto;
 using RGeos.Core;
 

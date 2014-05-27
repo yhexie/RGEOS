@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using RGeos.Core.PluginEngine;
-using RgPoint = RGeos.Geometries.Point;
 using RGeos.Geometries;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace RGeos.Display
         object NewObject { get; set; }
         IntPtr Handle { get; set; }//关联窗体的句柄
         bool IsCacheDirty { get; set; }
-
+        Color BackGroundColor { get; set; }
         IDisplayTransformation DisplayTransformation { get; }
 
         void StartDrawing(Graphics dc, int drawBuffer);
@@ -36,7 +35,7 @@ namespace RGeos.Display
         void DrawMultiLineString(MultiLineString lines, Pen pen);
         void DrawPolygon(Polygon pol, Brush brush, Pen pen, bool clip);
         void DrawLineString(LineString line, Pen pen);
-        void DrawLine(RGeos.Geometries.Point p1, RGeos.Geometries.Point p2, Pen pen);
+        void DrawLine(RGeos.Geometries.RgPoint p1, RGeos.Geometries.RgPoint p2, Pen pen);
         //void DrawText(RgPoint pt, Pen pen);
     }
 
@@ -68,6 +67,13 @@ namespace RGeos.Display
         private PointF m_MouseDownPoint;
         private PointF m_MouseMoveToPoint;
         private ISymbol mSymbol;
+        private Color mBackGroundColor = Color.White;
+
+        public Color BackGroundColor
+        {
+            get { return mBackGroundColor; }
+            set { mBackGroundColor = value; }
+        }
 
         public ScreenDisplay(IntPtr handle)
         {
@@ -142,7 +148,7 @@ namespace RGeos.Display
                 //绘制在背景图片上
                 mBitMapGc = Graphics.FromImage(mStaticImage);
                 mBitMapGc.SmoothingMode = m_smoothingMode;
-                mBitMapGc.Clear(Color.White);
+                mBitMapGc.Clear(mBackGroundColor);
                 //m_model.BackgroundLayer.Draw(dcStatic, r);
                 //if (m_model.GridLayer.Enabled)
                 //    m_model.GridLayer.Draw(dcStatic, r);
@@ -231,7 +237,7 @@ namespace RGeos.Display
             {
                 if (mBitMapGc != null)
                 {
-                   // mBitMapGc.DrawEllipse(pen, ptscreen.X, ptscreen.Y, 2, 2);
+                    // mBitMapGc.DrawEllipse(pen, ptscreen.X, ptscreen.Y, 2, 2);
                     mBitMapGc.DrawRectangle(pen, ptscreen.X, ptscreen.Y, 3, 3);
                     //SizeF size = new SizeF(4f, 4f);
                     //RectangleF rect = new RectangleF(ptscreen, size);
@@ -295,7 +301,7 @@ namespace RGeos.Display
             }
         }
 
-        public void DrawLine(RGeos.Geometries.Point p1, RGeos.Geometries.Point p2, Pen pen)
+        public void DrawLine(RGeos.Geometries.RgPoint p1, RGeos.Geometries.RgPoint p2, Pen pen)
         {
             if (IsStartDrawing == false)
             {

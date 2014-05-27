@@ -21,12 +21,12 @@ namespace RGeos.Geometries
         /// The mathematical centroid for this Surface as a Point.
         /// The result is not guaranteed to be on this Surface.
         /// </summary>
-        public abstract Point Centroid { get; }
+        public abstract RgPoint Centroid { get; }
 
         /// <summary>
         /// A point guaranteed to be on this Surface.
         /// </summary>
-        public abstract Point PointOnSurface { get; }
+        public abstract RgPoint PointOnSurface { get; }
 
         /// <summary>
         ///  The inherent dimension of this Geometry object, which must be less than or equal to the coordinate dimension.

@@ -59,8 +59,8 @@ namespace RGeos.Geometries
                 return false;
             if (g1.GetType() != g2.GetType())
                 return false;
-            if (g1 is Point)
-                return (g1 as Point).Equals(g2 as Point);
+            if (g1 is RgPoint)
+                return (g1 as RgPoint).Equals(g2 as RgPoint);
             else if (g1 is LineString)
                 return (g1 as LineString).Equals(g2 as LineString);
             else if (g1 is Polygon)

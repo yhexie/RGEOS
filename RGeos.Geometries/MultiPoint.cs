@@ -10,14 +10,14 @@ namespace RGeos.Geometries
     /// </summary>
     public class MultiPoint : GeometryCollection
     {
-        private IList<Point> _Points;
+        private IList<RgPoint> _Points;
 
         /// <summary>
         /// Initializes a new MultiPoint collection
         /// </summary>
         public MultiPoint()
         {
-            _Points = new Collection<Point>();
+            _Points = new Collection<RgPoint>();
         }
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace RGeos.Geometries
         /// </summary>		
         public MultiPoint(IEnumerable<double[]> points)
         {
-            _Points = new Collection<Point>();
+            _Points = new Collection<RgPoint>();
             foreach (double[] point in points)
-                _Points.Add(new Point(point[0], point[1]));
+                _Points.Add(new RgPoint(point[0], point[1]));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="n">Index in collection</param>
         /// <returns>Point</returns>
-        public new Point this[int n]
+        public new RgPoint this[int n]
         {
             get { return _Points[n]; }
         }
@@ -43,7 +43,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Gets or sets the MultiPoint collection
         /// </summary>
-        public IList<Point> Points
+        public IList<RgPoint> Points
         {
             get { return _Points; }
             set { _Points = value; }
@@ -70,7 +70,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="N">Geometry index</param>
         /// <returns>Geometry at index N</returns>
-        public new Point Geometry(int N)
+        public new RgPoint Geometry(int N)
         {
             return _Points[N];
         }
@@ -214,7 +214,7 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public override IEnumerator<Geometry> GetEnumerator()
         {
-            foreach (Point p in _Points)
+            foreach (RgPoint p in _Points)
                 yield return p;
         }
 

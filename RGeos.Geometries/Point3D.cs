@@ -7,7 +7,7 @@ namespace RGeos.Geometries
     /// value, a y-coordinate value and a z-coordinate value. The boundary of a Point3D is the empty set.
     /// </summary>
     [Serializable]
-    public class Point3D : Point
+    public class Point3D : RgPoint
     {
         private double _Z;
 
@@ -17,7 +17,8 @@ namespace RGeos.Geometries
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
-        public Point3D(double x, double y, double z) : base(x, y)
+        public Point3D(double x, double y, double z)
+            : base(x, y)
         {
             _Z = z;
         }
@@ -27,16 +28,21 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="p">2D Point</param>
         /// <param name="z">Z coordinate</param>
-        public Point3D(Point p, double z)
+        public Point3D(RgPoint p, double z)
             : base(p.X, p.Y)
         {
             _Z = z;
         }
-
+        public Point3D(Vector3d v)
+            : base(v.X, v.Y)
+        {
+            _Z = v.Z;
+        }
         /// <summary>
         /// Initializes a new Point at (0,0)
         /// </summary>
-        public Point3D() : this(0, 0, 0)
+        public Point3D()
+            : this(0, 0, 0)
         {
             SetIsEmpty = true;
         }
@@ -111,28 +117,28 @@ namespace RGeos.Geometries
 
         #region Operators
 
-        /// <summary>
-        /// Vector + Vector
-        /// </summary>
-        /// <param name="v1">Vector</param>
-        /// <param name="v2">Vector</param>
-        /// <returns></returns>
-        public static Point3D operator +(Point3D v1, Point3D v2)
-        {
-            return new Point3D(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
-        }
+        ///// <summary>
+        ///// Vector + Vector
+        ///// </summary>
+        ///// <param name="v1">Vector</param>
+        ///// <param name="v2">Vector</param>
+        ///// <returns></returns>
+        //public static Point3D operator +(Point3D v1, Point3D v2)
+        //{
+        //    return new Point3D(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+        //}
 
 
-        /// <summary>
-        /// Vector - Vector
-        /// </summary>
-        /// <param name="v1">Vector</param>
-        /// <param name="v2">Vector</param>
-        /// <returns>Cross product</returns>
-        public static Point3D operator -(Point3D v1, Point3D v2)
-        {
-            return new Point3D(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
-        }
+        ///// <summary>
+        ///// Vector - Vector
+        ///// </summary>
+        ///// <param name="v1">Vector</param>
+        ///// <param name="v2">Vector</param>
+        ///// <returns>Cross product</returns>
+        //public static Point3D operator -(Point3D v1, Point3D v2)
+        //{
+        //    return new Point3D(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+        //}
 
         /// <summary>
         /// Vector * Scalar
@@ -142,7 +148,7 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public static Point3D operator *(Point3D m, double d)
         {
-            return new Point3D(m.X*d, m.Y*d, m.Z*d);
+            return new Point3D(m.X * d, m.Y * d, m.Z * d);
         }
 
         #endregion
@@ -177,7 +183,7 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public override double Distance(Geometry geom)
         {
-            if (geom.GetType() == typeof (Point3D))
+            if (geom.GetType() == typeof(Point3D))
             {
                 Point3D p = geom as Point3D;
                 return Math.Sqrt(Math.Pow(X - p.X, 2) + Math.Pow(Y - p.Y, 2) + Math.Pow(Z - p.Z, 2));
@@ -194,7 +200,7 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public new double[] ToDoubleArray()
         {
-            return new double[3] {X, Y, Z};
+            return new double[3] { X, Y, Z };
         }
 
         /// <summary>
@@ -230,6 +236,45 @@ namespace RGeos.Geometries
                 return 1;
             else // (this.X == other.X && this.Y == other.Y && this.Z == other.Z)
                 return 0;
+        }
+
+
+        public void Move(double dx, double dy, double dz)
+        {
+            this.X += dx;
+            this.Y += dy;
+            this.Z += dz;
+        }
+        /// <summary>
+        /// 点相减的一个向量
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static Vector3d operator -(Point3D p1, Point3D p2)
+        {
+            Vector3d Vec = new Vector3d();
+            Vec.X = (p1.X - p2.X);
+            Vec.Y = (p1.Y - p2.Y);
+            Vec.Z = (p1.Z - p2.Z);
+            return Vec;
+        }
+        //public static bool operator ==(RPoint p1, RPoint p2)
+        //{
+        //    return (p1.x == p2.x) && (p1.y == p2.y) && (p1.z == p2.z);
+        //}
+        //public static bool operator !=(RPoint p1, RPoint p2)
+        //{
+        //    return (p1.x != p2.x) || (p1.y != p2.y) || (p1.z != p2.z);
+
+        //}
+        public static Point3D operator +(Point3D Pts, Vector3d V3)//向量除以数量
+        {
+            Point3D temp = new Point3D();
+            temp.X = Pts.X + V3.X;
+            temp.Y = Pts.Y + V3.Y;
+            temp.Z = Pts.Z + V3.Z;
+            return temp;
         }
     }
 }

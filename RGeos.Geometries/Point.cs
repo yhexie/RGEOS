@@ -6,7 +6,7 @@ namespace RGeos.Geometries
     ///点是0-dimensional几何对象，代表2D空间的位置。
     /// </summary>
     [Serializable]
-    public class Point : Geometry, IComparable<Point>
+    public class RgPoint : Geometry, IComparable<RgPoint>
     {
         private bool _IsEmpty = false;
         private double _X;
@@ -17,7 +17,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
-        public Point(double x, double y)
+        public RgPoint(double x, double y)
         {
             _X = x;
             _Y = y;
@@ -26,7 +26,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Initializes a new empty Point
         /// </summary>
-        public Point()
+        public RgPoint()
             : this(0, 0)
         {
             _IsEmpty = true;
@@ -36,7 +36,7 @@ namespace RGeos.Geometries
         /// Create a new point by a douuble[] array
         /// </summary>
         /// <param name="point"></param>
-        public Point(double[] point)
+        public RgPoint(double[] point)
         {
             if (point.Length < 2)
                 throw new Exception("Only 2 dimensions are supported for points");
@@ -44,7 +44,11 @@ namespace RGeos.Geometries
             _X = point[0];
             _Y = point[1];
         }
-
+        public RgPoint(Vector3d v)
+        {       
+            _X = v.X;
+            _Y = v.Y;
+        }
         /// <summary>
         /// Sets whether this object is empty
         /// </summary>
@@ -135,7 +139,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public virtual int CompareTo(Point other)
+        public virtual int CompareTo(RgPoint other)
         {
             if (X < other.X || X == other.X && Y < other.Y)
                 return -1;
@@ -167,29 +171,29 @@ namespace RGeos.Geometries
         /// <param name="latMinutes">Latitude minutes</param>
         /// <param name="latSeconds">Latitude seconds</param>
         /// <returns>Point</returns>
-        public static Point FromDMS(double longDegrees, double longMinutes, double longSeconds,
+        public static RgPoint FromDMS(double longDegrees, double longMinutes, double longSeconds,
                                     double latDegrees, double latMinutes, double latSeconds)
         {
-            return new Point(longDegrees + longMinutes / 60 + longSeconds / 3600,
+            return new RgPoint(longDegrees + longMinutes / 60 + longSeconds / 3600,
                              latDegrees + latMinutes / 60 + latSeconds / 3600);
         }
 
         /// <summary>
-        /// Returns a 2D <see cref="Point"/> instance from this <see cref="Point3D"/>
+        /// Returns a 2D <see cref="RgPoint"/> instance from this <see cref="Point3D"/>
         /// </summary>
-        /// <returns><see cref="Point"/></returns>
-        public Point AsPoint()
+        /// <returns><see cref="RgPoint"/></returns>
+        public RgPoint AsPoint()
         {
-            return new Point(_X, _Y);
+            return new RgPoint(_X, _Y);
         }
 
         /// <summary>
         /// This method must be overridden using 'public new [derived_data_type] Clone()'
         /// </summary>
         /// <returns>Clone</returns>
-        public new Point Clone()
+        public new RgPoint Clone()
         {
-            return new Point(X, Y);
+            return new RgPoint(X, Y);
         }
 
         #region Operators
@@ -200,9 +204,9 @@ namespace RGeos.Geometries
         /// <param name="v1">Vector</param>
         /// <param name="v2">Vector</param>
         /// <returns></returns>
-        public static Point operator +(Point v1, Point v2)
+        public static RgPoint operator +(RgPoint v1, RgPoint v2)
         {
-            return new Point(v1.X + v2.X, v1.Y + v2.Y);
+            return new RgPoint(v1.X + v2.X, v1.Y + v2.Y);
         }
 
 
@@ -212,9 +216,9 @@ namespace RGeos.Geometries
         /// <param name="v1">Vector</param>
         /// <param name="v2">Vector</param>
         /// <returns>Cross product</returns>
-        public static Point operator -(Point v1, Point v2)
+        public static RgPoint operator -(RgPoint v1, RgPoint v2)
         {
-            return new Point(v1.X - v2.X, v1.Y - v2.Y);
+            return new RgPoint(v1.X - v2.X, v1.Y - v2.Y);
         }
 
         /// <summary>
@@ -223,11 +227,11 @@ namespace RGeos.Geometries
         /// <param name="m">Vector</param>
         /// <param name="d">Scalar (double)</param>
         /// <returns></returns>
-        public static Point operator *(Point m, double d)
+        public static RgPoint operator *(RgPoint m, double d)
         {
-            return new Point(m.X * d, m.Y * d);
+            return new RgPoint(m.X * d, m.Y * d);
         }
-
+       
         #endregion
 
         #region "Inherited methods from abstract class Geometry"
@@ -253,7 +257,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="p">Point to compare to</param>
         /// <returns></returns>
-        public virtual bool Equals(Point p)
+        public virtual bool Equals(RgPoint p)
         {
             return p != null && p.X == _X && p.Y == _Y && _IsEmpty == p.IsEmpty();
         }
@@ -305,9 +309,9 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public override double Distance(Geometry geom)
         {
-            if (geom.GetType() == typeof(Point))
+            if (geom.GetType() == typeof(RgPoint))
             {
-                Point p = geom as Point;
+                RgPoint p = geom as RgPoint;
                 return Math.Sqrt(Math.Pow(X - p.X, 2) + Math.Pow(Y - p.Y, 2));
             }
             else
@@ -412,7 +416,7 @@ namespace RGeos.Geometries
         /// <returns>true if they touch</returns>
         public override bool Touches(Geometry geom)
         {
-            if (geom is Point && Equals(geom)) return true;
+            if (geom is RgPoint && Equals(geom)) return true;
             throw new NotImplementedException("Touches not implemented for this feature type");
         }
 

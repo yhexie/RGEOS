@@ -104,25 +104,25 @@ namespace RGeos.Converters.WellKnownBinary
             }
         }
 
-        private static Point CreateWKBPoint(BinaryReader reader, WkbByteOrder byteOrder)
+        private static RgPoint CreateWKBPoint(BinaryReader reader, WkbByteOrder byteOrder)
         {
             // Create and return the point.
-            return new Point(ReadDouble(reader, byteOrder), ReadDouble(reader, byteOrder));
+            return new RgPoint(ReadDouble(reader, byteOrder), ReadDouble(reader, byteOrder));
         }
 
-        private static Point[] ReadCoordinates(BinaryReader reader, WkbByteOrder byteOrder)
+        private static RgPoint[] ReadCoordinates(BinaryReader reader, WkbByteOrder byteOrder)
         {
             // Get the number of points in this linestring.
             int numPoints = (int) ReadUInt32(reader, byteOrder);
 
             // Create a new array of coordinates.
-            Point[] coords = new Point[numPoints];
+            RgPoint[] coords = new RgPoint[numPoints];
 
             // Loop on the number of points in the ring.
             for (int i = 0; i < numPoints; i++)
             {
                 // Add the coordinate.
-                coords[i] = new Point(ReadDouble(reader, byteOrder), ReadDouble(reader, byteOrder));
+                coords[i] = new RgPoint(ReadDouble(reader, byteOrder), ReadDouble(reader, byteOrder));
             }
             return coords;
         }
@@ -131,7 +131,7 @@ namespace RGeos.Converters.WellKnownBinary
         {
             LineString l = new LineString();
             //l.Vertices.AddRange(ReadCoordinates(reader, byteOrder));
-            Point[] arrPoint = ReadCoordinates(reader, byteOrder);
+            RgPoint[] arrPoint = ReadCoordinates(reader, byteOrder);
             for (int i = 0; i < arrPoint.Length; i++)
                 l.Vertices.Add(arrPoint[i]);
 
@@ -142,14 +142,14 @@ namespace RGeos.Converters.WellKnownBinary
         {
             LinearRing l = new LinearRing();
             //l.Vertices.AddRange(ReadCoordinates(reader, byteOrder));
-            Point[] arrPoint = ReadCoordinates(reader, byteOrder);
+            RgPoint[] arrPoint = ReadCoordinates(reader, byteOrder);
             for (int i = 0; i < arrPoint.Length; i++)
                 l.Vertices.Add(arrPoint[i]);
 
             //if polygon isn't closed, add the first point to the end (this shouldn't occur for correct WKB data)
             if (l.Vertices[0].X != l.Vertices[l.Vertices.Count - 1].X ||
                 l.Vertices[0].Y != l.Vertices[l.Vertices.Count - 1].Y)
-                l.Vertices.Add(new Point(l.Vertices[0].X, l.Vertices[0].Y));
+                l.Vertices.Add(new RgPoint(l.Vertices[0].X, l.Vertices[0].Y));
             return l;
         }
 

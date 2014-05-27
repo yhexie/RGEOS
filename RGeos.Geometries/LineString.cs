@@ -11,13 +11,13 @@ namespace RGeos.Geometries
     [Serializable]
     public class LineString : Curve
     {
-        private IList<Point> _Vertices;
+        private IList<RgPoint> _Vertices;
 
         /// <summary>
         /// Initializes an instance of a LineString from a set of vertices
         /// </summary>
         /// <param name="vertices"></param>
-        public LineString(IList<Point> vertices)
+        public LineString(IList<RgPoint> vertices)
         {
             _Vertices = vertices;
         }
@@ -25,7 +25,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Initializes an instance of a LineString
         /// </summary>
-        public LineString() : this(new Collection<Point>())
+        public LineString() : this(new Collection<RgPoint>())
         {
         }
 
@@ -35,10 +35,10 @@ namespace RGeos.Geometries
         /// <param name="points"></param>
         public LineString(IEnumerable<double[]> points)
         {
-            Collection<Point> vertices = new Collection<Point>();
+            Collection<RgPoint> vertices = new Collection<RgPoint>();
 
             foreach (double[] point in points)
-                vertices.Add(new Point(point));
+                vertices.Add(new RgPoint(point));
 
             _Vertices = vertices;
         }
@@ -46,7 +46,7 @@ namespace RGeos.Geometries
         /// <summary>
         /// Gets or sets the collection of vertices in this Geometry
         /// </summary>
-        public virtual IList<Point> Vertices
+        public virtual IList<RgPoint> Vertices
         {
             get { return _Vertices; }
             set { _Vertices = value; }
@@ -56,7 +56,7 @@ namespace RGeos.Geometries
         /// Returns the vertice where this Geometry begins
         /// </summary>
         /// <returns>First vertice in LineString</returns>
-        public override Point StartPoint
+        public override RgPoint StartPoint
         {
             get
             {
@@ -70,7 +70,7 @@ namespace RGeos.Geometries
         /// Gets the vertice where this Geometry ends
         /// </summary>
         /// <returns>Last vertice in LineString</returns>
-        public override Point EndPoint
+        public override RgPoint EndPoint
         {
             get
             {
@@ -121,7 +121,7 @@ namespace RGeos.Geometries
         /// <remarks>This method is supplied as part of the OpenGIS Simple Features Specification</remarks>
         /// <param name="N"></param>
         /// <returns></returns>
-        public Point Point(int N)
+        public RgPoint Point(int N)
         {
             return _Vertices[N];
         }
@@ -133,7 +133,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="t">Distance down the line</param>
         /// <returns>Point at line at distance t from StartPoint</returns>
-        public override Point Value(double t)
+        public override RgPoint Value(double t)
         {
             throw new NotImplementedException();
         }
@@ -168,7 +168,38 @@ namespace RGeos.Geometries
                 l.Vertices.Add(_Vertices[i].Clone());
             return l;
         }
-
+        /// <summary>
+        /// 当前对象是否在包围盒内
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <param name="anyPoint"></param>
+        /// <returns></returns>
+        public bool ObjectInRectangle(BoundingBox rect, bool anyPoint)
+        {
+            BoundingBox boundingrect = GetBoundingBox();
+            if (anyPoint)
+            {
+                for (int i = 1; i < Vertices.Count; i++)
+                {
+                    RgPoint m_p1 = Vertices[i];
+                    RgPoint m_p2 = Vertices[i - 1];
+                    return HitUtil.LineIntersectWithRect(m_p1, m_p2, rect);
+                }
+            }
+            return rect.Contains(boundingrect);
+        }
+        //
+        public bool PointInObject(RgPoint point)
+        {
+            float thWidth = 1;
+            for (int i = 1; i < Vertices.Count; i++)
+            {
+                RgPoint m_p1 = Vertices[i];
+                RgPoint m_p2 = Vertices[i - 1];
+                return HitUtil.IsPointInLine(m_p1, m_p2, point, thWidth);
+            }
+            return false;
+        }
         #region "Inherited methods from abstract class Geometry"
 
         public override GeometryType2 GeometryType
@@ -227,7 +258,7 @@ namespace RGeos.Geometries
         public override bool IsSimple()
         {
             //Collection<Point> verts = new Collection<Point>(_Vertices.Count);
-            Collection<Point> verts = new Collection<Point>();
+            Collection<RgPoint> verts = new Collection<RgPoint>();
 
             for (int i = 0; i < _Vertices.Count; i++)
                 //if (!verts.Exists(delegate(RGeos.Geometries.Point p) { return p.Equals(_Vertices[i]); }))

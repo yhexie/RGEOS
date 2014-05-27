@@ -31,7 +31,7 @@ namespace RGeos.Plugins
         {
 
         }
-        IList<RGeos.Geometries.Point> tmpVertices;
+        IList<RGeos.Geometries.RgPoint> tmpVertices;
         int j = 0;
         public override void OnMouseMove(int x, int y)
         {
@@ -42,11 +42,11 @@ namespace RGeos.Plugins
             if (n == 2)
             {
                 j++;
-                tmpVertices = new List<RGeos.Geometries.Point>();
-                RGeos.Geometries.Point P0 = vertices[0];
-                RGeos.Geometries.Point P1 = vertices[1];
-                RGeos.Geometries.Point pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
-                RGeos.Geometries.Point P2 = pt;
+                tmpVertices = new List<RGeos.Geometries.RgPoint>();
+                RGeos.Geometries.RgPoint P0 = vertices[0];
+                RGeos.Geometries.RgPoint P1 = vertices[1];
+                RGeos.Geometries.RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
+                RGeos.Geometries.RgPoint P2 = pt;
                 tmpVertices.Add(P0);
                 tmpVertices.Add(P1);
                 tmpVertices.Add(P2);
@@ -87,11 +87,11 @@ namespace RGeos.Plugins
 
                 (mScreenDisplay as ScreenDisplay).RepaintStatic(invalidaterect);
 
-                tmpVertices = new List<RGeos.Geometries.Point>();
-                RGeos.Geometries.Point P0 = vertices[0];
-                RGeos.Geometries.Point P1 = vertices[n - 1];
-                RGeos.Geometries.Point pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
-                RGeos.Geometries.Point P2 = pt;
+                tmpVertices = new List<RGeos.Geometries.RgPoint>();
+                RGeos.Geometries.RgPoint P0 = vertices[0];
+                RGeos.Geometries.RgPoint P1 = vertices[n - 1];
+                RGeos.Geometries.RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
+                RGeos.Geometries.RgPoint P2 = pt;
                 tmpVertices.Add(P0);
                 tmpVertices.Add(P1);
                 tmpVertices.Add(P2);
@@ -107,7 +107,7 @@ namespace RGeos.Plugins
         }
         int n = 0;
         LinearRing line = null;
-        IList<RGeos.Geometries.Point> vertices = new List<RGeos.Geometries.Point>();
+        IList<RGeos.Geometries.RgPoint> vertices = new List<RGeos.Geometries.RgPoint>();
         public override void OnMouseDown(int x, int y, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -115,10 +115,10 @@ namespace RGeos.Plugins
                 n++;
                 if (n == 1)
                 {
-                    RGeos.Geometries.Point pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
-                    RGeos.Geometries.Point P0 = new RGeos.Geometries.Point(pt.X, pt.Y);
-                    RGeos.Geometries.Point P1 = new RGeos.Geometries.Point(pt.X, pt.Y);
-                    RGeos.Geometries.Point P2 = new RGeos.Geometries.Point(pt.X, pt.Y);
+                    RGeos.Geometries.RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
+                    RGeos.Geometries.RgPoint P0 = new RGeos.Geometries.RgPoint(pt.X, pt.Y);
+                    RGeos.Geometries.RgPoint P1 = new RGeos.Geometries.RgPoint(pt.X, pt.Y);
+                    RGeos.Geometries.RgPoint P2 = new RGeos.Geometries.RgPoint(pt.X, pt.Y);
                     vertices.Add(P0);
                     vertices.Add(P1);
                     vertices.Add(P2);
@@ -128,8 +128,8 @@ namespace RGeos.Plugins
                 {
 
                     PointF p2 = new PointF(x, y);
-                    RGeos.Geometries.Point pt1 = vertices[0];
-                    RGeos.Geometries.Point pt2 = mScreenDisplay.DisplayTransformation.ToUnit(p2);
+                    RGeos.Geometries.RgPoint pt1 = vertices[0];
+                    RGeos.Geometries.RgPoint pt2 = mScreenDisplay.DisplayTransformation.ToUnit(p2);
                     vertices[1] = pt2;
                     mScreenDisplay.StartDrawing(mMapCtrl.CreateGraphics(), 1);
                     mScreenDisplayDraw.DrawLine(pt1, pt2, Pens.Blue);
@@ -139,7 +139,7 @@ namespace RGeos.Plugins
                 else if (n == 3)
                 {
                     PointF p1 = new PointF(x, y);
-                    RGeos.Geometries.Point pt = mScreenDisplay.DisplayTransformation.ToUnit(p1);
+                    RGeos.Geometries.RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(p1);
                     vertices[2] = pt;
                     polygon.ExteriorRing = line;
                     if (line != null)
@@ -153,8 +153,8 @@ namespace RGeos.Plugins
                 else
                 {
                     PointF p1 = new PointF(x, y);
-                    RGeos.Geometries.Point pt = mScreenDisplay.DisplayTransformation.ToUnit(p1);
-                    RGeos.Geometries.Point P4 = pt;
+                    RGeos.Geometries.RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(p1);
+                    RGeos.Geometries.RgPoint P4 = pt;
                     vertices.Add(P4);
                     SolidBrush brush = new SolidBrush(Color.Blue);
                     Pen pen = new Pen(brush);
@@ -171,7 +171,7 @@ namespace RGeos.Plugins
                     featurelyr.mGeometries.Add(polygon);
                 }
                
-                vertices = new List<RGeos.Geometries.Point>();
+                vertices = new List<RGeos.Geometries.RgPoint>();
                 polygon = new Polygon();
                 tempPolygon = new Polygon();
                 mScreenDisplay.NewObject = null;

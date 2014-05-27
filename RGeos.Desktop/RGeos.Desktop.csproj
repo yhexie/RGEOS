@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SelectionRectangle.cs" />
     <Compile Include="ControlCommands\DrawPointTool.cs" />
     <Compile Include="ControlCommands\DrawPolygonTool.cs" />
     <Compile Include="ControlCommands\DrawPolylineTool.cs" />

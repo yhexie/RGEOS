@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using RGeos.Controls;
 using RGeos.PluginEngine;
 using RGeos.Core;
-using RgPoint = RGeos.Geometries.Point;
+using RgPoint = RGeos.Geometries.RgPoint;
 using RGeos.Plugins;
 using RGeos.Geometries;
 using RGeos.Carto;
@@ -27,8 +27,9 @@ namespace RGeos.Desktop
             mMapControl.Dock = DockStyle.Fill;
 
             mMapControl.SetCenter(new RgPoint(0, 0));//设置基准点
+            mMapControl.BackColor = Color.Black;
             this.panel1.Controls.Add(mMapControl);
-
+           
             HookHelper mHook = HookHelper.Instance();
             mHook.MapControl = mMapControl as IMapControl;
             mTimer.Interval = 100;

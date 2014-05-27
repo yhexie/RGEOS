@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using RGeos.Display;
 using RGeos.Geometries;
-using RgPoint = RGeos.Geometries.Point;
+using RgPoint = RGeos.Geometries.RgPoint;
 using System.Diagnostics;
 using RGeos.Core;
 
@@ -21,6 +21,7 @@ namespace RGeos.Controls
             mScreenDisplay = new RGeos.Display.ScreenDisplay(Handle);
             mScreenDisplay.DisplayTransformation.Zoom = 1.0f;
             InitializeComponent();
+           
             mMap = new RGeos.Carto.Map();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -50,6 +51,7 @@ namespace RGeos.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = m_smoothingMode;
+            mScreenDisplay.BackGroundColor = BackColor;
             if (mScreenDisplay.IsCacheDirty)
             {
                 mScreenDisplay.StartRecording();
@@ -58,7 +60,7 @@ namespace RGeos.Controls
                 object newObj = mScreenDisplay.NewObject;
                 if (newObj != null)
                 {
-                   IScreenDisplayDraw drawNew= mScreenDisplay as IScreenDisplayDraw;
+                    IScreenDisplayDraw drawNew = mScreenDisplay as IScreenDisplayDraw;
                     if (newObj is LineString)
                     {
                         Pen mpen = new Pen(Color.Blue);
@@ -72,7 +74,7 @@ namespace RGeos.Controls
                     else if (newObj is Polygon)
                     {
                         Brush brush = new SolidBrush(Color.Blue);
-                        drawNew.DrawPolygon(newObj as Polygon,brush, Pens.AliceBlue, false);
+                        drawNew.DrawPolygon(newObj as Polygon, brush, Pens.AliceBlue, false);
                     }
                 }
 
@@ -107,7 +109,20 @@ namespace RGeos.Controls
                 CurrentTool.OnMouseDown(e.X, e.Y, e);
             }
         }
-
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (CurrentTool != null)
+            {
+                CurrentTool.OnKeyDown(e);
+            }
+        }
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            if (CurrentTool != null)
+            {
+                CurrentTool.OnKeyUp(e);
+            }
+        }
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             System.Drawing.Point point = this.PointToClient(Control.MousePosition);//放大中心点屏幕坐标

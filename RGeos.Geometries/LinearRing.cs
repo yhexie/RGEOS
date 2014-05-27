@@ -13,7 +13,7 @@ namespace RGeos.Geometries
         /// Initializes an instance of a LinearRing from a set of vertices
         /// </summary>
         /// <param name="vertices"></param>
-        public LinearRing(IList<Point> vertices)
+        public LinearRing(IList<RgPoint> vertices)
             : base(vertices)
         {
         }
@@ -78,7 +78,7 @@ namespace RGeos.Geometries
         /// <returns>Returns true if ring is oriented counter-clockwise.</returns>
         public bool IsCCW()
         {
-            Point hip, p, prev, next;
+            RgPoint hip, p, prev, next;
             int hii, i;
             int nPts = Vertices.Count;
 
@@ -140,7 +140,7 @@ namespace RGeos.Geometries
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public bool IsPointWithin(Point p)
+        public bool IsPointWithin(RgPoint p)
         {
             bool c = false;
             for (int i = 0, j = Vertices.Count - 1; i < Vertices.Count; j = i++)
