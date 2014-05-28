@@ -30,8 +30,6 @@ namespace RGeos.Desktop
             mMapControl.BackColor = Color.Black;
             this.panel1.Controls.Add(mMapControl);
            
-            HookHelper mHook = HookHelper.Instance();
-            mHook.MapControl = mMapControl as IMapControl;
             mTimer.Interval = 100;
             mTimer.Tick += new EventHandler(mTimer_Tick);
             mMapControl.MouseMove += new MouseEventHandler(mMapControl_MouseMove);
@@ -92,31 +90,22 @@ namespace RGeos.Desktop
                 (layer as RGeos.Carto.FetureLayer).ShapeType = newFeatCls.ShapeType;
                 map.AddLayer(layer);
                 mapCtrl.Refresh();
-            }
-            //RGeos.Carto.ILayer layer = new RGeos.Carto.FetureLayer();
-            //(layer as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgLineString;
-            //LineString line = new LineString();
-            //RgPoint pt = new RgPoint(0, 0);
-            //RgPoint pt1 = new RgPoint(10 / MillmeteresPerInch, 0);
-            //line.Vertices.Add(pt);
-            //line.Vertices.Add(pt1);
-            //(layer as RGeos.Carto.FetureLayer).mGeometries.Add(line);
-            //LineString line1 = new LineString();
-            //RgPoint pt11 = new RgPoint(0, 10 / MillmeteresPerInch);
-            //RgPoint pt12 = new RgPoint(0, 0);
-            //line1.Vertices.Add(pt11);
-            //line1.Vertices.Add(pt12);
-            //(layer as RGeos.Carto.FetureLayer).mGeometries.Add(line1);
-            //map.AddLayer(layer);
+            }        
+        }
+        private void tspSelect_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new SelectTool();
+            pCmd.OnCreate(mHook);
+            mHook.MapControl.CurrentTool = pCmd as ITool;
+        }
 
-            //RGeos.Carto.ILayer layerPolygon = new RGeos.Carto.FetureLayer();
-            //(layerPolygon as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgPolygon;
-            //map.AddLayer(layerPolygon);
-
-            //RGeos.Carto.ILayer layerPolygon = new RGeos.Carto.FetureLayer();
-            //(layerPolygon as RGeos.Carto.FetureLayer).ShapeType = RgEnumShapeType.RgPoint;
-            //map.AddLayer(layerPolygon);
-            //mapCtrl.Refresh();
+        private void tspClear_Click(object sender, EventArgs e)
+        {
+            HookHelper mHook = HookHelper.Instance();
+            ICommand pCmd = new UnSelectCommand();
+            pCmd.OnCreate(mHook);
+            pCmd.OnClick();
         }
 
         private void tspDrawPoint_Click(object sender, EventArgs e)
@@ -138,6 +127,10 @@ namespace RGeos.Desktop
             FrmAbout about = new FrmAbout();
             about.ShowDialog();
         }
+
+      
+
+      
 
 
     }

@@ -89,7 +89,7 @@ namespace RGeos.Plugins
                 Carto.FetureLayer featurelyr = mMapCtrl.Map.CurrentLayer as Carto.FetureLayer;
                 if (featurelyr != null && featurelyr.ShapeType == RgEnumShapeType.RgLineString)
                 {
-                    featurelyr.mGeometries.Add(line);
+                    featurelyr.AddFeature(line);
                 }
                 n = 0;
                 mScreenDisplay.NewObject = null;

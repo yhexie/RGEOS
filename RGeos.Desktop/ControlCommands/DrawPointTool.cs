@@ -46,7 +46,7 @@ namespace RGeos.Plugins
             Carto.FetureLayer featurelyr = mMapCtrl.Map.CurrentLayer as Carto.FetureLayer;
             if (featurelyr != null && featurelyr.ShapeType == RgEnumShapeType.RgPoint)
             {
-                featurelyr.mGeometries.Add(P1);
+                featurelyr.AddFeature(P1);
             }
             mMapCtrl.Refresh();
         }

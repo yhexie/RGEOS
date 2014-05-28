@@ -4,6 +4,7 @@ using RGeos.Controls;
 using RGeos.Geometries;
 using RGeos.Core;
 using RGeos.Carto;
+using System.Collections.Generic;
 namespace RGeos.Desktop
 {
     class SelectTool : RBaseCommand
@@ -19,7 +20,7 @@ namespace RGeos.Desktop
         Map mMap = null;
         public override void OnCreate(HookHelper hook)
         {
-            Name = "绘制折线";
+            Name = "选择要素";
             mMapCtrl = hook.MapControl as RgMapControl;
             mScreenDisplay = mMapCtrl.ScreenDisplay;
             mScreenDisplayDraw = mScreenDisplay as IScreenDisplayDraw;
@@ -52,12 +53,13 @@ namespace RGeos.Desktop
         {
             if (m_selection != null)
             {
+                List<Feature> SelectFeatures = new List<Feature>();
                 screenSelRect = m_selection.ScreenRect();
                 RgPoint lowLeft = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(screenSelRect.Left, screenSelRect.Bottom));
                 RgPoint upRight = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(screenSelRect.Right, screenSelRect.Top));
                 BoundingBox box = new BoundingBox(lowLeft, upRight);
                 //RectangleF selectionRect = m_selection.Selection(m_canvaswrapper);
-                if (box != null)
+                if (screenSelRect != Rectangle.Empty)
                 {
                     // is any selection rectangle. use it for selection
                     for (int i = 0; i < mMap.Layers.Count; i++)
@@ -66,11 +68,18 @@ namespace RGeos.Desktop
                         if (lyr is FetureLayer)
                         {
                             Carto.FetureLayer featlyr = lyr as Carto.FetureLayer;
-                            featlyr.GetHitObjects(box, m_selection.AnyPoint());
+                            SelectFeatures = featlyr.GetHitObjects(box, m_selection.AnyPoint());
+                            if (mMap.Selection == null)
+                            {
+                                mMap.Selection = new MapSelection();
+                            }
+                            if (SelectFeatures != null)
+                            {
+                                mMap.Selection.SelectedFeatures.AddRange(SelectFeatures);
+                            }
                         }
 
                     }
-                   // DoInvalidate(true);
                 }
                 else
                 {
@@ -82,10 +91,19 @@ namespace RGeos.Desktop
                             // else use mouse point
                             Carto.FetureLayer featlyr = lyr as Carto.FetureLayer;
                             RgPoint mousepoint = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
-                            featlyr.GetHitObjects(mousepoint);
+                            SelectFeatures = featlyr.GetHitObjects(mousepoint);
+                            if (mMap.Selection == null)
+                            {
+                                mMap.Selection = new MapSelection();
+                            }
+                            if (SelectFeatures != null)
+                            {
+                                mMap.Selection.SelectedFeatures.AddRange(SelectFeatures);
+                            }
                         }
                     }
                 }
+                mMapCtrl.Refresh();
                 m_selection = null;
             }
         }

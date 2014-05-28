@@ -29,6 +29,8 @@ namespace RGeos.Controls
             this.MouseMove += new MouseEventHandler(mPanel_MouseMove);
             this.MouseUp += new MouseEventHandler(mPanel_MouseUp);
             this.Resize += new System.EventHandler(this.UcMapControl_Resize);
+            HookHelper mHook = HookHelper.Instance();
+            mHook.MapControl = this as IMapControl;
         }
 
         public ITool CurrentTool { get; set; }

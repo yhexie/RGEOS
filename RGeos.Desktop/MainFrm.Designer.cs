@@ -38,6 +38,7 @@
             this.tspDrawPoint = new System.Windows.Forms.ToolStripMenuItem();
             this.tspDrawLine = new System.Windows.Forms.ToolStripMenuItem();
             this.绘制多边形ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspPan = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tspClear = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -103,7 +105,9 @@
             this.tspDrawPolygon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspDrawPoint,
             this.tspDrawLine,
-            this.绘制多边形ToolStripMenuItem});
+            this.绘制多边形ToolStripMenuItem,
+            this.tspSelect,
+            this.tspClear});
             this.tspDrawPolygon.Name = "tspDrawPolygon";
             this.tspDrawPolygon.Size = new System.Drawing.Size(44, 21);
             this.tspDrawPolygon.Text = "编辑";
@@ -113,7 +117,7 @@
             // 
             this.tspDrawPoint.Image = ((System.Drawing.Image)(resources.GetObject("tspDrawPoint.Image")));
             this.tspDrawPoint.Name = "tspDrawPoint";
-            this.tspDrawPoint.Size = new System.Drawing.Size(136, 22);
+            this.tspDrawPoint.Size = new System.Drawing.Size(152, 22);
             this.tspDrawPoint.Text = "绘制点";
             this.tspDrawPoint.Click += new System.EventHandler(this.tspDrawPoint_Click);
             // 
@@ -121,7 +125,7 @@
             // 
             this.tspDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("tspDrawLine.Image")));
             this.tspDrawLine.Name = "tspDrawLine";
-            this.tspDrawLine.Size = new System.Drawing.Size(136, 22);
+            this.tspDrawLine.Size = new System.Drawing.Size(152, 22);
             this.tspDrawLine.Text = "绘制线";
             this.tspDrawLine.Click += new System.EventHandler(this.tspDrawLine_Click);
             // 
@@ -129,8 +133,15 @@
             // 
             this.绘制多边形ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("绘制多边形ToolStripMenuItem.Image")));
             this.绘制多边形ToolStripMenuItem.Name = "绘制多边形ToolStripMenuItem";
-            this.绘制多边形ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.绘制多边形ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.绘制多边形ToolStripMenuItem.Text = "绘制多边形";
+            // 
+            // tspSelect
+            // 
+            this.tspSelect.Name = "tspSelect";
+            this.tspSelect.Size = new System.Drawing.Size(152, 22);
+            this.tspSelect.Text = "选择要素";
+            this.tspSelect.Click += new System.EventHandler(this.tspSelect_Click);
             // 
             // 工具ToolStripMenuItem
             // 
@@ -159,7 +170,7 @@
             // tspAbout
             // 
             this.tspAbout.Name = "tspAbout";
-            this.tspAbout.Size = new System.Drawing.Size(152, 22);
+            this.tspAbout.Size = new System.Drawing.Size(141, 22);
             this.tspAbout.Text = "关于RGEOS";
             this.tspAbout.Click += new System.EventHandler(this.tspAbout_Click);
             // 
@@ -212,6 +223,13 @@
             this.panel1.Size = new System.Drawing.Size(794, 455);
             this.panel1.TabIndex = 2;
             // 
+            // tspClear
+            // 
+            this.tspClear.Name = "tspClear";
+            this.tspClear.Size = new System.Drawing.Size(152, 22);
+            this.tspClear.Text = "清除选择";
+            this.tspClear.Click += new System.EventHandler(this.tspClear_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -255,6 +273,8 @@
         private System.Windows.Forms.ToolStripMenuItem tspLayerInfo;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tspAbout;
+        private System.Windows.Forms.ToolStripMenuItem tspSelect;
+        private System.Windows.Forms.ToolStripMenuItem tspClear;
     }
 }
 

@@ -168,7 +168,7 @@ namespace RGeos.Plugins
                 Carto.FetureLayer featurelyr = mMapCtrl.Map.CurrentLayer as Carto.FetureLayer;
                 if (featurelyr != null && featurelyr.ShapeType == RgEnumShapeType.RgPolygon)
                 {
-                    featurelyr.mGeometries.Add(polygon);
+                    featurelyr.AddFeature(polygon);
                 }
                
                 vertices = new List<RGeos.Geometries.RgPoint>();

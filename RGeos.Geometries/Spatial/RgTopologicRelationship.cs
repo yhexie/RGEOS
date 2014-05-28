@@ -56,7 +56,15 @@ namespace RGeos.Geometries
 
             return 0;
         }
-
+        public static int In2D_Point_BoundingBox(RgPoint P, BoundingBox envelop)
+        {
+            bool flag = envelop.Contains(P);
+            if (flag)
+            {
+                return 1;
+            }
+            return 0;
+        }
         /// <summary>
         /// 点在多边形中
         /// </summary>

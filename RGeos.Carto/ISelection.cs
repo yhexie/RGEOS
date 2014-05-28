@@ -7,5 +7,6 @@ namespace RGeos.Carto
 {
     public interface ISelection
     {
+        List<Feature> SelectedFeatures { get; set; }
     }
 }
