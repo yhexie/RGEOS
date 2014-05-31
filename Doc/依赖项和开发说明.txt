@@ -1,0 +1,4 @@
+多边形拓扑运算C实现和.net封装：GPC
+OGC几何对象定义参考SharpMap实现
+空间参考：Proj.net
+参考程序OpenS-CAD、SharpMap、ArcEngine
