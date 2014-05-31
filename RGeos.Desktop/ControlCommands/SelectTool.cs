@@ -69,12 +69,17 @@ namespace RGeos.Desktop
                         {
                             Carto.FetureLayer featlyr = lyr as Carto.FetureLayer;
                             SelectFeatures = featlyr.GetHitObjects(box, m_selection.AnyPoint());
-                            if (mMap.Selection == null)
-                            {
-                                mMap.Selection = new MapSelection();
-                            }
                             if (SelectFeatures != null)
                             {
+                                for (int j = 0; j < SelectFeatures.Count; j++)
+                                {
+                                    SelectFeatures[j].IsSelected = true;
+                                }
+                                if (mMap.Selection == null)
+                                {
+                                    mMap.Selection = new MapSelection();
+                                }
+
                                 mMap.Selection.SelectedFeatures.AddRange(SelectFeatures);
                             }
                         }
@@ -88,16 +93,20 @@ namespace RGeos.Desktop
                         ILayer lyr = mMap.Layers[i];
                         if (lyr is FetureLayer)
                         {
-                            // else use mouse point
                             Carto.FetureLayer featlyr = lyr as Carto.FetureLayer;
                             RgPoint mousepoint = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(x, y));
-                            SelectFeatures = featlyr.GetHitObjects(mousepoint);
-                            if (mMap.Selection == null)
-                            {
-                                mMap.Selection = new MapSelection();
-                            }
+                            SelectFeatures = featlyr.GetHitObjects(mousepoint, 0.1);
                             if (SelectFeatures != null)
                             {
+                                for (int j = 0; j < SelectFeatures.Count; j++)
+                                {
+                                    SelectFeatures[j].IsSelected = true;
+                                }
+                                if (mMap.Selection == null)
+                                {
+                                    mMap.Selection = new MapSelection();
+                                }
+
                                 mMap.Selection.SelectedFeatures.AddRange(SelectFeatures);
                             }
                         }

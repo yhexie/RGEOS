@@ -11,6 +11,7 @@ using RGeos.Geometries;
 using RgPoint = RGeos.Geometries.RgPoint;
 using System.Diagnostics;
 using RGeos.Core;
+using RGeos.Carto;
 
 namespace RGeos.Controls
 {
@@ -21,7 +22,7 @@ namespace RGeos.Controls
             mScreenDisplay = new RGeos.Display.ScreenDisplay(Handle);
             mScreenDisplay.DisplayTransformation.Zoom = 1.0f;
             InitializeComponent();
-           
+
             mMap = new RGeos.Carto.Map();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -47,7 +48,7 @@ namespace RGeos.Controls
         {
             get { return mMap; }
         }
-
+        ISnapPoint m_snappoint = null;
         System.Drawing.Drawing2D.SmoothingMode m_smoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -79,7 +80,9 @@ namespace RGeos.Controls
                         drawNew.DrawPolygon(newObj as Polygon, brush, Pens.AliceBlue, false);
                     }
                 }
-
+                //绘制捕捉点
+                if (m_snappoint != null)
+                    m_snappoint.Draw(mScreenDisplay);
                 mScreenDisplay.FinishDrawing();
                 mScreenDisplay.StopRecording();
             }
@@ -93,9 +96,34 @@ namespace RGeos.Controls
                 CurrentTool.OnMouseUp(e.X, e.Y);
             }
         }
-
+        Type[] m_runningSnapTypes = null;
         void mPanel_MouseMove(object sender, MouseEventArgs e)
         {
+            ISnapPoint newsnap = null;
+            Point point = this.PointToClient(Control.MousePosition);
+
+            RgPoint mousepoint = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(point.X, point.Y));
+            //获取捕捉点
+            if (RunningSnapsEnabled)
+                newsnap = (mMap as Map).SnapPoint(mousepoint, m_runningSnapTypes, null);
+            //if (newsnap == null)
+            //    newsnap = mMap.GridLayer.SnapPoint(m_canvaswrapper, mousepoint, null);
+            if ((m_snappoint != null) && ((newsnap == null) || (newsnap.SnapPoint != m_snappoint.SnapPoint) || m_snappoint.GetType() != newsnap.GetType()))
+            {
+                PointF pt1 = mScreenDisplay.DisplayTransformation.ToScreen(m_snappoint.SnapPoint);
+
+                Rectangle invalidaterect = new Rectangle((int)pt1.X - 2, (int)pt1.Y - 2, 4, 4);
+                invalidaterect.Inflate(2, 2);
+                //注意查看
+                mScreenDisplay.RepaintStatic(invalidaterect); // remove old snappoint
+                m_snappoint = newsnap;
+            }
+
+            if (m_snappoint == null)
+                m_snappoint = newsnap;
+
+            if (m_snappoint != null)
+                RepaintSnappoint(m_snappoint);
             if (CurrentTool != null)
             {
                 CurrentTool.OnMouseMove(e.X, e.Y);
@@ -103,7 +131,13 @@ namespace RGeos.Controls
             RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(e.X, e.Y));
             Debug.Write(string.Format("X:{0}mm Y:{1}mm", pt.X * 25.4, pt.Y * 25.4));
         }
+        void RepaintSnappoint(ISnapPoint snappoint)
+        {
+            if (snappoint == null)
+                return;          
+            snappoint.Draw(mScreenDisplay);
 
+        }
         void mPanel_MouseDown(object sender, MouseEventArgs e)
         {
             if (CurrentTool != null)
@@ -180,6 +214,14 @@ namespace RGeos.Controls
             center.X = (p1.X + p2.X) / 2;
             center.Y = (p1.Y + p2.Y) / 2;
             return center;
+        }
+
+        private bool mRunningSnapsEnabled = true;
+
+        public bool RunningSnapsEnabled
+        {
+            get { return mRunningSnapsEnabled; }
+            set { mRunningSnapsEnabled = value; }
         }
     }
 }

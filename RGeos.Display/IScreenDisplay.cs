@@ -25,13 +25,16 @@ namespace RGeos.Display
         void PanMoveTo(PointF mouseLocation);
         void PanStart(PointF mouseLocation);
         Rectangle PanStop();
+
+        void RepaintStatic(Rectangle r);
+
         void SetSymbol(ISymbol symbol);
 
     }
 
     public interface IScreenDisplayDraw
     {
-        void DrawPoint(RgPoint pt, Pen pen);
+        void DrawPoint(RgPoint pt, Pen pen, Brush fillBrush);
         void DrawMultiLineString(MultiLineString lines, Pen pen);
         void DrawPolygon(Polygon pol, Brush brush, Pen pen, bool clip);
         void DrawLineString(LineString line, Pen pen);
@@ -226,7 +229,7 @@ namespace RGeos.Display
         #endregion
 
         #region IScreenDisplayDraw
-        public void DrawPoint(RgPoint pt, Pen pen)
+        public void DrawPoint(RgPoint pt, Pen pen, Brush fillBrush)
         {
             if (IsStartDrawing == false)
             {
@@ -237,8 +240,10 @@ namespace RGeos.Display
             {
                 if (mBitMapGc != null)
                 {
-                    // mBitMapGc.DrawEllipse(pen, ptscreen.X, ptscreen.Y, 2, 2);
-                    mBitMapGc.DrawRectangle(pen, ptscreen.X, ptscreen.Y, 3, 3);
+                    mBitMapGc.DrawEllipse(pen, ptscreen.X - 2, ptscreen.Y - 2, 4, 4);
+                    if (fillBrush != null)
+                        mBitMapGc.FillEllipse(fillBrush, ptscreen.X - 2, ptscreen.Y - 2, 4, 4);
+                    //mBitMapGc.DrawRectangle(pen, ptscreen.X, ptscreen.Y, 3, 3);
                     //SizeF size = new SizeF(4f, 4f);
                     //RectangleF rect = new RectangleF(ptscreen, size);
                     //mBitMapGc.DrawEllipse(pen, rect);
@@ -385,6 +390,8 @@ namespace RGeos.Display
                 }
             }
         }
+
+
 
         #endregion
 

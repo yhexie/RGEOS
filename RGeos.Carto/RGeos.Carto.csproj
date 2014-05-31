@@ -38,6 +38,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SnapPointBase.cs" />
+    <Compile Include="ISnapPoint.cs" />
     <Compile Include="FetureLayer.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="ISelection.cs" />

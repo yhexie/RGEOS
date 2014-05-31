@@ -64,5 +64,57 @@ namespace RGeos.Carto
                 Layers[i].Draw(mScreenDisplay);
             }
         }
+        //容差
+        double tolerance = 0.5;
+        /// <summary>
+        /// 几何对象集合执行的获取捕捉点的方法
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <param name="point"></param>
+        /// <param name="runningsnaptypes"></param>
+        /// <param name="usersnaptype"></param>
+        /// <returns></returns>
+        public ISnapPoint SnapPoint(RgPoint point, Type[] runningsnaptypes, Type usersnaptype)
+        {
+            for (int i = 0; i < Layers.Count; i++)
+            {
+                ILayer lry = Layers[i];
+                if (lry is FetureLayer)
+                {
+                    FetureLayer featlyr = lry as FetureLayer;
+                    List<Feature> objects = featlyr.GetHitObjects(point, tolerance);
+                    if (objects.Count == 0)
+                        return null;
+
+                    foreach (Feature obj in objects)
+                    {
+                        IGeometry geo = obj.Shape as IGeometry;
+                        if (geo is RgPoint)
+                        {
+                            RgPoint pt = geo as RgPoint;
+                            if (RDistanceMeasure.Dist_Point_to_Point(pt, point) < tolerance)
+                            {
+                                return new SnapPointBase(pt, pt);
+                            }
+                            // ISnapPoint snap = obj.SnapPoint(point, objects, runningsnaptypes, usersnaptype);
+                        }
+                        if (geo is LinearRing)
+                        {
+
+                        }
+                        if (geo is Polygon)
+                        {
+
+                        }
+                        // ISnapPoint snap = obj.SnapPoint( point, objects, runningsnaptypes, usersnaptype);
+                        //if (snap != null)
+                        //    return snap;
+                    }
+                }
+
+            }
+
+            return null;
+        }
     }
 }

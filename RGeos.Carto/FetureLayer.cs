@@ -39,11 +39,11 @@ namespace RGeos.Carto
                     {
                         if (feat.IsSelected == false)
                         {
-                            displayDraw.DrawPoint(pt, new Pen(Color.Red));
+                            displayDraw.DrawPoint(pt, new Pen(Color.Red),new SolidBrush(Color.Red));
                         }
                         else
                         {
-                            displayDraw.DrawPoint(pt, new Pen(Color.LightBlue));
+                            displayDraw.DrawPoint(pt, new Pen(Color.LightBlue), new SolidBrush(Color.Red));
                         }
                     }
 
@@ -119,7 +119,7 @@ namespace RGeos.Carto
                     if (selectionBox.Contains(pt))
                     {
                         selected.Add(drawobject);
-                        drawobject.IsSelected = true;
+                       // drawobject.IsSelected = true;
                     }
                 }
                 else if (ShapeType == RgEnumShapeType.RgLineString)
@@ -128,14 +128,14 @@ namespace RGeos.Carto
                     if (lineString.ObjectInRectangle(selectionBox, false))
                     {
                         selected.Add(drawobject);
-                        drawobject.IsSelected = true;
+                       // drawobject.IsSelected = true;
                     }
                 }
             }
             return selected;
         }
 
-        public List<Feature> GetHitObjects(RgPoint point)
+        public List<Feature> GetHitObjects(RgPoint point, double tolerance)
         {
             List<Feature> selected = new List<Feature>();
 
@@ -146,10 +146,10 @@ namespace RGeos.Carto
                 if (ShapeType == RgEnumShapeType.RgPoint)
                 {
                     RgPoint pt = drawobject.Shape as RgPoint;
-                    if (RDistanceMeasure.Dist_Point_to_Point(pt, point) < 0.1)
+                    if (RDistanceMeasure.Dist_Point_to_Point(pt, point) < tolerance)
                     {
                         selected.Add(drawobject);
-                        drawobject.IsSelected = true;
+                       // drawobject.IsSelected = true;
                     }
                 }
                 else if (ShapeType == RgEnumShapeType.RgLineString)
@@ -158,7 +158,7 @@ namespace RGeos.Carto
                     if (lineString.PointInObject(point))
                     {
                         selected.Add(drawobject);
-                        drawobject.IsSelected = true;
+                        //drawobject.IsSelected = true;
                     }
                 }
                 else

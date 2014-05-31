@@ -29,7 +29,7 @@ namespace RGeos.Desktop
             mMapControl.SetCenter(new RgPoint(0, 0));//设置基准点
             mMapControl.BackColor = Color.Black;
             this.panel1.Controls.Add(mMapControl);
-           
+
             mTimer.Interval = 100;
             mTimer.Tick += new EventHandler(mTimer_Tick);
             mMapControl.MouseMove += new MouseEventHandler(mMapControl_MouseMove);
@@ -90,7 +90,7 @@ namespace RGeos.Desktop
                 (layer as RGeos.Carto.FetureLayer).ShapeType = newFeatCls.ShapeType;
                 map.AddLayer(layer);
                 mapCtrl.Refresh();
-            }        
+            }
         }
         private void tspSelect_Click(object sender, EventArgs e)
         {
@@ -128,9 +128,23 @@ namespace RGeos.Desktop
             about.ShowDialog();
         }
 
-      
+        private void tspSnap_Click(object sender, EventArgs e)
+        {
+            if (tspSnap.Checked == true)
+            {
+                tspSnap.Checked = false;
+                mMapControl.RunningSnapsEnabled = false;
+            }
+            else
+            {
+                tspSnap.Checked = true;
+                mMapControl.RunningSnapsEnabled = true;
+            }
+        }
 
-      
+
+
+
 
 
     }

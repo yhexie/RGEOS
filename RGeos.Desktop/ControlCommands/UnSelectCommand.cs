@@ -22,6 +22,10 @@ namespace RGeos.Plugins
         {
             IMap mMap = mMapCtrl.Map;
             ISelection mSelection = (mMap as Map).Selection;
+            if (mSelection == null)
+            {
+                return;
+            }
             for (int i = 0; i < mSelection.SelectedFeatures.Count; i++)
             {
                 Feature feat = mSelection.SelectedFeatures[i];

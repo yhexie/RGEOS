@@ -50,6 +50,7 @@
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tspSnap = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(794, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(794, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,7 +74,7 @@
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspNewLayer});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
             // tspNewLayer
@@ -87,9 +88,10 @@
             // 图层ToolStripMenuItem
             // 
             this.图层ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspLayerInfo});
+            this.tspLayerInfo,
+            this.tspSnap});
             this.图层ToolStripMenuItem.Name = "图层ToolStripMenuItem";
-            this.图层ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.图层ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.图层ToolStripMenuItem.Text = "图层";
             // 
             // tspLayerInfo
@@ -109,7 +111,7 @@
             this.tspSelect,
             this.tspClear});
             this.tspDrawPolygon.Name = "tspDrawPolygon";
-            this.tspDrawPolygon.Size = new System.Drawing.Size(41, 20);
+            this.tspDrawPolygon.Size = new System.Drawing.Size(44, 21);
             this.tspDrawPolygon.Text = "编辑";
             this.tspDrawPolygon.Click += new System.EventHandler(this.tspDrawPolygon_Click);
             // 
@@ -157,7 +159,7 @@
             this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspPan});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.工具ToolStripMenuItem.Text = "工具";
             // 
             // tspPan
@@ -173,13 +175,13 @@
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspAbout});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // tspAbout
             // 
             this.tspAbout.Name = "tspAbout";
-            this.tspAbout.Size = new System.Drawing.Size(124, 22);
+            this.tspAbout.Size = new System.Drawing.Size(141, 22);
             this.tspAbout.Text = "关于RGEOS";
             this.tspAbout.Click += new System.EventHandler(this.tspAbout_Click);
             // 
@@ -201,7 +203,7 @@
             // 
             this.labInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(29, 17);
+            this.labInfo.Size = new System.Drawing.Size(32, 17);
             this.labInfo.Text = "就绪";
             // 
             // toolStripStatusLabel2
@@ -209,14 +211,14 @@
             this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Adjust;
             this.toolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(709, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(703, 17);
             this.toolStripStatusLabel2.Spring = true;
             // 
             // labcoord
             // 
             this.labcoord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.labcoord.Name = "labcoord";
-            this.labcoord.Size = new System.Drawing.Size(41, 17);
+            this.labcoord.Size = new System.Drawing.Size(44, 17);
             this.labcoord.Text = "坐标：";
             // 
             // labCoordinate
@@ -227,10 +229,19 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 456);
+            this.panel1.Size = new System.Drawing.Size(794, 455);
             this.panel1.TabIndex = 2;
+            // 
+            // tspSnap
+            // 
+            this.tspSnap.Checked = true;
+            this.tspSnap.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tspSnap.Name = "tspSnap";
+            this.tspSnap.Size = new System.Drawing.Size(152, 22);
+            this.tspSnap.Text = "对象捕捉";
+            this.tspSnap.Click += new System.EventHandler(this.tspSnap_Click);
             // 
             // MainFrm
             // 
@@ -277,6 +288,7 @@
         private System.Windows.Forms.ToolStripMenuItem tspAbout;
         private System.Windows.Forms.ToolStripMenuItem tspSelect;
         private System.Windows.Forms.ToolStripMenuItem tspClear;
+        private System.Windows.Forms.ToolStripMenuItem tspSnap;
     }
 }
 
