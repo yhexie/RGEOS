@@ -153,11 +153,11 @@
   </data>
   <data name="tspDrawPoint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAHZJREFUKFOFUgEK
-        wEAIWv9/dFtxhpXcBsfgSlM7c/dHfWYWBZP1uFTnAySbrF0AAZLAxYRG/kMiBjQQNaYy8tomFmg0qWwK
-        CEboLx9DpqonccteRK138+epNFciZye39LC3mR7I2MMewMsdkS0Pck8slf3NV/MCcZPeJzn9KtwAAAAA
-        SUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOwgAA
+        DsIBFShKgAAAAH5JREFUOE9j/P//PwMewAiUw6uAAWQALgzSjE8ebDnNDIA6HeR8vK7A6gKYJnQam2sx
+        DEC2ERcb2SAUAwg6F4t3QAbAogrsXxiGRi/Y/8jiyPJAOW5yXMAO1MgBxDxArE5pGLBSPxZgIUxROkA2
+        ZOCSMtRmNkpcwArUzE/IAAABfYgEFzXzNgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="tspDrawLine.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

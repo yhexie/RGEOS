@@ -80,7 +80,7 @@
             // 
             this.tspNewLayer.Image = ((System.Drawing.Image)(resources.GetObject("tspNewLayer.Image")));
             this.tspNewLayer.Name = "tspNewLayer";
-            this.tspNewLayer.Size = new System.Drawing.Size(130, 22);
+            this.tspNewLayer.Size = new System.Drawing.Size(152, 22);
             this.tspNewLayer.Text = "新建要素类";
             this.tspNewLayer.Click += new System.EventHandler(this.tspNewLayer_Click);
             // 
@@ -96,7 +96,7 @@
             // 
             this.tspLayerInfo.Image = ((System.Drawing.Image)(resources.GetObject("tspLayerInfo.Image")));
             this.tspLayerInfo.Name = "tspLayerInfo";
-            this.tspLayerInfo.Size = new System.Drawing.Size(118, 22);
+            this.tspLayerInfo.Size = new System.Drawing.Size(152, 22);
             this.tspLayerInfo.Text = "图层信息";
             this.tspLayerInfo.Click += new System.EventHandler(this.tspLayerInfo_Click);
             // 
@@ -164,7 +164,7 @@
             // 
             this.tspPan.Image = ((System.Drawing.Image)(resources.GetObject("tspPan.Image")));
             this.tspPan.Name = "tspPan";
-            this.tspPan.Size = new System.Drawing.Size(94, 22);
+            this.tspPan.Size = new System.Drawing.Size(152, 22);
             this.tspPan.Text = "漫游";
             this.tspPan.Click += new System.EventHandler(this.tspPan_Click);
             // 
