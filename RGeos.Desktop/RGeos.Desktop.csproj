@@ -53,6 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmGridLineOrPoint.cs" />
+    <Compile Include="FrmGridLineOrPoint.Designer.cs">
+      <DependentUpon>FrmGridLineOrPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImportXY.cs" />
+    <Compile Include="FrmImportXY.Designer.cs">
+      <DependentUpon>FrmImportXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IRgFileFormat.cs" />
     <Compile Include="SelectionRectangle.cs" />
     <Compile Include="ControlCommands\DrawPointTool.cs" />
     <Compile Include="ControlCommands\DrawPolygonTool.cs" />
@@ -88,6 +97,12 @@
     <Compile Include="ControlCommands\UnSelectCommand.cs" />
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGridLineOrPoint.resx">
+      <DependentUpon>FrmGridLineOrPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportXY.resx">
+      <DependentUpon>FrmImportXY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLayers.resx">
       <DependentUpon>FrmLayers.cs</DependentUpon>

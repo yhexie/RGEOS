@@ -142,6 +142,20 @@ namespace RGeos.Desktop
             }
         }
 
+        private void tspImportXY_Click(object sender, EventArgs e)
+        {
+            FrmImportXY frmImportXY = new FrmImportXY();
+            frmImportXY.StartPosition = FormStartPosition.CenterParent;
+            frmImportXY.ShowDialog();
+        }
+
+        private void tspCreateGrid_Click(object sender, EventArgs e)
+        {
+            FrmGridLineOrPoint frmGridLineOrPoint = new FrmGridLineOrPoint();
+            frmGridLineOrPoint.StartPosition = FormStartPosition.CenterParent;
+            frmGridLineOrPoint.Show(this);
+        }
+
 
 
 

@@ -32,8 +32,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspNewLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspImportXY = new System.Windows.Forms.ToolStripMenuItem();
             this.图层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspLayerInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspSnap = new System.Windows.Forms.ToolStripMenuItem();
             this.tspDrawPolygon = new System.Windows.Forms.ToolStripMenuItem();
             this.tspDrawPoint = new System.Windows.Forms.ToolStripMenuItem();
             this.tspDrawLine = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +52,7 @@
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tspSnap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspCreateGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +74,9 @@
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspNewLayer});
+            this.tspNewLayer,
+            this.tspImportXY,
+            this.tspCreateGrid});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem.Text = "文件";
@@ -84,6 +88,13 @@
             this.tspNewLayer.Size = new System.Drawing.Size(152, 22);
             this.tspNewLayer.Text = "新建要素类";
             this.tspNewLayer.Click += new System.EventHandler(this.tspNewLayer_Click);
+            // 
+            // tspImportXY
+            // 
+            this.tspImportXY.Name = "tspImportXY";
+            this.tspImportXY.Size = new System.Drawing.Size(152, 22);
+            this.tspImportXY.Text = "导入XY坐标";
+            this.tspImportXY.Click += new System.EventHandler(this.tspImportXY_Click);
             // 
             // 图层ToolStripMenuItem
             // 
@@ -98,9 +109,18 @@
             // 
             this.tspLayerInfo.Image = ((System.Drawing.Image)(resources.GetObject("tspLayerInfo.Image")));
             this.tspLayerInfo.Name = "tspLayerInfo";
-            this.tspLayerInfo.Size = new System.Drawing.Size(152, 22);
+            this.tspLayerInfo.Size = new System.Drawing.Size(124, 22);
             this.tspLayerInfo.Text = "图层信息";
             this.tspLayerInfo.Click += new System.EventHandler(this.tspLayerInfo_Click);
+            // 
+            // tspSnap
+            // 
+            this.tspSnap.Checked = true;
+            this.tspSnap.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tspSnap.Name = "tspSnap";
+            this.tspSnap.Size = new System.Drawing.Size(124, 22);
+            this.tspSnap.Text = "对象捕捉";
+            this.tspSnap.Click += new System.EventHandler(this.tspSnap_Click);
             // 
             // tspDrawPolygon
             // 
@@ -119,7 +139,7 @@
             // 
             this.tspDrawPoint.Image = ((System.Drawing.Image)(resources.GetObject("tspDrawPoint.Image")));
             this.tspDrawPoint.Name = "tspDrawPoint";
-            this.tspDrawPoint.Size = new System.Drawing.Size(152, 22);
+            this.tspDrawPoint.Size = new System.Drawing.Size(136, 22);
             this.tspDrawPoint.Text = "绘制点";
             this.tspDrawPoint.Click += new System.EventHandler(this.tspDrawPoint_Click);
             // 
@@ -127,7 +147,7 @@
             // 
             this.tspDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("tspDrawLine.Image")));
             this.tspDrawLine.Name = "tspDrawLine";
-            this.tspDrawLine.Size = new System.Drawing.Size(152, 22);
+            this.tspDrawLine.Size = new System.Drawing.Size(136, 22);
             this.tspDrawLine.Text = "绘制线";
             this.tspDrawLine.Click += new System.EventHandler(this.tspDrawLine_Click);
             // 
@@ -135,14 +155,14 @@
             // 
             this.绘制多边形ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("绘制多边形ToolStripMenuItem.Image")));
             this.绘制多边形ToolStripMenuItem.Name = "绘制多边形ToolStripMenuItem";
-            this.绘制多边形ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.绘制多边形ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.绘制多边形ToolStripMenuItem.Text = "绘制多边形";
             // 
             // tspSelect
             // 
             this.tspSelect.Image = ((System.Drawing.Image)(resources.GetObject("tspSelect.Image")));
             this.tspSelect.Name = "tspSelect";
-            this.tspSelect.Size = new System.Drawing.Size(152, 22);
+            this.tspSelect.Size = new System.Drawing.Size(136, 22);
             this.tspSelect.Text = "选择要素";
             this.tspSelect.Click += new System.EventHandler(this.tspSelect_Click);
             // 
@@ -150,7 +170,7 @@
             // 
             this.tspClear.Image = ((System.Drawing.Image)(resources.GetObject("tspClear.Image")));
             this.tspClear.Name = "tspClear";
-            this.tspClear.Size = new System.Drawing.Size(152, 22);
+            this.tspClear.Size = new System.Drawing.Size(136, 22);
             this.tspClear.Text = "清除选择";
             this.tspClear.Click += new System.EventHandler(this.tspClear_Click);
             // 
@@ -166,7 +186,7 @@
             // 
             this.tspPan.Image = ((System.Drawing.Image)(resources.GetObject("tspPan.Image")));
             this.tspPan.Name = "tspPan";
-            this.tspPan.Size = new System.Drawing.Size(152, 22);
+            this.tspPan.Size = new System.Drawing.Size(100, 22);
             this.tspPan.Text = "漫游";
             this.tspPan.Click += new System.EventHandler(this.tspPan_Click);
             // 
@@ -234,14 +254,12 @@
             this.panel1.Size = new System.Drawing.Size(794, 455);
             this.panel1.TabIndex = 2;
             // 
-            // tspSnap
+            // tspCreateGrid
             // 
-            this.tspSnap.Checked = true;
-            this.tspSnap.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tspSnap.Name = "tspSnap";
-            this.tspSnap.Size = new System.Drawing.Size(152, 22);
-            this.tspSnap.Text = "对象捕捉";
-            this.tspSnap.Click += new System.EventHandler(this.tspSnap_Click);
+            this.tspCreateGrid.Name = "tspCreateGrid";
+            this.tspCreateGrid.Size = new System.Drawing.Size(152, 22);
+            this.tspCreateGrid.Text = "生成格网/点";
+            this.tspCreateGrid.Click += new System.EventHandler(this.tspCreateGrid_Click);
             // 
             // MainFrm
             // 
@@ -289,6 +307,8 @@
         private System.Windows.Forms.ToolStripMenuItem tspSelect;
         private System.Windows.Forms.ToolStripMenuItem tspClear;
         private System.Windows.Forms.ToolStripMenuItem tspSnap;
+        private System.Windows.Forms.ToolStripMenuItem tspImportXY;
+        private System.Windows.Forms.ToolStripMenuItem tspCreateGrid;
     }
 }
 
