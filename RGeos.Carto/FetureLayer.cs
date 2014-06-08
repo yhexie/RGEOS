@@ -18,7 +18,7 @@ namespace RGeos.Carto
     public class FetureLayer : Layer
     {
         public RgEnumShapeType ShapeType;
-        public ISymbol2 Symbol;
+        public ISymbol Symbol;
         public List<Feature> mGeometries = new List<Feature>();
 
         public void AddFeature(IGeometry feat)

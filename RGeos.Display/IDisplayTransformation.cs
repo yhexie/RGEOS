@@ -4,7 +4,7 @@ using RGeos.Geometries;
 namespace RGeos.Core.PluginEngine
 {
     // DisplayTransformation object to convert coordinates between map units and device units.
-    public interface IDisplayTransformation
+    public interface IDisplayTransformation : ITransformation
     {
         Rectangle DeviceFrame { get; set; }
         PointF PanOffset { get; set; }

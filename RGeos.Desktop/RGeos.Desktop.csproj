@@ -53,11 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmGridLineOrPoint.cs" />
+    <Compile Include="FrmGridLineOrPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmGridLineOrPoint.Designer.cs">
       <DependentUpon>FrmGridLineOrPoint.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmImportXY.cs" />
+    <Compile Include="FrmImportXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmImportXY.Designer.cs">
       <DependentUpon>FrmImportXY.cs</DependentUpon>
     </Compile>

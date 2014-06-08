@@ -39,11 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ITransformation.cs" />
     <Compile Include="HookHelper.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IMapControl.cs" />
-    <Compile Include="ISymbol.cs" />
     <Compile Include="ITool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBaseCommand.cs" />
