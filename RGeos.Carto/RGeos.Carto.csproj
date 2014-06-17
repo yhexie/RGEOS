@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="gdalconst_csharp">
+      <HintPath>..\Dependents\GDAL19\gdalconst_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gdal_csharp">
+      <HintPath>..\Dependents\GDAL19\gdal_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ogr_csharp">
+      <HintPath>..\Dependents\GDAL19\ogr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="osr_csharp">
+      <HintPath>..\Dependents\GDAL19\osr_csharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -38,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AffineTransformation2D.cs" />
+    <Compile Include="ColorBlend.cs" />
+    <Compile Include="GeometryTransform.cs" />
+    <Compile Include="RasterLayer.cs" />
     <Compile Include="SnapPointBase.cs" />
     <Compile Include="ISnapPoint.cs" />
     <Compile Include="FetureLayer.cs" />
@@ -51,6 +68,10 @@
     <Compile Include="RgEnumShapeType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjNet\SharpMap.CoordinateSystems\ProjNET.csproj">
+      <Project>{E028BDD2-55E1-4E5F-BE31-35FAEC8D6428}</Project>
+      <Name>ProjNET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RGeos.Core\RGeos.Core.csproj">
       <Project>{7839AD50-2D5F-48AA-A8AC-90FDCDCDA6E1}</Project>
       <Name>RGeos.Core</Name>

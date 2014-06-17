@@ -33,6 +33,7 @@
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspNewLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.tspImportXY = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspCreateGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.图层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tspLayerInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tspSnap = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,7 @@
             this.labcoord = new System.Windows.Forms.ToolStripStatusLabel();
             this.labCoordinate = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tspCreateGrid = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspOpenRaster = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +77,8 @@
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspNewLayer,
             this.tspImportXY,
-            this.tspCreateGrid});
+            this.tspCreateGrid,
+            this.tspOpenRaster});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem.Text = "文件";
@@ -95,6 +97,13 @@
             this.tspImportXY.Size = new System.Drawing.Size(152, 22);
             this.tspImportXY.Text = "导入XY坐标";
             this.tspImportXY.Click += new System.EventHandler(this.tspImportXY_Click);
+            // 
+            // tspCreateGrid
+            // 
+            this.tspCreateGrid.Name = "tspCreateGrid";
+            this.tspCreateGrid.Size = new System.Drawing.Size(152, 22);
+            this.tspCreateGrid.Text = "生成格网/点";
+            this.tspCreateGrid.Click += new System.EventHandler(this.tspCreateGrid_Click);
             // 
             // 图层ToolStripMenuItem
             // 
@@ -254,12 +263,12 @@
             this.panel1.Size = new System.Drawing.Size(794, 455);
             this.panel1.TabIndex = 2;
             // 
-            // tspCreateGrid
+            // tspOpenRaster
             // 
-            this.tspCreateGrid.Name = "tspCreateGrid";
-            this.tspCreateGrid.Size = new System.Drawing.Size(152, 22);
-            this.tspCreateGrid.Text = "生成格网/点";
-            this.tspCreateGrid.Click += new System.EventHandler(this.tspCreateGrid_Click);
+            this.tspOpenRaster.Name = "tspOpenRaster";
+            this.tspOpenRaster.Size = new System.Drawing.Size(152, 22);
+            this.tspOpenRaster.Text = "打开影像";
+            this.tspOpenRaster.Click += new System.EventHandler(this.tspOpenRaster_Click);
             // 
             // MainFrm
             // 
@@ -309,6 +318,7 @@
         private System.Windows.Forms.ToolStripMenuItem tspSnap;
         private System.Windows.Forms.ToolStripMenuItem tspImportXY;
         private System.Windows.Forms.ToolStripMenuItem tspCreateGrid;
+        private System.Windows.Forms.ToolStripMenuItem tspOpenRaster;
     }
 }
 

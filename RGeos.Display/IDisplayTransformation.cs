@@ -4,9 +4,15 @@ using RGeos.Geometries;
 namespace RGeos.Core.PluginEngine
 {
     // DisplayTransformation object to convert coordinates between map units and device units.
+    //默认单位：屏幕是像素和地图是英寸
     public interface IDisplayTransformation : ITransformation
     {
+        BoundingBox VisibleBounds { get; set; }
         Rectangle DeviceFrame { get; set; }
+
+        double PixelWidth { get; }
+        double PixelHeight { get; }
+
         PointF PanOffset { get; set; }
         PointF DragOffset { get; set; }
         float Zoom { get; set; }
@@ -17,6 +23,47 @@ namespace RGeos.Core.PluginEngine
     public class DisplayTransformation : IDisplayTransformation
     {
         private Rectangle mDeviceFrame;
+        private BoundingBox mVisibleBounds = null;
+        public BoundingBox VisibleBounds
+        {
+            get
+            {
+                if (mDeviceFrame != Rectangle.Empty)
+                {
+                    RgPoint lowLeft = ToUnit(new PointF(mDeviceFrame.Left, mDeviceFrame.Bottom));
+                    RgPoint upRight = ToUnit(new PointF(mDeviceFrame.Right, mDeviceFrame.Top));
+                    mVisibleBounds = new BoundingBox(lowLeft, upRight);
+                    return mVisibleBounds;
+                }
+                return null;
+            }
+            set
+            {
+                mVisibleBounds = value;
+            }
+        }
+        /// <summary>
+        /// 一个象素在当前缩放比例下代表的地图尺寸
+        /// </summary>
+        public double PixelSize
+        {
+            get { return mVisibleBounds.Width / mDeviceFrame.Width; }
+            //get { return Zoom / mDeviceFrame.Width; }
+        }
+
+        /// <summary>
+        /// Returns the width of a pixel in world coordinate units.
+        /// </summary>
+        public double PixelWidth
+        {
+            get { return PixelSize; }
+        }
+
+        public double PixelHeight
+        {
+            get { return PixelSize; }
+        }
+
         public DeviceFrameUpdatedEventHander DeviceFrameUpdated;
         //设备的可见范围.
         //The DeviceFrame is normally the full extent of the device with the origin equal to (0, 0).  

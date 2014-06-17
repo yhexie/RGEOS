@@ -13,6 +13,7 @@ using RgPoint = RGeos.Geometries.RgPoint;
 using RGeos.Plugins;
 using RGeos.Geometries;
 using RGeos.Carto;
+using RGeos.Display;
 
 namespace RGeos.Desktop
 {
@@ -35,7 +36,8 @@ namespace RGeos.Desktop
             mMapControl.MouseMove += new MouseEventHandler(mMapControl_MouseMove);
             mTimer.Start();
         }
-        public const double MillmeteresPerInch = 25.4;
+        //public const double MillmeteresPerInch = 25.4;
+        public const double MillmeteresPerInch = 1;
         void mTimer_Tick(object sender, EventArgs e)
         {
             labCoordinate.Text = string.Format("{0}, {1}毫米", x, y);
@@ -154,6 +156,24 @@ namespace RGeos.Desktop
             FrmGridLineOrPoint frmGridLineOrPoint = new FrmGridLineOrPoint();
             frmGridLineOrPoint.StartPosition = FormStartPosition.CenterParent;
             frmGridLineOrPoint.Show(this);
+        }
+
+        private void tspOpenRaster_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "";
+            dlg.Filter = "(*.img)|*.img|(*.tif)|*.tif";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string filename = dlg.FileName;
+                RasterLayer layer = new RasterLayer("VirtualRasterTable", filename);
+                RgPoint center = (layer.Envelope.BottomLeft + layer.Envelope.TopRight) / 2;
+                mMapControl.SetCenter(center);
+                (mMapControl.ScreenDisplay as ScreenDisplay).UpdateWindow();
+                mMapControl.Map.AddLayer(layer);
+              
+            }
+
         }
 
 

@@ -19,6 +19,11 @@ namespace RGeos.Carto
             get { return mVisible; }
             set { mVisible = value; }
         }
+        private BoundingBox mEnvelope;
+        public virtual BoundingBox Envelope
+        {
+            get { return mEnvelope; }
+        }
         public virtual void Draw(IScreenDisplay display)
         {
         }

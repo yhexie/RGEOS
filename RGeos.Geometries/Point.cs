@@ -45,7 +45,7 @@ namespace RGeos.Geometries
             _Y = point[1];
         }
         public RgPoint(Vector3d v)
-        {       
+        {
             _X = v.X;
             _Y = v.Y;
         }
@@ -231,7 +231,17 @@ namespace RGeos.Geometries
         {
             return new RgPoint(m.X * d, m.Y * d);
         }
-       
+        /// <summary>
+        /// Vector * Scalar
+        /// </summary>
+        /// <param name="m">Vector</param>
+        /// <param name="d">Scalar (double)</param>
+        /// <returns></returns>
+        public static RgPoint operator /(RgPoint m, double d)
+        {
+            return new RgPoint(m.X / d, m.Y / d);
+        }
+
         #endregion
 
         #region "Inherited methods from abstract class Geometry"

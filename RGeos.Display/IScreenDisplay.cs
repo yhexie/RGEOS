@@ -14,6 +14,7 @@ namespace RGeos.Display
         object NewObject { get; set; }
         IntPtr Handle { get; set; }//关联窗体的句柄
         bool IsCacheDirty { get; set; }
+        Graphics BitMapGc { get; }
         Color BackGroundColor { get; set; }
         IDisplayTransformation DisplayTransformation { get; }
 
@@ -122,6 +123,8 @@ namespace RGeos.Display
 
         public void UpdateWindow()
         {
+            Control mapCtrl = Control.FromHandle(Handle);
+            mDisplayTransformation.DeviceFrame = mapCtrl.Bounds;
             mStaticImage = null;
             m_staticDirty = true;
         }
@@ -130,6 +133,12 @@ namespace RGeos.Display
         private Bitmap mStaticImage = null;
         private Rectangle mClipRectangle;
         private Graphics mBitMapGc = null;
+
+        public Graphics BitMapGc
+        {
+            get { return mBitMapGc; }
+            //set { mBitMapGc = value; }
+        }
         private Graphics mDc = null;
         private int DrawBufferFlag = 0;//是否绘制到缓冲的图片上
         private bool IsStartDrawing = false;
@@ -158,8 +167,8 @@ namespace RGeos.Display
                 //绘制十字丝
                 RgPoint rCenterPoint = new RgPoint(0, 0);
                 PointF nullPoint = DisplayTransformation.ToScreen(rCenterPoint);
-                mBitMapGc.DrawLine(Pens.Blue, nullPoint.X - 10, nullPoint.Y, nullPoint.X + 10, nullPoint.Y);
-                mBitMapGc.DrawLine(Pens.Blue, nullPoint.X, nullPoint.Y - 10, nullPoint.X, nullPoint.Y + 10);
+                //mBitMapGc.DrawLine(Pens.Blue, nullPoint.X - 10, nullPoint.Y, nullPoint.X + 10, nullPoint.Y);
+                //mBitMapGc.DrawLine(Pens.Blue, nullPoint.X, nullPoint.Y - 10, nullPoint.X, nullPoint.Y + 10);
 
             }
         }
