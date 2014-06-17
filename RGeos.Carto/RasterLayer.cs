@@ -1089,7 +1089,7 @@ namespace RGeos.Carto
             grph.DrawImage(bitmap, new Point(bitmapTL.X, bitmapTL.Y));
             try
             {
-                bitmap.Save("D:\\ABCDEFG.bmp");
+                //bitmap.Save("D:\\ABCDEFG.bmp");
             }
             catch (Exception ex)
             {
