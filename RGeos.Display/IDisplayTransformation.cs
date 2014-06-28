@@ -1,10 +1,11 @@
 ﻿using System.Drawing;
 using RGeos.Geometries;
+using RGeos.Core;
 
-namespace RGeos.Core.PluginEngine
+namespace RGeos.Display
 {
     // DisplayTransformation object to convert coordinates between map units and device units.
-    //默认单位：屏幕是像素和地图是英寸
+    //在IDisplayTransformation中进行单位换算
     public interface IDisplayTransformation : ITransformation
     {
         BoundingBox VisibleBounds { get; set; }
@@ -16,8 +17,11 @@ namespace RGeos.Core.PluginEngine
         PointF PanOffset { get; set; }
         PointF DragOffset { get; set; }
         float Zoom { get; set; }
+        RgeosUnits Units { get; set; }
+
         PointF ToScreen(RgPoint pt);
         RgPoint ToUnit(PointF screenpoint);
+
     }
     public delegate void DeviceFrameUpdatedEventHander();
     public class DisplayTransformation : IDisplayTransformation
@@ -87,6 +91,14 @@ namespace RGeos.Core.PluginEngine
 
         public float Zoom { get; set; }
 
+        private RgeosUnits mUnits = RgeosUnits.esriUnknownUnits;
+
+        public RgeosUnits Units
+        {
+            get { return mUnits; }
+            set { mUnits = value; }
+        }
+
         private PointF m_panOffset = new PointF(25, -25);
 
         public PointF PanOffset
@@ -107,10 +119,11 @@ namespace RGeos.Core.PluginEngine
         }
         public PointF ToScreen(RgPoint pt)
         {
+            float ratio = GetRatio(mUnits);
             PointF transformedPoint = new PointF((float)pt.X, (float)pt.Y);
             transformedPoint.Y = ScreenHeight() - transformedPoint.Y;//将Unit坐标系转换为屏幕坐标系，Y轴反向，此时Y坐标为屏幕坐标系坐标
-            transformedPoint.Y *= m_screenResolution * Zoom;//相对于屏幕原点放大
-            transformedPoint.X *= m_screenResolution * Zoom;
+            transformedPoint.Y *= ratio * Zoom;//相对于屏幕原点放大
+            transformedPoint.X *= ratio * Zoom;
 
             transformedPoint.X += m_panOffset.X + m_dragOffset.X;
             transformedPoint.Y += m_panOffset.Y + m_dragOffset.Y;
@@ -124,17 +137,60 @@ namespace RGeos.Core.PluginEngine
 
         public RgPoint ToUnit(PointF screenpoint)
         {
+            float ratio = GetRatio(mUnits);
             float panoffsetX = m_panOffset.X + m_dragOffset.X;
             float panoffsetY = m_panOffset.Y + m_dragOffset.Y;
-            float xpos = (screenpoint.X - panoffsetX) / (m_screenResolution * Zoom);
-            float ypos = ScreenHeight() - ((screenpoint.Y - panoffsetY)) / (m_screenResolution * Zoom);
+            float xpos = (screenpoint.X - panoffsetX) / (ratio * Zoom);
+            float ypos = ScreenHeight() - ((screenpoint.Y - panoffsetY)) / (ratio * Zoom);
             return new RgPoint(xpos, ypos);
         }
 
         //将屏幕距离计算为Zoom等级下的地图距离
         public double ToUnit(float screenvalue)
         {
-            return (double)screenvalue / (double)(m_screenResolution * Zoom);
+            float ratio = GetRatio(mUnits);
+            return (double)screenvalue / (double)(ratio * Zoom);
+        }
+        public const double MillmeteresPerInch = 25.4;
+        //单位——英寸——像素
+        public float GetRatio(RgeosUnits units)
+        {
+            float ratio = 1;
+            switch (units)
+            {
+                case RgeosUnits.esriInches://Inches.
+                    ratio = m_screenResolution;
+                    break;
+                case RgeosUnits.esriPoints:// Points. 
+                    ratio = 1;
+                    break;
+                case RgeosUnits.esriMillimeters:// Millimeters.
+                    ratio = (float)(m_screenResolution / MillmeteresPerInch);
+                    break;
+                case RgeosUnits.esriCentimeters: //Centimeters. 
+                    ratio = (float)(m_screenResolution / MillmeteresPerInch * 10);
+                    break;
+                case RgeosUnits.esriMeters://Meters. 
+                    ratio = (float)(m_screenResolution / MillmeteresPerInch * 1000);
+                    break;
+                case RgeosUnits.esriKilometers:// Kilometers. 
+                    ratio = (float)(m_screenResolution / MillmeteresPerInch * 1000000);
+                    break;
+                case RgeosUnits.esriDecimalDegrees:// Decimal degrees. 
+                case RgeosUnits.esriDecimeters:// Decimeters. 
+                case RgeosUnits.esriUnitsLast:
+                case RgeosUnits.esriFeet: //Feet. 
+                case RgeosUnits.esriYards:// Yards. 
+                case RgeosUnits.esriMiles://Miles. 
+                case RgeosUnits.esriNauticalMiles: //Nautical miles. 
+                case RgeosUnits.esriUnknownUnits:
+                    ratio = 1;
+                    break;
+                default:
+                    ratio = 1;
+                    break;
+            }
+            return ratio;
         }
     }
 }

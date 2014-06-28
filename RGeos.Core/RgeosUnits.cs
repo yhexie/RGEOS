@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RGeos.PluginEngine
+namespace RGeos.Core
 {
     public enum RgeosUnits
     {

@@ -1,4 +1,5 @@
 ﻿using RGeos.Display;
+using RGeos.Core;
 
 namespace RGeos.Carto
 {
@@ -8,5 +9,6 @@ namespace RGeos.Carto
         void AddLayer(ILayer layer);
         void RemoveLayer(ILayer layer);
         void Draw(IScreenDisplay display);
+        RgeosUnits Units { get; set; }
     }
 }

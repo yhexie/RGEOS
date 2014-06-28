@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using RGeos.Core.PluginEngine;
 using RGeos.Geometries;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
@@ -167,8 +166,8 @@ namespace RGeos.Display
                 //绘制十字丝
                 RgPoint rCenterPoint = new RgPoint(0, 0);
                 PointF nullPoint = DisplayTransformation.ToScreen(rCenterPoint);
-                //mBitMapGc.DrawLine(Pens.Blue, nullPoint.X - 10, nullPoint.Y, nullPoint.X + 10, nullPoint.Y);
-                //mBitMapGc.DrawLine(Pens.Blue, nullPoint.X, nullPoint.Y - 10, nullPoint.X, nullPoint.Y + 10);
+                mBitMapGc.DrawLine(Pens.Blue, nullPoint.X - 10, nullPoint.Y, nullPoint.X + 10, nullPoint.Y);
+                mBitMapGc.DrawLine(Pens.Blue, nullPoint.X, nullPoint.Y - 10, nullPoint.X, nullPoint.Y + 10);
 
             }
         }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using RGeos.PluginEngine;
 using System.Drawing;
 using RGeos.Display;
 using RGeos.Controls;

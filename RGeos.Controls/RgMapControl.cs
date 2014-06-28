@@ -48,6 +48,24 @@ namespace RGeos.Controls
         {
             get { return mMap; }
         }
+        public RgeosUnits Units
+        {
+            get
+            {
+                if (mScreenDisplay != null)
+                {
+                    return mScreenDisplay.DisplayTransformation.Units;
+                }
+                return RgeosUnits.esriUnknownUnits;
+            }
+            set
+            {
+                if (mScreenDisplay != null)
+                {
+                    mScreenDisplay.DisplayTransformation.Units = value;
+                }
+            }
+        }
         ISnapPoint m_snappoint = null;
         System.Drawing.Drawing2D.SmoothingMode m_smoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
 
@@ -129,7 +147,6 @@ namespace RGeos.Controls
                 CurrentTool.OnMouseMove(e.X, e.Y);
             }
             RgPoint pt = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(e.X, e.Y));
-            Debug.Write(string.Format("X:{0}mm Y:{1}mm", pt.X * 25.4, pt.Y * 25.4));
         }
         void RepaintSnappoint(ISnapPoint snappoint)
         {

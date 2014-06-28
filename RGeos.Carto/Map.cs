@@ -5,6 +5,7 @@ using System.Text;
 
 using RGeos.Geometries;
 using RGeos.Display;
+using RGeos.Core;
 
 namespace RGeos.Carto
 {
@@ -28,6 +29,7 @@ namespace RGeos.Carto
         public ISelection Selection { get; set; }
 
         public CurrentLayerChangedEventHandler CurrentLayerChanged;
+
         public ILayer mCurrentLayer;
 
         public ILayer CurrentLayer
@@ -47,6 +49,11 @@ namespace RGeos.Carto
             }
         }
 
+        public RgeosUnits Units
+        {
+            get;
+            set;
+        }
         public void AddLayer(ILayer layer)
         {
             Layers.Add(layer);
