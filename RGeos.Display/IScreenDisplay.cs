@@ -119,11 +119,14 @@ namespace RGeos.Display
             }
             return Rectangle.Empty;
         }
-
-        public void UpdateWindow()
+        public void ControlResized()
         {
             Control mapCtrl = Control.FromHandle(Handle);
             mDisplayTransformation.DeviceFrame = mapCtrl.Bounds;
+        }
+        public void UpdateWindow()
+        {
+
             mStaticImage = null;
             m_staticDirty = true;
         }

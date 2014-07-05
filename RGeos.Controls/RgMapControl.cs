@@ -151,7 +151,7 @@ namespace RGeos.Controls
         void RepaintSnappoint(ISnapPoint snappoint)
         {
             if (snappoint == null)
-                return;          
+                return;
             snappoint.Draw(mScreenDisplay);
 
         }
@@ -194,8 +194,10 @@ namespace RGeos.Controls
         RgPoint m_lastCenterPoint;
         private void UcMapControl_Resize(object sender, EventArgs e)
         {
+            (mScreenDisplay as RGeos.Display.ScreenDisplay).ControlResized();
             if (m_lastCenterPoint != null && Width != 0)
                 SetCenterScreen(mScreenDisplay.DisplayTransformation.ToScreen(m_lastCenterPoint), false);
+            //
             m_lastCenterPoint = CenterPointUnit();
             (mScreenDisplay as RGeos.Display.ScreenDisplay).UpdateWindow();
             Invalidate();

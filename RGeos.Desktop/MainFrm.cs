@@ -26,10 +26,9 @@ namespace RGeos.Desktop
             mMapControl = new RgMapControl();
             mMapControl.Dock = DockStyle.Fill;
             mMapControl.Units = RgeosUnits.esriMillimeters;
-            mMapControl.SetCenter(new RgPoint(0, 0));//设置基准点
             mMapControl.BackColor = Color.Black;
             this.panel1.Controls.Add(mMapControl);
-
+            mMapControl.SetCenter(new RgPoint(0, 0));//设置基准点
             mTimer.Interval = 100;
             mTimer.Tick += new EventHandler(mTimer_Tick);
             mMapControl.MouseMove += new MouseEventHandler(mMapControl_MouseMove);
