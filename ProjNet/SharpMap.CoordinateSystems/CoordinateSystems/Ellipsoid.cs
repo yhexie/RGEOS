@@ -28,13 +28,14 @@ namespace ProjNet.CoordinateSystems
 	{
 		/// <summary>
 		/// Initializes a new instance of an Ellipsoid
+        /// 椭球体的实例
 		/// </summary>
-		/// <param name="semiMajorAxis">Semi major axis</param>
-		/// <param name="semiMinorAxis">Semi minor axis</param>
+		/// <param name="semiMajorAxis">长轴Semi major axis</param>
+		/// <param name="semiMinorAxis">短轴Semi minor axis</param>
 		/// <param name="inverseFlattening">Inverse flattening</param>
 		/// <param name="isIvfDefinitive">Inverse Flattening is definitive for this ellipsoid (Semi-minor axis will be overridden)</param>
-		/// <param name="axisUnit">Axis unit</param>
-		/// <param name="name">Name</param>
+		/// <param name="axisUnit">坐标单位Axis unit</param>
+		/// <param name="name">名称Name</param>
 		/// <param name="authority">Authority name</param>
 		/// <param name="code">Authority-specific identification code.</param>
 		/// <param name="alias">Alias</param>
@@ -64,6 +65,7 @@ namespace ProjNet.CoordinateSystems
 		#region Predefined ellipsoids
 		/// <summary>
 		/// WGS 84 ellipsoid
+        /// WGS84椭球
 		/// </summary>
 		/// <remarks>
 		/// Inverse flattening derived from four defining parameters 
