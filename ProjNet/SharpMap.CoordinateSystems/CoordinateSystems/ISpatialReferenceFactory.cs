@@ -4,11 +4,12 @@ using System.Text;
 
 namespace ProjNet.CoordinateSystems
 {
-    interface ISpatialReferenceFactory
+    public interface ISpatialReferenceFactory
     {
-        public IEllipsoid CreateSpheroid(int spheroidType);
-        public IDatum CreateDatum(int datumType);
-        public IGeographicCoordinateSystem CreateGeographicCoordinateSystem(int gcsType);
-        public IProjectedCoordinateSystem CreateProjectedCoordinateSystem(int pcsType);
+        IEllipsoid CreateSpheroid(int spheroidType);
+        IDatum CreateDatum(int datumType);
+        IGeographicCoordinateSystem CreateGeographicCoordinateSystem(int gcsType);
+        IProjection CreateProjection(int projectionType);
+        IProjectedCoordinateSystem CreateProjectedCoordinateSystem(int pcsType);
     }
 }

@@ -251,7 +251,7 @@ namespace ProjNet.CoordinateSystems.Transformations
         }
 
         /// <summary>
-        /// 构建不同的投影方法
+        /// 构建不同的投影变换方法
         /// </summary>
         /// <param name="projection"></param>
         /// <param name="ellipsoid"></param>
@@ -263,9 +263,9 @@ namespace ProjNet.CoordinateSystems.Transformations
             for (int i = 0; i < projection.NumParameters; i++)
                 parameterList.Add(projection.GetParameter(i));
 
-            parameterList.Add(new ProjectionParameter("semi_major", ellipsoid.SemiMajorAxis));
-            parameterList.Add(new ProjectionParameter("semi_minor", ellipsoid.SemiMinorAxis));
-            parameterList.Add(new ProjectionParameter("unit", unit.MetersPerUnit));
+            parameterList.Add(new ProjectionParameter("semi_major", ellipsoid.SemiMajorAxis));//长轴
+            parameterList.Add(new ProjectionParameter("semi_minor", ellipsoid.SemiMinorAxis));//短轴
+            parameterList.Add(new ProjectionParameter("unit", unit.MetersPerUnit));//单位弧度
             IMathTransform transform = null;
             switch (projection.ClassName.ToLower(CultureInfo.InvariantCulture).Replace(' ', '_'))
             {
@@ -277,6 +277,9 @@ namespace ProjNet.CoordinateSystems.Transformations
                     break;
                 case "transverse_mercator":
                     transform = new TransverseMercator(parameterList);
+                    break;
+                case "gauss_kruger"://高斯克吕格投影
+                    transform = new GaussKrugerProjection(parameterList);
                     break;
                 case "albers":
                 case "albers_conic_equal_area":
