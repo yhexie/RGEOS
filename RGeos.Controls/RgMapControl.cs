@@ -56,7 +56,7 @@ namespace RGeos.Controls
                 {
                     return mScreenDisplay.DisplayTransformation.Units;
                 }
-                return RgeosUnits.esriUnknownUnits;
+                return RgeosUnits.RgUnknownUnits;
             }
             set
             {

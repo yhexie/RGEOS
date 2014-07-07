@@ -7,20 +7,20 @@ namespace RGeos.Core
 {
     public enum RgeosUnits
     {
-        esriUnknownUnits = 0,// Unknown. 
-        esriInches = 1,//Inches. 
-        esriPoints = 2,// Points. 
-        esriFeet = 3, //Feet. 
-        esriYards = 4,// Yards. 
-        esriMiles = 5,//Miles. 
-        esriNauticalMiles = 6, //Nautical miles. 
-        esriMillimeters = 7,// Millimeters. 
-        esriCentimeters = 8, //Centimeters. 
-        esriMeters = 9,//Meters. 
-        esriKilometers = 10,// Kilometers. 
-        esriDecimalDegrees = 11,// Decimal degrees. 
-        esriDecimeters = 12,// Decimeters. 
-        esriUnitsLast = 13
+        RgUnknownUnits = 0,// Unknown. 
+        RgInches = 1,//Inches. 
+        RgPoints = 2,// Points. 
+        RgFeet = 3, //Feet. 
+        RgYards = 4,// Yards. 
+        RgMiles = 5,//Miles. 
+        RgNauticalMiles = 6, //Nautical miles. 
+        RgMillimeters = 7,// Millimeters. 
+        RgCentimeters = 8, //Centimeters. 
+        RgMeters = 9,//Meters. 
+        RgKilometers = 10,// Kilometers. 
+        RgDecimalDegrees = 11,// Decimal degrees. 
+        RgDecimeters = 12,// Decimeters. 
+        RgUnitsLast = 13
 
     }
 }
