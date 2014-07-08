@@ -14,10 +14,10 @@ namespace RGeos.Desktop
 
         private void FrmGaussProj_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("北京54");
-            comboBox1.Items.Add("西安80");
+            comboBox1.Items.Add("北京1954");
+            comboBox1.Items.Add("西安1980");
             comboBox1.Items.Add("国家2000");
-            comboBox1.Items.Add("WGS84");
+            comboBox1.Items.Add("WGS 1984");
             comboBox1.SelectedIndex = 0;
 
         }
@@ -86,9 +86,8 @@ namespace RGeos.Desktop
             ICoordinateTransformation trans = ctfac.CreateFromCoordinateSystems(coord, gauss);
 
             double[] pGauss = trans.MathTransform.Transform(new double[] { lon, lat });
-
-            txtY.Text = string.Format("{0}", pGauss[1]);
             txtX.Text = string.Format("{0}", pGauss[0]);
+            txtY.Text = string.Format("{0}", pGauss[1]);
         }
         IGeographicCoordinateSystem coord = null;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,7 +107,6 @@ namespace RGeos.Desktop
                 case 3:
                     coord = srf.CreateGeographicCoordinateSystem((int)RgSRGeoCSType.RgSRGeoCS_WGS1984);
                     break;
-
             }
         }
 
@@ -183,7 +181,6 @@ namespace RGeos.Desktop
 
             txtLon.Text = string.Format("{0}", pGaussBL[0]);
             txtLat.Text = string.Format("{0}", pGaussBL[1]);
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
