@@ -25,7 +25,7 @@ namespace RGeos.Desktop
             InitializeComponent();
             mMapControl = new RgMapControl();
             mMapControl.Dock = DockStyle.Fill;
-            mMapControl.Units = RgeosUnits.esriMillimeters;
+            mMapControl.Units = RgeosUnits.RgMillimeters;
             mMapControl.BackColor = Color.Black;
             this.panel1.Controls.Add(mMapControl);
             mMapControl.SetCenter(new RgPoint(0, 0));//设置基准点
@@ -39,26 +39,26 @@ namespace RGeos.Desktop
         {
             switch (mMapControl.Units)
             {
-                case RgeosUnits.esriMeters:
+                case RgeosUnits.RgMeters:
                     labCoordinate.Text = string.Format("{0}, {1}米", x, y);
                     break;
-                case RgeosUnits.esriInches:
+                case RgeosUnits.RgInches:
                     labCoordinate.Text = string.Format("{0}, {1}英寸", x, y);
                     break;
-                case RgeosUnits.esriKilometers:
+                case RgeosUnits.RgKilometers:
                     labCoordinate.Text = string.Format("{0}, {1}千米", x, y);
                     break;
-                case RgeosUnits.esriCentimeters:
+                case RgeosUnits.RgCentimeters:
                     labCoordinate.Text = string.Format("{0}, {1}厘米", x, y);
                     break;
-                case RgeosUnits.esriMillimeters:
+                case RgeosUnits.RgMillimeters:
                     labCoordinate.Text = string.Format("{0}, {1}毫米", x, y);
                     break;
                 default:
                     labCoordinate.Text = string.Format("{0}, {1}未知", x, y);
                     break;
             }
-            
+
         }
         double x, y;
         void mMapControl_MouseMove(object sender, MouseEventArgs e)
@@ -193,6 +193,12 @@ namespace RGeos.Desktop
 
             }
 
+        }
+
+        private void tspCoordTrans_Click(object sender, EventArgs e)
+        {
+            FrmGaussProj frmGauss = new FrmGaussProj();
+            frmGauss.ShowDialog();
         }
 
 

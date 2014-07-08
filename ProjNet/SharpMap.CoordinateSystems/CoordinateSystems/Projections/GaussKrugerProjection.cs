@@ -46,23 +46,21 @@ namespace ProjNet.CoordinateSystems.Projections
                 throw new ArgumentException("Missing projection parameter 'false_northing'");
 
             scale_factor = par_scale_factor.Value;
-            central_meridian = Degrees2Radians(par_central_meridian.Value);
+            //central_meridian = Degrees2Radians(par_central_meridian.Value);//中央经线
+            central_meridian = par_central_meridian.Value;
             lat_origin = Degrees2Radians(par_latitude_of_origin.Value);
             false_easting = par_false_easting.Value * _metersPerUnit;
             false_northing = par_false_northing.Value * _metersPerUnit;
 
-            es = 1.0 - Math.Pow(this._semiMinor / this._semiMajor, 2);
-            e = Math.Sqrt(es);
-            e0 = e0fn(es);
-            e1 = e1fn(es);
-            e2 = e2fn(es);
-            e3 = e3fn(es);
-            ml0 = this._semiMajor * mlfn(e0, e1, e2, e3, lat_origin);
-            esp = es / (1.0 - es);
+            /* 
+             * a = 6378140;  //西安80椭球 IGA75，长轴？
+             * e2 = 0.006694384999588;//扁率 alpha=(a-b)/a
+             * m0 = a * (1 - e2);//短轴
+             */
 
-            a = 6378140;  //西安80椭球 IGA75，长轴？
-            e2 = 0.006694384999588;//扁率
-            m0 = a * (1 - e2);//短轴
+            a = this._semiMajor;
+            e2 = (this._semiMajor - this._semiMinor) / this._semiMajor;
+            m0 = this._semiMinor;
             m2 = 3.0 / 2 * e2 * m0;
             m4 = 5.0 / 4 * e2 * m2;
             m6 = 7.0 / 6 * e2 * m4;
@@ -76,12 +74,26 @@ namespace ProjNet.CoordinateSystems.Projections
         }
         public override double[] MetersToDegrees(double[] p)
         {
-            throw new NotImplementedException();
+            double x = p[0] * _metersPerUnit - false_easting;
+            double y = p[1] * _metersPerUnit - false_northing;
+            double lon, lat;
+            GaussNegative(x, y, central_meridian, out lat, out lon);
+            if (p.Length < 3)
+                return new double[] { lon, lat };
+            else
+                return new double[] { lon, lat, p[2] };
         }
 
         public override double[] DegreesToMeters(double[] lonlat)
         {
-            throw new NotImplementedException();
+            double lon = lonlat[0];
+            double lat = lonlat[1];
+            double x, y;
+            GaussPositive(lat, lon, central_meridian, out x, out y);
+            if (lonlat.Length < 3)
+                return new double[] { x / _metersPerUnit, y / _metersPerUnit };
+            else
+                return new double[] { x / _metersPerUnit, y / _metersPerUnit, lonlat[2] };
         }
 
         public override Transformations.IMathTransform Inverse()
@@ -89,18 +101,20 @@ namespace ProjNet.CoordinateSystems.Projections
             throw new NotImplementedException();
         }
         //高斯正算
-        void GaussPositive(double B, double L, double L0, double xx, double yy)
+        void GaussPositive(double B, double L, double L0, out double xx, out double yy)
         {
-            double X, t, N, h2, l, m, Bmiao, Lmiao;
-            int Bdu, Bfen, Ldu, Lfen;
-            Bdu = (int)B;
-            Bfen = (int)(B * 100) % 100;
-            Bmiao = (B - Bdu - Bfen * 0.01) * 10000.0;
-            B = Bdu * PI / 180.0 + (Bfen / 60.0) * PI / 180.0 + Bmiao / 3600.0 * PI / 180.0;
-            Ldu = (int)L;
-            Lfen = (int)(L * 100) % 100;
-            Lmiao = (L - Ldu - Lfen * 0.01) * 10000.0;
-            L = Ldu * PI / 180.0 + (Lfen / 60.0) * PI / 180 + Lmiao / 3600.0 * PI / 180.0;
+            double X, t, N, h2, l, m;
+            B = Degrees2Radians(B);
+            L = Degrees2Radians(L);
+            // int Bdu, Bfen, Ldu, Lfen, Bmiao, Lmiao;
+            //Bdu = (int)B;
+            //Bfen = (int)(B * 100) % 100;
+            //Bmiao = (B - Bdu - Bfen * 0.01) * 10000.0;
+            //B = Bdu * PI / 180.0 + (Bfen / 60.0) * PI / 180.0 + Bmiao / 3600.0 * PI / 180.0;
+            //Ldu = (int)L;
+            //Lfen = (int)(L * 100) % 100;
+            //Lmiao = (L - Ldu - Lfen * 0.01) * 10000.0;
+            //L = Ldu * PI / 180.0 + (Lfen / 60.0) * PI / 180 + Lmiao / 3600.0 * PI / 180.0;
             l = L - L0 * PI / 180;
             X = a0 * B - Math.Sin(B) * Math.Cos(B) * ((a2 - a4 + a6) + (2 * a4 - 16.0 / 3.0 * a6) * Math.Sin(B) * Math.Sin(B) + 16.0 / 3.0 * a6 * Math.Pow(Math.Sin(B), 4)) + a8 / 8.0 * Math.Sin(8 * B);
             t = Math.Tan(B);
@@ -109,14 +123,14 @@ namespace ProjNet.CoordinateSystems.Projections
             m = Math.Cos(B) * l;
             xx = X + N * t * ((0.5 + (1.0 / 24.0 * (5 - t * t + 9 * h2 + 4 * h2 * h2) + 1.0 / 720.0 * (61 - 58 * t * t + Math.Pow(t, 4)) * m * m) * m * m) * m * m);
             yy = N * ((1 + (1.0 / 6.0 * (1 - t * t + h2) + 1.0 / 120.0 * (5 - 18 * t * t + Math.Pow(t, 4) + 14 * h2 - 58 * h2 * t * t) * m * m) * m * m) * m);
-            yy = yy + 500000;
+            yy = yy + false_easting;
         }
         //高斯反算
-        void GaussNegative(double x, double y, double L0, double BB, double LL)
+        void GaussNegative(double x, double y, double L0, out  double BB, out  double LL)
         {
             double Bf, Vf, l, tf, hf2, Nf, Bmiao, Lmiao;
             int Bdu, Bfen, Ldu, Lfen;
-            y = y - 500000;
+            // y = y - 500000;
             Bf = hcfansuan(x);
             Vf = Math.Sqrt(1 + e2 / (1 - e2) * Math.Cos(Bf) * Math.Cos(Bf));
             tf = Math.Tan(Bf);

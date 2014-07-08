@@ -266,7 +266,7 @@ namespace ProjNet.CoordinateSystems.Projections
         /// Most map projections define forward projection as "from geographic to projection", and backwards
         /// as "from projection to geographic". If this projection is inverted, this will be the other way around.
         /// </summary>
-        internal bool IsInverse
+        public bool IsInverse
         {
             get { return _isInverse; }
         }

@@ -32,7 +32,7 @@ namespace ProjNet.CoordinateSystems
 	/// </summary>
 	public class Projection : Info, IProjection
 	{
-		internal Projection(string className, List<ProjectionParameter> parameters,
+        public Projection(string className, List<ProjectionParameter> parameters,
 			string name, string authority, long code, string alias, 
 			string remarks, string abbreviation)
 			: base(name, authority, code, alias, abbreviation, remarks)

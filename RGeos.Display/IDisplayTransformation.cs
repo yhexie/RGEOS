@@ -91,7 +91,7 @@ namespace RGeos.Display
 
         public float Zoom { get; set; }
 
-        private RgeosUnits mUnits = RgeosUnits.esriUnknownUnits;
+        private RgeosUnits mUnits = RgeosUnits.RgUnknownUnits;
 
         public RgeosUnits Units
         {
@@ -158,32 +158,32 @@ namespace RGeos.Display
             float ratio = 1;
             switch (units)
             {
-                case RgeosUnits.esriInches://Inches.
+                case RgeosUnits.RgInches://Inches.
                     ratio = m_screenResolution;
                     break;
-                case RgeosUnits.esriPoints:// Points. 
+                case RgeosUnits.RgPoints:// Points. 
                     ratio = 1;
                     break;
-                case RgeosUnits.esriMillimeters:// Millimeters.
+                case RgeosUnits.RgMillimeters:// Millimeters.
                     ratio = (float)(m_screenResolution / MillmeteresPerInch);
                     break;
-                case RgeosUnits.esriCentimeters: //Centimeters. 
+                case RgeosUnits.RgCentimeters: //Centimeters. 
                     ratio = (float)(m_screenResolution / MillmeteresPerInch * 10);
                     break;
-                case RgeosUnits.esriMeters://Meters. 
+                case RgeosUnits.RgMeters://Meters. 
                     ratio = (float)(m_screenResolution / MillmeteresPerInch * 1000);
                     break;
-                case RgeosUnits.esriKilometers:// Kilometers. 
+                case RgeosUnits.RgKilometers:// Kilometers. 
                     ratio = (float)(m_screenResolution / MillmeteresPerInch * 1000000);
                     break;
-                case RgeosUnits.esriDecimalDegrees:// Decimal degrees. 
-                case RgeosUnits.esriDecimeters:// Decimeters. 
-                case RgeosUnits.esriUnitsLast:
-                case RgeosUnits.esriFeet: //Feet. 
-                case RgeosUnits.esriYards:// Yards. 
-                case RgeosUnits.esriMiles://Miles. 
-                case RgeosUnits.esriNauticalMiles: //Nautical miles. 
-                case RgeosUnits.esriUnknownUnits:
+                case RgeosUnits.RgDecimalDegrees:// Decimal degrees. 
+                case RgeosUnits.RgDecimeters:// Decimeters. 
+                case RgeosUnits.RgUnitsLast:
+                case RgeosUnits.RgFeet: //Feet. 
+                case RgeosUnits.RgYards:// Yards. 
+                case RgeosUnits.RgMiles://Miles. 
+                case RgeosUnits.RgNauticalMiles: //Nautical miles. 
+                case RgeosUnits.RgUnknownUnits:
                     ratio = 1;
                     break;
                 default:

@@ -72,6 +72,8 @@
     <Compile Include="CoordinateSystems\AxisOrientationEnum.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CoordinateSystems\SREnvironment\RgSRGeoCSType.cs" />
+    <Compile Include="CoordinateSystems\SREnvironment\RgSRSpheroid2Type.cs" />
     <Compile Include="CoordinateSystems\CoordinateSystem.cs" />
     <Compile Include="CoordinateSystems\CoordinateSystemFactory.cs" />
     <Compile Include="CoordinateSystems\Datum.cs" />
