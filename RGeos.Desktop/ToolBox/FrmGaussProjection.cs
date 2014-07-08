@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
@@ -90,10 +85,10 @@ namespace RGeos.Desktop
             CoordinateTransformationFactory ctfac = new CoordinateTransformationFactory();
             ICoordinateTransformation trans = ctfac.CreateFromCoordinateSystems(coord, gauss);
 
-            double[] pUtm = trans.MathTransform.Transform(new double[] { lon, lat });
+            double[] pGauss = trans.MathTransform.Transform(new double[] { lon, lat });
 
-            txtY.Text = string.Format("{0}", pUtm[1]);
-            txtX.Text = string.Format("{0}", pUtm[0]);
+            txtY.Text = string.Format("{0}", pGauss[1]);
+            txtX.Text = string.Format("{0}", pGauss[0]);
         }
         IGeographicCoordinateSystem coord = null;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,12 +178,17 @@ namespace RGeos.Desktop
             ICoordinateSystem gauss = new ProjectedCoordinateSystem(dataum, coord, ProjNet.CoordinateSystems.LinearUnit.Metre, proj, axes, "CustomGauss", "EPSG", 0, String.Empty, "", string.Empty);
             CoordinateTransformationFactory ctfac = new CoordinateTransformationFactory();
             ICoordinateTransformation trans = ctfac.CreateFromCoordinateSystems(coord, gauss);
-            trans.MathTransform.Invert();
-            double[] pUtm = trans.MathTransform.Transform(new double[] { dgaussY, dgaussX });
+            trans.MathTransform.Invert();//启用反算
+            double[] pGaussBL = trans.MathTransform.Transform(new double[] { dgaussY, dgaussX });
 
-            txtLon.Text = string.Format("{0}", pUtm[0]);
-            txtLat.Text = string.Format("{0}", pUtm[1]);
+            txtLon.Text = string.Format("{0}", pGaussBL[0]);
+            txtLat.Text = string.Format("{0}", pGaussBL[1]);
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

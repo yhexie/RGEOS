@@ -190,21 +190,14 @@ namespace RGeos.Desktop
 
                 (mMapControl.ScreenDisplay as ScreenDisplay).UpdateWindow();
                 mMapControl.Map.AddLayer(layer);
-
             }
-
         }
 
         private void tspCoordTrans_Click(object sender, EventArgs e)
         {
             FrmGaussProj frmGauss = new FrmGaussProj();
+            frmGauss.StartPosition = FormStartPosition.CenterParent;
             frmGauss.ShowDialog();
         }
-
-
-
-
-
-
     }
 }

@@ -50,6 +50,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +66,9 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(227, 95);
+            this.btnCalculate.Location = new System.Drawing.Point(227, 101);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(63, 32);
+            this.btnCalculate.Size = new System.Drawing.Size(63, 25);
             this.btnCalculate.TabIndex = 1;
             this.btnCalculate.Text = "正算";
             this.btnCalculate.UseVisualStyleBackColor = true;
@@ -161,9 +162,9 @@
             // 
             // btnInvCalculate
             // 
-            this.btnInvCalculate.Location = new System.Drawing.Point(227, 137);
+            this.btnInvCalculate.Location = new System.Drawing.Point(227, 143);
             this.btnInvCalculate.Name = "btnInvCalculate";
-            this.btnInvCalculate.Size = new System.Drawing.Size(63, 32);
+            this.btnInvCalculate.Size = new System.Drawing.Size(63, 25);
             this.btnInvCalculate.TabIndex = 1;
             this.btnInvCalculate.Text = "反算";
             this.btnInvCalculate.UseVisualStyleBackColor = true;
@@ -227,11 +228,22 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "m";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(403, 183);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "关闭";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FrmGaussProj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 218);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtLon);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label10);
@@ -281,5 +293,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnExit;
     }
 }

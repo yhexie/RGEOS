@@ -72,18 +72,27 @@ namespace ProjNet.CoordinateSystems.Projections
             a8 = m8 / 128;
 
         }
+        /// <summary>
+        /// 高斯反算
+        /// </summary>
+        /// <param name="p">0为东西方向，1为南北方向，与高斯坐标系相反</param>
+        /// <returns></returns>
         public override double[] MetersToDegrees(double[] p)
         {
             double x = p[0] * _metersPerUnit - false_easting;
             double y = p[1] * _metersPerUnit - false_northing;
             double lon, lat;
-            GaussNegative(x, y, central_meridian, out lat, out lon);
+            GaussNegative(y, x, central_meridian, out lat, out lon);
             if (p.Length < 3)
                 return new double[] { lon, lat };
             else
                 return new double[] { lon, lat, p[2] };
         }
-
+        /// <summary>
+        /// 高斯正算
+        /// </summary>
+        /// <param name="lonlat">0为经度，1为纬度</param>
+        /// <returns>高斯坐标系的x，y</returns>
         public override double[] DegreesToMeters(double[] lonlat)
         {
             double lon = lonlat[0];
@@ -101,55 +110,46 @@ namespace ProjNet.CoordinateSystems.Projections
             throw new NotImplementedException();
         }
         //高斯正算
-        void GaussPositive(double B, double L, double L0, out double xx, out double yy)
+        void GaussPositive(double B, double L, double L0, out double out_x, out double out_y)
         {
             double X, t, N, h2, l, m;
             B = Degrees2Radians(B);
             L = Degrees2Radians(L);
-            // int Bdu, Bfen, Ldu, Lfen, Bmiao, Lmiao;
-            //Bdu = (int)B;
-            //Bfen = (int)(B * 100) % 100;
-            //Bmiao = (B - Bdu - Bfen * 0.01) * 10000.0;
-            //B = Bdu * PI / 180.0 + (Bfen / 60.0) * PI / 180.0 + Bmiao / 3600.0 * PI / 180.0;
-            //Ldu = (int)L;
-            //Lfen = (int)(L * 100) % 100;
-            //Lmiao = (L - Ldu - Lfen * 0.01) * 10000.0;
-            //L = Ldu * PI / 180.0 + (Lfen / 60.0) * PI / 180 + Lmiao / 3600.0 * PI / 180.0;
             l = L - L0 * PI / 180;
             X = a0 * B - Math.Sin(B) * Math.Cos(B) * ((a2 - a4 + a6) + (2 * a4 - 16.0 / 3.0 * a6) * Math.Sin(B) * Math.Sin(B) + 16.0 / 3.0 * a6 * Math.Pow(Math.Sin(B), 4)) + a8 / 8.0 * Math.Sin(8 * B);
             t = Math.Tan(B);
             h2 = e2 / (1 - e2) * Math.Cos(B) * Math.Cos(B);
             N = a / Math.Sqrt(1 - e2 * Math.Sin(B) * Math.Sin(B));
             m = Math.Cos(B) * l;
-            xx = X + N * t * ((0.5 + (1.0 / 24.0 * (5 - t * t + 9 * h2 + 4 * h2 * h2) + 1.0 / 720.0 * (61 - 58 * t * t + Math.Pow(t, 4)) * m * m) * m * m) * m * m);
-            yy = N * ((1 + (1.0 / 6.0 * (1 - t * t + h2) + 1.0 / 120.0 * (5 - 18 * t * t + Math.Pow(t, 4) + 14 * h2 - 58 * h2 * t * t) * m * m) * m * m) * m);
-            yy = yy + false_easting;
+            out_x = X + N * t * ((0.5 + (1.0 / 24.0 * (5 - t * t + 9 * h2 + 4 * h2 * h2) + 1.0 / 720.0 * (61 - 58 * t * t + Math.Pow(t, 4)) * m * m) * m * m) * m * m);
+            out_y = N * ((1 + (1.0 / 6.0 * (1 - t * t + h2) + 1.0 / 120.0 * (5 - 18 * t * t + Math.Pow(t, 4) + 14 * h2 - 58 * h2 * t * t) * m * m) * m * m) * m);
+            out_x = out_x + false_northing;
+            out_y = out_y + false_easting;
         }
         //高斯反算
         void GaussNegative(double x, double y, double L0, out  double BB, out  double LL)
         {
             double Bf, Vf, l, tf, hf2, Nf, Bmiao, Lmiao;
             int Bdu, Bfen, Ldu, Lfen;
-            // y = y - 500000;
-            Bf = hcfansuan(x);
+            Bf = FunctionBf(x);
             Vf = Math.Sqrt(1 + e2 / (1 - e2) * Math.Cos(Bf) * Math.Cos(Bf));
             tf = Math.Tan(Bf);
             hf2 = e2 / (1 - e2) * Math.Cos(Bf) * Math.Cos(Bf);
             Nf = a / Math.Sqrt(1 - e2 * Math.Sin(Bf) * Math.Sin(Bf));
             BB = (Bf - 0.5 * Vf * Vf * tf * (Math.Pow(y / Nf, 2) - 1.0 / 12 * (5 + 3 * tf * tf + hf2 - 9 * hf2 * tf * tf) * Math.Pow(y / Nf, 4) + 1.0 / 360 * (61 + 90 * tf * tf + 45 * tf * tf) * Math.Pow(y / Nf, 6))) * 180 / PI;
-            Bdu = (int)BB;
-            Bfen = (int)((BB - Bdu) * 60);
-            Bmiao = ((BB - Bdu) * 60 - Bfen) * 60;
-            BB = Bdu + 0.01 * Bfen + 0.0001 * Bmiao;
+            //Bdu = (int)BB;
+            //Bfen = (int)((BB - Bdu) * 60);
+            //Bmiao = ((BB - Bdu) * 60 - Bfen) * 60;
+            //BB = Bdu + 0.01 * Bfen + 0.0001 * Bmiao;
             l = 1.0 / Math.Cos(Bf) * (y / Nf - 1.0 / 6.0 * (1 + 2 * tf * tf + hf2) * Math.Pow(y / Nf, 3) + 1.0 / 120.0 * (5 + 28 * tf * tf + 24 * Math.Pow(tf, 4) + 6 * hf2 + 8 * hf2 * tf * tf) * Math.Pow(y / Nf, 5)) * 180.0 / PI;
             LL = L0 + l;
-            Ldu = (int)LL;
-            Lfen = (int)((LL - Ldu) * 60);
-            Lmiao = ((LL - Ldu) * 60 - Lfen) * 60;
-            LL = Ldu + 0.01 * Lfen + 0.0001 * Lmiao;
+            //Ldu = (int)LL;
+            //Lfen = (int)((LL - Ldu) * 60);
+            //Lmiao = ((LL - Ldu) * 60 - Lfen) * 60;
+            //LL = Ldu + 0.01 * Lfen + 0.0001 * Lmiao;
         }
-        //弧长反算
-        double hcfansuan(double pX)
+        //弧长反算,底点
+        private double FunctionBf(double pX)
         {
             double Bf0 = pX / a0;
             double Bf1, Bf2;
@@ -162,7 +162,7 @@ namespace ProjNet.CoordinateSystems.Projections
             }
             return Bf1;
         }
-        double F(double bf1)
+        private double F(double bf1)
         {
             double BF1 = a2 * Math.Sin(2 * bf1) / 2 - a4 * Math.Sin(4 * bf1) / 4 + a6 * Math.Sin(6 * bf1) / 6 - a8 * Math.Sin(8 * bf1) / 8;
             return -BF1;
