@@ -199,5 +199,12 @@ namespace RGeos.Desktop
             frmGauss.StartPosition = FormStartPosition.CenterParent;
             frmGauss.ShowDialog();
         }
+
+        private void 计算七参数ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSevenParams frm = new FrmSevenParams();
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
     }
 }
