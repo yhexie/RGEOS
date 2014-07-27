@@ -267,5 +267,77 @@ namespace RGeos.Geometries
             return res;
 
         }
+
+
+        //线段与凸多边形相交    
+        //intersect2D_SegPoly():
+        //    Input:  S = 2D segment to intersect with the convex polygon
+        //            n = number of 2D points in the polygon
+        //            V[] = array of n+1 vertex points with V[n]=V[0]
+        //      Note: The polygon MUST be convex and
+        //                have vertices oriented counterclockwise (ccw).
+        //            This code does not check for and verify these conditions.
+        //    Output: *IS = the intersection segment (when it exists)
+        //    Return: FALSE = no intersection
+        //            TRUE  = a valid intersection segment exists
+        int intersect2D_SegPoly(RgSegment S, RgPoint[] V, int n, RgSegment IS)
+        {
+            if (S.P0 == S.P1)
+            {        // the segment S is a single point
+                // test for inclusion of S.P0 in the polygon
+                IS = S;               // same point if inside polygon
+                return RgTopologicRelationship.cn_PnPoly(S.P0, V, n);  // March 2001 Algorithm
+            }
+
+            float tE = 0;             // the maximum entering segment parameter
+            float tL = 1;             // the minimum leaving segment parameter
+            float t, N, D;            // intersect parameter t = N / D
+            Vector3d dS = S.P1 - S.P0;   // the segment direction vector
+            Vector3d e;                  // edge vector
+            // Vector ne;              // edge outward normal (not explicit in code)
+
+            for (int i = 0; i < n; i++)  // process polygon edge V[i]V[i+1]
+            {
+                RgPoint ePt = V[i + 1] - V[i];
+                e = new Vector3d(ePt.X, ePt.Y, 0);
+                RgPoint temp = S.P0 - V[i];
+                N = (float)RgMath.perp(e, new Vector3d(temp.X, temp.Y, 0));// = -dot(ne, S.P0-V[i])
+                D = (float)-RgMath.perp(e, dS);      // = dot(ne, dS)
+                if (Math.Abs(D) < RgMath.SMALL_NUM)
+                { // S is nearly parallel to this edge
+                    if (N < 0)             // P0 is outside this edge, so
+                        return 0;      // S is outside the polygon
+                    else                   // S cannot cross this edge, so
+                        continue;          // ignore this edge
+                }
+
+                t = N / D;
+                if (D < 0)
+                {           // segment S is entering across this edge
+                    if (t > tE)
+                    {      // new max tE
+                        tE = t;
+                        if (tE > tL)   // S enters after leaving polygon
+                            return 0;
+                    }
+                }
+                else
+                {                 // segment S is leaving across this edge
+                    if (t < tL)
+                    {      // new min tL
+                        tL = t;
+                        if (tL < tE)   // S leaves before entering polygon
+                            return 0;
+                    }
+                }
+            }
+
+            // tE <= tL implies that there is a valid intersection subsegment
+            IS.P0 = S.P0 + tE * dS;   // = P(tE) = point where S enters polygon
+            IS.P1 = S.P0 + tL * dS;   // = P(tL) = point where S leaves polygon
+            return 1;
+        }
+
+
     }
 }
