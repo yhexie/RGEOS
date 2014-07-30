@@ -39,11 +39,11 @@ namespace RGeos.Carto
                     {
                         if (feat.IsSelected == false)
                         {
-                            displayDraw.DrawPoint(pt, new Pen(Color.Red),new SolidBrush(Color.Red));
+                            displayDraw.DrawPoint(pt, new Pen(Color.Red), new SolidBrush(Color.Red));
                         }
                         else
                         {
-                            displayDraw.DrawPoint(pt, new Pen(Color.LightBlue), new SolidBrush(Color.Red));
+                            displayDraw.DrawPoint(pt, new Pen(Color.LightBlue), new SolidBrush(Color.LightBlue));
                         }
                     }
 
@@ -93,12 +93,20 @@ namespace RGeos.Carto
             {
                 for (int i = 0; i < mGeometries.Count; i++)
                 {
-                    Polygon pt = mGeometries[i].Shape as Polygon;
-                    if (pt != null)
+                    Feature feat = mGeometries[i];
+                    Polygon polygon = feat.Shape as Polygon;
+                    if (polygon != null)
                     {
                         Pen mPen = new Pen(Color.Red);
                         Brush brush = new SolidBrush(Color.Blue);
-                        displayDraw.DrawPolygon(pt, brush, mPen, false);
+                        if (feat.IsSelected == false)
+                        {
+                            displayDraw.DrawPolygon(polygon, brush, mPen, false);
+                        }
+                        else
+                        {
+                            displayDraw.DrawPolygon(polygon, brush, new Pen(Color.LightBlue), false);
+                        }
                     }
 
                 }
@@ -119,7 +127,7 @@ namespace RGeos.Carto
                     if (selectionBox.Contains(pt))
                     {
                         selected.Add(drawobject);
-                       // drawobject.IsSelected = true;
+                        // drawobject.IsSelected = true;
                     }
                 }
                 else if (ShapeType == RgEnumShapeType.RgLineString)
@@ -128,7 +136,7 @@ namespace RGeos.Carto
                     if (lineString.ObjectInRectangle(selectionBox, false))
                     {
                         selected.Add(drawobject);
-                       // drawobject.IsSelected = true;
+                        // drawobject.IsSelected = true;
                     }
                 }
             }
@@ -149,7 +157,7 @@ namespace RGeos.Carto
                     if (RDistanceMeasure.Dist_Point_to_Point(pt, point) < tolerance)
                     {
                         selected.Add(drawobject);
-                       // drawobject.IsSelected = true;
+                        // drawobject.IsSelected = true;
                     }
                 }
                 else if (ShapeType == RgEnumShapeType.RgLineString)
@@ -161,9 +169,17 @@ namespace RGeos.Carto
                         //drawobject.IsSelected = true;
                     }
                 }
-                else
+                else if (ShapeType == RgEnumShapeType.RgPolygon)
                 {
-
+                    Polygon polygon = drawobject.Shape as Polygon;
+                    if (!polygon.IsEmpty())
+                    {
+                        if (Geometries.RgTopologicRelationship.IsInPolygon(point, polygon))
+                        {
+                            selected.Add(drawobject);
+                            //drawobject.IsSelected = true;
+                        }
+                    }
                 }
 
             }

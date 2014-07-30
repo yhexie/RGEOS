@@ -1,4 +1,5 @@
 ﻿using RGeos.Geometries;
+using System.Collections.Generic;
 
 namespace RGeos.Geometries
 {
@@ -73,11 +74,69 @@ namespace RGeos.Geometries
         /// <returns></returns>
         public static bool IsInPolygon(RgPoint rPt, Polygon rPolygon)
         {
+            //List<RgPoint> poly = new List<RgPoint>();
+            //for (int i = 0; i < rPolygon.ExteriorRing.NumPoints; i++)
+            //{
+            //    poly.Add(rPolygon.ExteriorRing.Point(i));
+            //}
+            //return IsInPolygon(poly, rPt);
+            int n = rPolygon.ExteriorRing.NumPoints;
+            RgPoint[] poly = new RgPoint[n + 1];
+            for (int i = 0; i < rPolygon.ExteriorRing.NumPoints; i++)
+            {
+                poly[i] = rPolygon.ExteriorRing.Point(i);
+            }
+            poly[n] = rPolygon.ExteriorRing.Point(n - 1);
+            return cn_PnPoly(rPt, poly, n) == 1 ? true : false;
+        }
+        /// <summary>
+        /// 射线相交算法1
+        /// </summary>
+        /// <param name="poly"></param>
+        /// <param name="aPoint"></param>
+        /// <returns></returns>
+        public static bool IsInPolygon(List<RgPoint> poly, RgPoint aPoint)
+        {
             bool flag = false;
+            int count = poly.Count;
+            if (count < 3)
+            {
+                return false;
+            }
+            double x = poly[count - 1].X;
+            double y = poly[count - 1].Y;
+            for (int i = 0; i < count; i++)
+            {
+                double num5;
+                double num6;
+                double num7;
+                double num8;
+                if (poly[i].X > x)
+                {
+                    num5 = x;
+                    num7 = poly[i].X;
+                    num6 = y;
+                    num8 = poly[i].Y;
+                }
+                else
+                {
+                    num5 = poly[i].X;
+                    num7 = x;
+                    num6 = poly[i].Y;
+                    num8 = y;
+                }
+                if (((poly[i].X < aPoint.X) == (aPoint.X <= x)) && (((aPoint.Y - num6) * (num7 - num5)) < ((num8 - num6) * (aPoint.X - num5))))
+                {
+                    flag = !flag;
+                }
+                x = poly[i].X;
+                y = poly[i].Y;
+            }
             return flag;
+
         }
 
-        // 射线相交算法
+        // 射线相交算法2
         //cn_PnPoly(): crossing number test for a point in a polygon
         //      Input:   P = a point,
         //               V[] = vertex points of a polygon V[n+1] with V[n]=V[0]

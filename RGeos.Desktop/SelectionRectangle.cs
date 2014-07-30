@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using RGeos.Carto;
+using RGeos.Display;
 
 namespace RGeos.Desktop
 {
@@ -20,19 +21,24 @@ namespace RGeos.Desktop
         {
             m_point2 = PointF.Empty;
         }
-        public void SetMousePoint(Graphics dc, PointF mousepoint)
+        public void SetMousePoint(ScreenDisplay display, Graphics dc, PointF mousepoint)
         {
             if (m_point2 != PointF.Empty)
             {
                 float dx = m_point2.X - m_point1.X;
                 float dy = m_point2.Y - m_point1.Y;
-                dc.DrawRectangle(Pens.Yellow, m_point1.X, m_point1.Y, dx, dy);
+                Rectangle invalidaterect = ScreenRect();
+                invalidaterect.Inflate(2, 2);
+                display.RepaintStatic(invalidaterect);
+
             }
-            //    XorGdi.DrawRectangle(dc, PenStyles.PS_DOT, 1, GetColor(), m_point1, m_point2);
             m_point2 = mousepoint;
-            float dx2 = m_point2.X - m_point1.X;
-            float dy2 = m_point2.Y - m_point1.Y;
-            dc.DrawRectangle(Pens.Yellow, m_point1.X, m_point1.Y, dx2, dy2);
+            Rectangle rect2 = ScreenRect();
+            dc.DrawRectangle(Pens.Yellow, rect2);
+            //XorGdi.DrawRectangle(dc, PenStyles.PS_DOT, 1, GetColor(), m_point1, m_point2);
+            //float dx2 = m_point2.X - m_point1.X;
+            //float dy2 = m_point2.Y - m_point1.Y;
+            //dc.DrawRectangle(Pens.Yellow, m_point1.X, m_point1.Y, dx2, dy2);
             //XorGdi.DrawRectangle(dc, PenStyles.PS_DOT, 1, GetColor(), m_point1, m_point2);
         }
         public Rectangle ScreenRect()
@@ -47,14 +53,6 @@ namespace RGeos.Desktop
                 return Rectangle.Empty;
             return new Rectangle((int)x, (int)y, (int)w, (int)h);
         }
-        //public RectangleF Selection(IMap canvas)
-        //{
-        //    Rectangle screenRect = ScreenRect();
-        //    if (screenRect.IsEmpty)
-        //        return RectangleF.Empty;
-        //    //return ScreenUtils.ToUnitNormalized(canvas, screenRect);
-        //    return RectangleF.Empty;
-        //}
         public bool AnyPoint()
         {
             return (m_point1.X > m_point2.X);

@@ -37,7 +37,7 @@ namespace RGeos.Desktop
             if (m_selection != null)
             {
                 Graphics dc = Graphics.FromHwnd(mMapCtrl.Handle);
-                m_selection.SetMousePoint(dc, new PointF(x, y));
+                m_selection.SetMousePoint(mScreenDisplay as ScreenDisplay, dc, new PointF(x, y));
                 dc.Dispose();
                 return;
             }

@@ -267,7 +267,28 @@ namespace RGeos.Geometries
             return res;
 
         }
-
+        /// <summary>
+        /// 二维向量的垂向量
+        /// </summary>
+        /// <param name="V0"></param>
+        /// <param name="dLength">向量的模</param>
+        /// <returns></returns>
+        public static Vector3d VerticalVector2D(Vector3d V0, double dLength)
+        {
+            double dJ1 = RgMath.GetQuadrantAngle(V0.X, V0.Y);//向量的象限角
+            double dJ = dJ1 + Math.PI / 2;//垂线的象限角
+            if (dJ > Math.PI * 2)
+            {
+                dJ -= Math.PI * 2;
+            }
+            double dx = dLength * Math.Cos(dJ);
+            double dy = dLength * Math.Sin(dJ);
+            Vector3d res = new Vector3d();
+            res.X = dx;
+            res.Y = dy;
+            res.Z = 0;
+            return res;
+        }
 
         //线段与凸多边形相交    
         //intersect2D_SegPoly():
