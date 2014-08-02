@@ -25,6 +25,10 @@ namespace RGeos.Carto
         {
             mGeometries.Add(new Feature(feat, false));
         }
+        public void AddFeature(Feature feat)
+        {
+            mGeometries.Add(feat);
+        }
 
         public override void Draw(IScreenDisplay display)
         {

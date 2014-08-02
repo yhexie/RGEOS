@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlCommands\IPickUpPoint.cs" />
+    <Compile Include="ControlCommands\PickUpPointTool.cs" />
     <Compile Include="FrmGridLineOrPoint.cs">
       <SubType>Form</SubType>
     </Compile>

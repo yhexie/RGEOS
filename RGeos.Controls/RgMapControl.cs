@@ -15,7 +15,7 @@ using RGeos.Carto;
 
 namespace RGeos.Controls
 {
-    public partial class RgMapControl : UserControl, IMapControl2
+    public partial class RgMapControl : UserControl, IMapControl2, IGraphicContainer
     {
         public RgMapControl()
         {
