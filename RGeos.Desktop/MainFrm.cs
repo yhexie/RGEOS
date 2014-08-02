@@ -171,7 +171,7 @@ namespace RGeos.Desktop
 
         private void tspCreateGrid_Click(object sender, EventArgs e)
         {
-            FrmGridLineOrPoint frmGridLineOrPoint = new FrmGridLineOrPoint();
+            FrmGridLineOrPoint frmGridLineOrPoint = new FrmGridLineOrPoint(mMapControl);
             frmGridLineOrPoint.StartPosition = FormStartPosition.CenterParent;
             frmGridLineOrPoint.Show(this);
         }
