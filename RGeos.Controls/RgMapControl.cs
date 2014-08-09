@@ -32,6 +32,15 @@ namespace RGeos.Controls
             this.Resize += new System.EventHandler(this.UcMapControl_Resize);
             HookHelper mHook = HookHelper.Instance();
             mHook.MapControl = this as IMapControl;
+            timeTick.Interval = 500;
+            timeTick.Tick += new EventHandler(timeTick_Tick);
+        }
+        int mTimerTicks = 0;
+        void timeTick_Tick(object sender, EventArgs e)
+        {
+            mTimerTicks = 0;
+            timeTick.Stop();
+            Invalidate(true);
         }
 
         public ITool CurrentTool { get; set; }
@@ -176,18 +185,33 @@ namespace RGeos.Controls
                 CurrentTool.OnKeyUp(e);
             }
         }
+        Timer timeTick = new Timer();
         protected override void OnMouseWheel(MouseEventArgs e)
         {
+            if (mTimerTicks == 0)
+            {
+                timeTick.Start();
+            }
+            else
+            {
+                timeTick.Stop();
+                timeTick.Start();
+            }
+            mTimerTicks++;
             System.Drawing.Point point = this.PointToClient(Control.MousePosition);//放大中心点屏幕坐标
-            RgPoint p = mScreenDisplay.DisplayTransformation.ToUnit(point);//对应的当前Zoom下的世界坐标
+            PointF temp = new PointF(point.X, point.Y);
+            RgPoint p = mScreenDisplay.DisplayTransformation.ToUnit(temp);//对应的当前Zoom下的世界坐标
             float wheeldeltatick = 120;
             float zoomdelta = (1.25f * (Math.Abs(e.Delta) / wheeldeltatick));
             if (e.Delta < 0)
                 mScreenDisplay.DisplayTransformation.Zoom = mScreenDisplay.DisplayTransformation.Zoom / zoomdelta;
             else
                 mScreenDisplay.DisplayTransformation.Zoom = mScreenDisplay.DisplayTransformation.Zoom * zoomdelta;
-            SetCenterScreen(mScreenDisplay.DisplayTransformation.ToScreen(p), false);//放大后，得到同一个世界坐标对应的屏幕坐标
-            Invalidate(true);
+            //float centerX = ClientRectangle.Width / 2;
+            //float centerY = ClientRectangle.Height / 2;
+            //RgPoint p2 = mScreenDisplay.DisplayTransformation.ToUnit(new PointF(centerX, centerY));//对应的当前Zoom下的世界坐标
+            //SetCenterScreen(mScreenDisplay.DisplayTransformation.ToScreen(p2), false);
+            ZoomScreen(mScreenDisplay.DisplayTransformation.ToScreen(p), temp, false);//放大后，得到同一个世界坐标对应的屏幕坐标
             base.OnMouseWheel(e);
         }
 
@@ -224,6 +248,16 @@ namespace RGeos.Controls
             if (setCursor)
                 Cursor.Position = this.PointToScreen(new System.Drawing.Point((int)centerX, (int)centerY));
             Invalidate();
+        }
+        protected void ZoomScreen(PointF screenPoint, PointF pt, bool setCursor)
+        {
+            float centerX = ClientRectangle.Width / 2;
+            float x = mScreenDisplay.DisplayTransformation.PanOffset.X - screenPoint.X + pt.X;
+            float centerY = mScreenDisplay.DisplayTransformation.PanOffset.Y + pt.Y;
+            float y = centerY - screenPoint.Y;
+            mScreenDisplay.DisplayTransformation.PanOffset = new PointF(x, y);
+            if (setCursor)
+                Cursor.Position = this.PointToScreen(new System.Drawing.Point((int)centerX, (int)centerY));
         }
         public RgPoint CenterPointUnit()
         {
