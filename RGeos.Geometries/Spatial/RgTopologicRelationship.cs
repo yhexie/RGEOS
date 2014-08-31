@@ -86,7 +86,7 @@ namespace RGeos.Geometries
             {
                 poly[i] = rPolygon.ExteriorRing.Point(i);
             }
-            poly[n] = rPolygon.ExteriorRing.Point(n - 1);
+            poly[n] = rPolygon.ExteriorRing.Point(0);
             return cn_PnPoly(rPt, poly, n) == 1 ? true : false;
         }
         /// <summary>
