@@ -23,7 +23,7 @@ namespace RGeos.Geometries
             double c1 = RgMath.dot(w, v);
             double c2 = RgMath.dot(v, v);
             double b = c1 / c2;
-            RgPoint Pb = L.P0 + b * v;
+            Point3D Pb = L.P0 + b * v;
             return RgMath.d(P, Pb);
         }
         //===================================================================
@@ -42,7 +42,7 @@ namespace RGeos.Geometries
             if (c2 <= c1)
                 return RgMath.d(P, S.P1);
             double b = c1 / c2;
-            RgPoint Pb = S.P0 + b * v;
+            Point3D Pb = S.P0 + b * v;
             return RgMath.d(P, Pb);
         }
         //===================================================================

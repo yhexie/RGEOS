@@ -56,7 +56,12 @@ namespace RGeos.Geometries
             return norm(u - v);       // distance = norm of difference
         }
 
-        public static double d(RgPoint P1, RgPoint P2)
+        public static double d(Point3D P1, Point3D P2)
+        {
+            return Math.Sqrt(Math.Pow((P2.X - P1.X), 2) + Math.Pow((P2.Y - P1.Y), 2) + Math.Pow((P2.Z - P1.Z), 2));
+        }
+
+        public static double d2(RgPoint P1, RgPoint P2)
         {
             return GetDistance(P1, P2);       // distance = norm of difference
         }
